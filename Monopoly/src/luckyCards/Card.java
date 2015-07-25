@@ -1,4 +1,4 @@
-package LuckyCards;
+package luckyCards;
 
 public class Card {
 	private String description;
