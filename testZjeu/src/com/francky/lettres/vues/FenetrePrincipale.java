@@ -26,7 +26,7 @@ public class FenetrePrincipale extends JFrame {
 		//création du clavier
 		PanelKeyboard panelkeyboard = new PanelKeyboard(this);
 		//ajout du clavier à la fenêtre
-		add(panelkeyboard);
+		add(panelkeyboard, BorderLayout.CENTER);
 		
 		pack();
 		setLocationRelativeTo(null);
