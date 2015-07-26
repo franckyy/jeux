@@ -9,6 +9,49 @@ public class BoutonsMap {
 
 	/**
 	 * 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+ 
+public class Test {
+ 
+	public static void main(String[] args) {
+		final JButton btn = new JButton("Clear");
+		final Font fontDefaut = btn.getFont();
+		final Font fontEntered = new Font(Font.DIALOG, Font.ITALIC, 10);
+ 
+		JFrame f = new JFrame();
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 
+		btn.addMouseListener(new MouseListener() {
+			@Override
+			public void mouseClicked(MouseEvent e) { }
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btn.setBackground(Color.RED);
+				btn.setFont(fontEntered);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btn.setBackground(null); // défaut
+				btn.setFont(fontDefaut);
+			}
+			@Override
+			public void mousePressed(MouseEvent e) { }
+			@Override
+			public void mouseReleased(MouseEvent e) { }
+		});
+ 
+		f.add(btn);
+ 
+		f.pack();
+		f.setVisible(true);
+	}
+ 
+}
 	 */
 	private static final long serialVersionUID = -6725907661307041765L;
 
