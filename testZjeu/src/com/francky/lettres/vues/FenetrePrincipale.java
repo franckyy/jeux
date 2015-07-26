@@ -23,9 +23,12 @@ public class FenetrePrincipale extends JFrame {
 		/*
 		 * Initialisation des panneaux
 		 */
+		//création du clavier
 		PanelKeyboard panelkeyboard = new PanelKeyboard(this);
+		//ajout du clavier à la fenêtre
+		add(panelkeyboard);
 		
-
+		pack();
 		setLocationRelativeTo(null);
 	}
 }

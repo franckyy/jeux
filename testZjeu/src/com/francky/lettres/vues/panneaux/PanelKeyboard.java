@@ -19,14 +19,14 @@ public class PanelKeyboard extends JPanel {
 	/*
 	 * Nombre de touches dans le clavier
 	 */
-	private static final int ROWS = 7;
-	private static final int COLS = 6;
+	private static final int ROWS = 6;
+	private static final int COLS = 7;
 	
 	/*
 	 * hauteur et largeur d'une touche de clavier en pixel
 	 */
-	private static final int KEY_HEIGHT = 24;
-	private static final int KEY_WIDTH = 24;
+	private static final int KEY_HEIGHT = 50;
+	private static final int KEY_WIDTH = 50;
 	
 	/*
 	 * Marge autour d'une touche de clavier

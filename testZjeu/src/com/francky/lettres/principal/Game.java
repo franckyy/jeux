@@ -10,13 +10,6 @@ public class Game {
 	 */
 	private static final long serialVersionUID = 4564883110279195429L;
 	
-	//DECLARATIONS
-	
-	
-	//CONSTRUCTEUR	
-	public Game(){		
-	}
-	
 	//METHODES
 	public static void main(String[] arg){
 		Controleur ctrl = new Controleur();
