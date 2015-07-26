@@ -3,6 +3,7 @@ package com.francky.lettres.vues.panneaux;
 import java.util.HashMap;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class BoutonsMap {
 
@@ -17,6 +18,8 @@ public class BoutonsMap {
 	JButton btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnJ, btnK, btnL
 				, btnM, btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW
 				, btnX, btnY, btnZ, btnHelp;
+	
+	JButton btnVide, btnVide1, btnVide2;
 	
 	//CONSTRUCTEUR
 	public BoutonsMap() {
@@ -51,7 +54,11 @@ public class BoutonsMap {
 		btnX = new JButton("X");
 		btnY = new JButton("Y");
 		btnZ = new JButton("Z");
-		btnHelp = new JButton("HELP");
+		btnHelp = new JButton("AIDE");
+		
+		btnVide = new JButton("");
+		btnVide1 = new JButton("");
+		btnVide2 = new JButton("");
 		
 		boutons = new HashMap<Character, JButton>();
 		
@@ -82,6 +89,9 @@ public class BoutonsMap {
 		boutons.put('Y', btnY);
 		boutons.put('Z', btnZ);
 		boutons.put('h', btnHelp);
+		boutons.put('a', btnVide);
+		boutons.put('b', btnVide1);
+		boutons.put('c', btnVide2);
 		
 		return boutons;
 	}

@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 import com.francky.lettres.vues.panneaux.PanelKeyboard;
+import com.francky.lettres.vues.panneaux.PanelScore;
 
 public class FenetrePrincipale extends JFrame {
 
@@ -27,6 +28,10 @@ public class FenetrePrincipale extends JFrame {
 		PanelKeyboard panelkeyboard = new PanelKeyboard(this);
 		//ajout du clavier à la fenêtre
 		add(panelkeyboard, BorderLayout.CENTER);
+		
+		//Création du panneau de score
+		PanelScore panelscore = new PanelScore(this);
+		add(panelscore, BorderLayout.EAST);
 		
 		pack();
 		setLocationRelativeTo(null);

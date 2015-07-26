@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import com.francky.lettres.vues.FenetrePrincipale;
 
@@ -37,12 +38,16 @@ public class PanelKeyboard extends JPanel {
 	 * Marge autour d'une touche de clavier
 	 */
 	private static final int KEY_MARGE = 5;
+	private static final int KEY_PANEL_MARGE_TOP = 5;
+	private static final int KEY_PANEL_MARGE_BOTTOM = 5;
+	private static final int KEY_PANEL_MARGE_LEFT = 5;
+	private static final int KEY_PANEL_MARGE_RIGHT = 5;
 	
 	/*
 	 * Calcul de la hauteur du panneaux clavier
 	 * nombre de colonnes * hauteur d'une colonne + marge
 	 */
-	private static final int KEYBOARD_HEIGTH = ROWS_NUMBER * KEY_HEIGHT + KEY_MARGE;
+	public static final int KEYBOARD_HEIGTH = ROWS_NUMBER * KEY_HEIGHT + KEY_MARGE;
 	private static final int KEYBOARD_WIDTH = COLS_NUMBER * KEY_WIDTH + KEY_MARGE;
 	
 	/*
@@ -76,11 +81,17 @@ public class PanelKeyboard extends JPanel {
 		for(char alphabet = 'A'; alphabet <= 'Z';alphabet++) {
 		    lettres.add(alphabet);
 		}
+		lettres.add('a');
+		lettres.add('b');
+		lettres.add('c');
 		lettres.add('h');
 		
 		for(int i = 0; i < boutons.size(); i++){
 			add(boutons.get(lettres.get(i)));
 		}
+		
+		//définition d'une marge autour du panneau clavier
+		setBorder(new EmptyBorder(KEY_PANEL_MARGE_TOP, KEY_PANEL_MARGE_LEFT, KEY_PANEL_MARGE_BOTTOM, KEY_PANEL_MARGE_RIGHT));
 	}
 	
 	//************************************************************METHODES
