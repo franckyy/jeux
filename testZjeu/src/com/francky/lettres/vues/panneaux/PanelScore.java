@@ -7,6 +7,7 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import com.francky.lettres.ctrl.Controleur;
 import com.francky.lettres.vues.FenetrePrincipale;
 
 public class PanelScore extends JPanel {
@@ -23,11 +24,7 @@ public class PanelScore extends JPanel {
 	 */
 	private static final int SCORE_HEIGTH = PanelKeyboard.KEYBOARD_HEIGTH;
 	public static final int SCORE_WIDTH = 200;
-	
-	private FenetrePrincipale fenetreprincipale;
-	
-	
-	
+		
 	/**
 	 * The number of rows and columns in the preview window. Set to
 	 * 5 because we can show any piece with some sort of padding.
@@ -63,7 +60,7 @@ public class PanelScore extends JPanel {
 	/**
 	 * The y coordinate of the controls category.
 	 */
-	private static final int SCORE_INSET = 160;
+	private static final int SCORE_INSET = 220;
 	
 	/**
 	 * The number of pixels to offset between each string.
@@ -82,14 +79,16 @@ public class PanelScore extends JPanel {
 	/**
 	 * The color to draw the text and preview box in.
 	 */
-	private static final Color DRAW_COLOR = new Color(128, 192, 128);
 
+	//Contrôleur
+	private Controleur ctrl;
+	
 	//************************************************************CONSTRUCTEUR
-	public PanelScore(FenetrePrincipale fenetreprincipale) {
-		this.fenetreprincipale = fenetreprincipale;
+	public PanelScore(Controleur ctrl) {
+		this.ctrl = ctrl;
 		
 		setPreferredSize(new Dimension(SCORE_WIDTH, SCORE_HEIGTH));
-		setBackground(Color.BLACK);
+		setBackground(ctrl.COL_FOND);
 		
 	}
 	
@@ -99,9 +98,6 @@ public class PanelScore extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		//Set the color for drawing.
-		g.setColor(DRAW_COLOR);
-		
 		/*
 		 * This variable stores the current y coordinate of the string.
 		 * This way we can re-order, add, or remove new strings if necessary
@@ -110,21 +106,38 @@ public class PanelScore extends JPanel {
 		int offset;
 		
 		/*
-		 * Draw the "Stats" category.
+		 * Draw the "Statistiques" category.
 		 */
+
+		g.setColor(ctrl.COL_TEXTE_1);
 		g.setFont(LARGE_FONT);
 		g.drawString("Statistiques", SMALL_INSET, offset = STATS_INSET);
+		g.drawString("Niveau", LARGE_INSET, offset += TEXT_STRIDE);
+		g.setColor(ctrl.COL_TEXTE_2);
 		g.setFont(SMALL_FONT);
-		g.drawString("Niveau: " + "10", LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("" + ctrl.getNiveau(), LARGE_INSET, offset += TEXT_STRIDE);
+		g.setColor(ctrl.COL_TEXTE_1);
+		g.setFont(LARGE_FONT);
 		g.drawString("Mots trouvés", LARGE_INSET, offset += TEXT_STRIDE);
+		g.setColor(ctrl.COL_TEXTE_2);
+		g.setFont(SMALL_FONT);
+		g.drawString("" + ctrl.getMotsTrouves(), LARGE_INSET, offset += TEXT_STRIDE);
+		g.setColor(ctrl.COL_TEXTE_1);
+		g.setFont(LARGE_FONT);
 		g.drawString("Nombre de lettres", LARGE_INSET, offset += TEXT_STRIDE);
+		g.setColor(ctrl.COL_TEXTE_2);
+		g.setFont(SMALL_FONT);
+		g.drawString("" + ctrl.getNbreLettres(), LARGE_INSET, offset += TEXT_STRIDE);
 		
 		/*
-		 * Draw the "Controls" category.
+		 * Draw the "Score" category.
 		 */
+		g.setColor(ctrl.COL_TEXTE_1);
 		g.setFont(LARGE_FONT);
 		g.drawString("Score", SMALL_INSET, offset = SCORE_INSET);
+
+		g.setColor(ctrl.COL_TEXTE_2);
 		g.setFont(SMALL_FONT);
-		g.drawString("'' + score", LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("" + ctrl.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
 	}
 }

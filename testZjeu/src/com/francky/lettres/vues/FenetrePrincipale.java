@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
+import com.francky.lettres.ctrl.Controleur;
 import com.francky.lettres.vues.panneaux.PanelAffichage;
 import com.francky.lettres.vues.panneaux.PanelKeyboard;
 import com.francky.lettres.vues.panneaux.PanelScore;
@@ -14,28 +15,33 @@ public class FenetrePrincipale extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = -221472257022120727L;
-
-	public FenetrePrincipale() {
+	
+	//********************************************************DECLARATIONS
+	private Controleur ctrl;
+	
+	public FenetrePrincipale(Controleur ctrl) {
 		//construction de la fenêtre
 		super("Lettres");
 		setLayout(new BorderLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
 		
+		this.ctrl = ctrl;
+		
 		/*
 		 * Initialisation des panneaux
 		 */
 		//création du clavier
-		PanelKeyboard panelkeyboard = new PanelKeyboard(this);
+		PanelKeyboard panelkeyboard = new PanelKeyboard(ctrl);
 		//ajout du clavier à la fenêtre
 		add(panelkeyboard, BorderLayout.CENTER);
 		
 		//Création du panneau de score
-		PanelScore panelscore = new PanelScore(this);
+		PanelScore panelscore = new PanelScore(ctrl);
 		add(panelscore, BorderLayout.EAST);
 		
 		//création du panneau d'affichage des mots
-		PanelAffichage panelaffichage = new PanelAffichage(this);
+		PanelAffichage panelaffichage = new PanelAffichage(ctrl);
 		add(panelaffichage, BorderLayout.NORTH);
 		
 		pack();

@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.francky.lettres.ctrl.Controleur;
 import com.francky.lettres.vues.FenetrePrincipale;
 
 public class PanelKeyboard extends JPanel {
@@ -59,16 +60,16 @@ public class PanelKeyboard extends JPanel {
 	List<Character> lettres;
 	
 	/*
-	 * Instanciation de la fenêtre principale
+	 * Instanciation du controleur
 	 */
-	private FenetrePrincipale fenetreprincipale;
+	private Controleur ctrl;
 	
 	//************************************************************CONSTUCTEUR
-	public PanelKeyboard(FenetrePrincipale fenetreprincipale) {
-		this.fenetreprincipale = fenetreprincipale;
+	public PanelKeyboard(Controleur ctrl) {
+		this.ctrl = ctrl;
 		
 		setPreferredSize(new Dimension(KEYBOARD_WIDTH, KEYBOARD_HEIGTH));
-		setBackground(Color.BLACK);
+		setBackground(ctrl.COL_FOND);
 		
 		//paramétrage du layout du clavier
 		setLayout(new GridLayout(ROWS_NUMBER, COLS_NUMBER, KEY_MARGE, KEY_MARGE));
