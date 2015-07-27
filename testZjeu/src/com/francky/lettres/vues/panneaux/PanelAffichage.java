@@ -61,6 +61,11 @@ public class PanelAffichage extends JPanel {
 		
 		g.setColor(ctrl.COL_MOT);
 		g.setFont(MOT_FONT);
-		g.drawString(ctrl.getMot(), MOT_X, MOT_Y);
+		int decal = 0;
+		for(int caractere = 0; caractere < ctrl.getMot().length(); caractere++){
+			g.drawString("_", MOT_X + decal, MOT_Y);
+			decal += 45;
+		}
+//		g.drawString(ctrl.getMotCache(), MOT_X, MOT_Y);
 	}
 }

@@ -25,9 +25,10 @@ public class Controleur {
 	private int niveau;
 	
 	/*
-	 * Gestion du mot à rechercher
+	 * Gestion du mot à rechercher et à cacher
 	 */
 	private String mot;
+	private String motCache;
 	
 	/*
 	 * Définition de la palette des couleurs pour le jeu (1 -> clair, 5 -> foncé)	 
@@ -73,7 +74,8 @@ public class Controleur {
 					}
 		
 		mot = mots.get(randomNum).getChaine();
-
+		setMotCache(motCache(mot));
+		
 		//************************************création de la fenêtre
 		fenetreprincipale = new FenetrePrincipale(this);
 		
@@ -84,6 +86,14 @@ public class Controleur {
 	private int randomNum(){
 		Random rand = new Random();
 		return rand.nextInt((mots.size()));
+	}
+	
+	private String motCache(String mot){
+		String motCache = "";
+		for(int nbreChar = 0; nbreChar < mot.length(); nbreChar++){
+			motCache = motCache + "_";
+		}
+		return motCache;
 	}
 	
 	//GETTERS & SETTERS
@@ -101,4 +111,7 @@ public class Controleur {
 
 	public String getMot() {return mot;}
 	public void setMot(String mot) {this.mot = mot;}
+
+	public String getMotCache() {return motCache;}
+	public void setMotCache(String motCache) {this.motCache = motCache;}
 }
