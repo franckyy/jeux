@@ -22,7 +22,7 @@ public class PanelScore extends JPanel {
 	 * Définition de la hauteur et de la largeur
 	 */
 	private static final int SCORE_HEIGTH = PanelKeyboard.KEYBOARD_HEIGTH;
-	private static final int SCORE_WIDTH = 200;
+	public static final int SCORE_WIDTH = 200;
 	
 	private FenetrePrincipale fenetreprincipale;
 	
@@ -63,7 +63,7 @@ public class PanelScore extends JPanel {
 	/**
 	 * The y coordinate of the controls category.
 	 */
-	private static final int CONTROLS_INSET = 120;
+	private static final int SCORE_INSET = 160;
 	
 	/**
 	 * The number of pixels to offset between each string.
@@ -116,19 +116,15 @@ public class PanelScore extends JPanel {
 		g.drawString("Statistiques", SMALL_INSET, offset = STATS_INSET);
 		g.setFont(SMALL_FONT);
 		g.drawString("Niveau: " + "10", LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("Score: " + "11", LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Mots trouvés", LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Nombre de lettres", LARGE_INSET, offset += TEXT_STRIDE);
 		
 		/*
 		 * Draw the "Controls" category.
 		 */
 		g.setFont(LARGE_FONT);
-		g.drawString("Controls", SMALL_INSET, offset = CONTROLS_INSET);
+		g.drawString("Score", SMALL_INSET, offset = SCORE_INSET);
 		g.setFont(SMALL_FONT);
-		g.drawString("A - Move Left", LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("D - Move Right", LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("Q - Rotate Anticlockwise", LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("E - Rotate Clockwise", LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("S - Drop", LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("P - Pause Game", LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("'' + score", LARGE_INSET, offset += TEXT_STRIDE);
 	}
 }

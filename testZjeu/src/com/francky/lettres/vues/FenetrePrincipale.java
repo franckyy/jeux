@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
+import com.francky.lettres.vues.panneaux.PanelAffichage;
 import com.francky.lettres.vues.panneaux.PanelKeyboard;
 import com.francky.lettres.vues.panneaux.PanelScore;
 
@@ -32,6 +33,10 @@ public class FenetrePrincipale extends JFrame {
 		//Création du panneau de score
 		PanelScore panelscore = new PanelScore(this);
 		add(panelscore, BorderLayout.EAST);
+		
+		//création du panneau d'affichage des mots
+		PanelAffichage panelaffichage = new PanelAffichage(this);
+		add(panelaffichage, BorderLayout.NORTH);
 		
 		pack();
 		setLocationRelativeTo(null);

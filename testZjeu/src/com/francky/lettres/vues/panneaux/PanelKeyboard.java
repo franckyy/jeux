@@ -48,7 +48,7 @@ public class PanelKeyboard extends JPanel {
 	 * nombre de colonnes * hauteur d'une colonne + marge
 	 */
 	public static final int KEYBOARD_HEIGTH = ROWS_NUMBER * KEY_HEIGHT + KEY_MARGE;
-	private static final int KEYBOARD_WIDTH = COLS_NUMBER * KEY_WIDTH + KEY_MARGE;
+	public static final int KEYBOARD_WIDTH = COLS_NUMBER * KEY_WIDTH + KEY_MARGE;
 	
 	/*
 	 * Déclaration des boutons du clavier et d'une HashMap
