@@ -51,9 +51,6 @@ public class Controleur {
 	
 	//CONSTRUCTEUR
 	public Controleur() {
-		//création de la fenêtre
-		fenetreprincipale = new FenetrePrincipale(this);
-		
 		//Initialisations
 		setScore(0);
 		setMotsTrouves(0);
@@ -68,11 +65,18 @@ public class Controleur {
 		}
 		
 		Random rand = new Random();
-		int randomNum = rand.nextInt((mots.size()) + 1);
+		int randomNum = rand.nextInt((mots.size()));
 		
 		System.out.println("randomNum = " + randomNum);
 		
-		System.out.println("le mot est : " + mots.get(randomNum - 1).getChaine());
+		System.out.println("le mot est : " + mots.get(randomNum).getChaine());
+		
+		mot = mots.get(randomNum).getChaine();
+
+		//création de la fenêtre
+		fenetreprincipale = new FenetrePrincipale(this);
+		
+		
 		fenetreprincipale.setVisible(true);
 	}
 	
