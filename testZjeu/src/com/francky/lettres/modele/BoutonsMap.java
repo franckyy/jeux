@@ -1,4 +1,4 @@
-package com.francky.lettres.vues.panneaux;
+package com.francky.lettres.modele;
 
 import java.util.HashMap;
 

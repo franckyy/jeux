@@ -1,6 +1,5 @@
 package com.francky.lettres.vues.panneaux;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.francky.lettres.ctrl.Controleur;
-import com.francky.lettres.vues.FenetrePrincipale;
+import com.francky.lettres.modele.BoutonsMap;
 
 public class PanelKeyboard extends JPanel {
 
@@ -38,7 +37,7 @@ public class PanelKeyboard extends JPanel {
 	/*
 	 * Marge autour d'une touche de clavier
 	 */
-	private static final int KEY_MARGE = 5;
+	public static final int KEY_MARGE = 5;
 	private static final int KEY_PANEL_MARGE_TOP = 5;
 	private static final int KEY_PANEL_MARGE_BOTTOM = 5;
 	private static final int KEY_PANEL_MARGE_LEFT = 5;

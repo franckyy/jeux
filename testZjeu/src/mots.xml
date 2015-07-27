@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mots>
+	<mot genre="true">CHAPEAU</mot>
+	<mot genre="false">CHAISE</mot>
+	<mot genre="true">BATEAU</mot>
+	<mot genre="false">BUREAU</mot>
+</mots>
