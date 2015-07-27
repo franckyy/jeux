@@ -1,7 +1,10 @@
 package com.francky.lettres.ctrl;
 
 import java.awt.Color;
+import java.util.Random;
+import java.util.Vector;
 
+import com.francky.lettres.modele.Mot;
 import com.francky.lettres.modele.MotDAO;
 import com.francky.lettres.vues.FenetrePrincipale;
 
@@ -9,7 +12,8 @@ public class Controleur {
 
 	//DECLARATIONS
 	FenetrePrincipale fenetreprincipale;
-	MotDAO motdao = new MotDAO();
+	MotDAO motdao = new MotDAO("mots.xml");
+	Vector<Mot> mots = null;
 	
 	/*
 	 * Gestion du score et des statistiques
@@ -56,8 +60,19 @@ public class Controleur {
 		setNbreLettres(0);
 		setNiveau(1);
 		
+		mots = motdao.chargerMots();
 		
+		//affichage dans console pour debug
+		for(Mot m : mots){
+			System.out.println("mot : " + m.getChaine() + ", genre : " + m.isGenre() + ", composed : " + m.isComposed());
+		}
 		
+		Random rand = new Random();
+		int randomNum = rand.nextInt((mots.size()) + 1);
+		
+		System.out.println("randomNum = " + randomNum);
+		
+		System.out.println("le mot est : " + mots.get(randomNum - 1).getChaine());
 		fenetreprincipale.setVisible(true);
 	}
 	

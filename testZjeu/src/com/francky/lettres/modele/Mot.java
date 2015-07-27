@@ -12,12 +12,12 @@ public class Mot {
 	public Mot(String chaine, boolean genre, boolean composed) {
 		setChaine(chaine);
 		setGenre(genre);
+		setComposed(composed);
 	}
 
 	//GETTERS & SETTERS
-	public boolean getGenre() {return genre;}
+	public boolean isGenre() {return genre;}
 	public void setGenre(boolean genre) {this.genre = genre;}
-	
 	public String getChaine() {return chaine;}
 	public void setChaine(String chaine) {this.chaine = chaine;}
 	
