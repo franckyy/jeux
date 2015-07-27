@@ -13,8 +13,9 @@ public class Controleur {
 	//DECLARATIONS
 	FenetrePrincipale fenetreprincipale;
 	MotDAO motdao = new MotDAO("mots.xml");
-	Vector<Mot> mots = null;
-	
+	Vector<Mot> mots = null;		//contenant de tous les objets Mot
+	public boolean debug;			//variable pour le débuggage
+	private int randomNum;			//variable contenant le numéro trouvé par le random
 	/*
 	 * Gestion du score et des statistiques
 	 */
@@ -51,36 +52,39 @@ public class Controleur {
 	
 	//CONSTRUCTEUR
 	public Controleur() {
-		//Initialisations
+		//************************************Initialisations
 		setScore(0);
 		setMotsTrouves(0);
 		setNbreLettres(0);
 		setNiveau(1);
+		debug = true;
 		
 		mots = motdao.chargerMots();
 		
-		//affichage dans console pour debug
-		for(Mot m : mots){
-			System.out.println("mot : " + m.getChaine() + ", genre : " + m.isGenre() + ", composed : " + m.isComposed());
-		}
+		randomNum = randomNum();
 		
-		Random rand = new Random();
-		int randomNum = rand.nextInt((mots.size()));
-		
-		System.out.println("randomNum = " + randomNum);
-		
-		System.out.println("le mot est : " + mots.get(randomNum).getChaine());
+					//affichage dans console pour debug
+					if (debug){
+						for(Mot m : mots){
+							System.out.println("mot : " + m.getChaine() + ", genre : " + m.isGenre() + ", composed : " + m.isComposed());
+						}		
+						System.out.println("randomNum = " + randomNum);
+						System.out.println("le mot est : " + mots.get(randomNum).getChaine());
+					}
 		
 		mot = mots.get(randomNum).getChaine();
 
-		//création de la fenêtre
+		//************************************création de la fenêtre
 		fenetreprincipale = new FenetrePrincipale(this);
-		
 		
 		fenetreprincipale.setVisible(true);
 	}
 	
 	//METHODES
+	private int randomNum(){
+		Random rand = new Random();
+		return rand.nextInt((mots.size()));
+	}
 	
 	//GETTERS & SETTERS
 	public int getScore() {return score;}
