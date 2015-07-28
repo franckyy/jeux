@@ -34,10 +34,10 @@ public class Controleur {
 	private StringBuilder motCache;							//le mot transformé pour affichage
 	private char[] tabLettres;							//le tableau contenant toute les lettres du mot choisi au hasard
 	private List<Character> listeLettresTrouvees;		//Liste des lettres qui ont été trouvées
+	
 	/*
 	 * Définition de la palette des couleurs pour le jeu 
 	 */
-	
 	public Color COL_FOND;
 	public Color COL_TEXTE_1;
 	public Color COL_TEXTE_2;
@@ -53,8 +53,6 @@ public class Controleur {
 		
 		List<Character> listeLettresTrouvees = null;
 		
-		mots = motdao.chargerMots();
-		
 		randomNum = randomNum();
 		
 					//affichage dans console pour debug
@@ -67,6 +65,16 @@ public class Controleur {
 					}
 		
 		mot = mots.get(randomNum).getChaine();
+		
+		//on enleve de la liste le mot qui a été tiré au hazard pour qu'il ne soit pas choisi au hasard plusieurs fois
+		mots.remove(randomNum);
+		
+					//affichage dans console pour debug
+					if (debug){
+						for(Mot m : mots){
+							System.out.println("mot : " + m.getChaine() + ", genre : " + m.isGenre() + ", composed : " + m.isComposed());
+						}		
+					}
 		
 		setTabLettres(motToLettersTab(mot));
 		motCache = motCache(tabLettres);
@@ -102,6 +110,7 @@ public class Controleur {
 		setMotsTrouves(0);
 		setNbreLettres(0);
 		setNiveau(1);
+		mots = motdao.chargerMots();
 	}
 	
 	//génération d'un entier au hasard compris entre 0 et les nombre de mots contenus dans la liste des mots en .xml
