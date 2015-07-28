@@ -24,7 +24,18 @@ public class CouleurThemes {
 			ColComplementaire_4 = new Color(0xC96767);
 			ColComplementaire_5 = new Color(0xA23B3B);
 		} else if (theme.equals("theme2")) {
-			
+			//Theme 2
+			ColPrimaire_1 = new Color(0xE0FAE0);
+			ColPrimaire_2 = new Color(0xB5EFB5);
+			ColPrimaire_3 = new Color(0x8ADF8A);
+			ColPrimaire_4 = new Color(0x61CB61);
+			ColPrimaire_5 = new Color(0x3CAD3C);
+
+			ColComplementaire_1 = new Color(0xFFE5E5);
+			ColComplementaire_2 = new Color(0xFFC2C2);
+			ColComplementaire_3 = new Color(0xFF9D9D);
+			ColComplementaire_4 = new Color(0xFE7979);
+			ColComplementaire_5 = new Color(0xD84B4B);
 		} else {
 			//Theme 1
 			ColPrimaire_1 = new Color(0xD7ECD7);

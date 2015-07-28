@@ -43,6 +43,7 @@ public class Controleur {
 	/*
 	 * Définition de la palette des couleurs pour le jeu 
 	 */
+	private String COLOR_THEME = "theme1";	//theme1 ou theme2
 	public Color COL_FOND;
 	public Color COL_TEXTE_1;
 	public Color COL_TEXTE_2;
@@ -126,7 +127,7 @@ public class Controleur {
 	//réinitialisation des couleurs
 	private void resetColors() {
 		//initialisation des couleurs - a l'avenir il faudra aller chercher le theme dans un .xml
-		CouleurThemes coul = new CouleurThemes("theme1");
+		CouleurThemes coul = new CouleurThemes(COLOR_THEME);
 		
 		COL_FOND = coul.getColComplementaire_5();
 		COL_TEXTE_1 = coul.getColPrimaire_3();
