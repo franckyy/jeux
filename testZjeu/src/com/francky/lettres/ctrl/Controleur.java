@@ -28,11 +28,16 @@ public class Controleur {
 	private int niveau;
 	
 	/*
+	 * Message d'information
+	 */
+	public String message;
+	
+	/*
 	 * Gestion du mot à rechercher et à cacher
 	 */
-	private String mot;									//le mot qui a été choisi au hasard
-	private StringBuilder motCache;							//le mot transformé pour affichage
-	private char[] tabLettres;							//le tableau contenant toute les lettres du mot choisi au hasard
+	private String mot;											//le mot qui a été choisi au hasard
+	private StringBuilder motCache;								//le mot transformé pour affichage
+	private char[] tabLettres;									//le tableau contenant toute les lettres du mot choisi au hasard
 	private List<Character> listeLettresTrouvees;		//Liste des lettres qui ont été trouvées
 	
 	/*
@@ -52,8 +57,6 @@ public class Controleur {
 		
 		resetColors();		
 		
-		List<Character> listeLettresTrouvees = null;
-		
 		choixNouveauMot();
 		
 		//************************************création de la fenêtre
@@ -68,6 +71,25 @@ public class Controleur {
 	}
 
 	//***********************************************************METHODES
+	
+	//recherche d'une lettre cliquée dans le mot
+	public void searchLetter(Character lettreClic) {
+		for(Character lettre : tabLettres) {
+			if(lettre.equals(lettreClic)){
+				System.out.println("lettre trouvée !");
+				message = "lettre trouvée !";
+				listeLettresTrouvees.add(lettreClic);
+			} else {
+				System.out.println("Lettre non trouvée !");
+				message = "lettre non trouvée !";
+			}
+		}
+		
+		//générer et ré afficher le mot caché
+		motCache = motCache(tabLettres);
+		
+	}
+	
 	
 	//Choix d'un nouveau mot parmi la liste, on retire le mot choisi de la liste,
 	//on génère le tableau de lettres du mot choisi, on génère le mot caché 
@@ -120,6 +142,8 @@ public class Controleur {
 		setMotsTrouves(0);
 		setNbreLettres(0);
 		setNiveau(1);
+		List<Character> listeLettresTrouvees = new ArrayList<Character>();
+		listeLettresTrouvees.add('e');
 		mots = motdao.chargerMots();
 	}
 	
@@ -129,7 +153,7 @@ public class Controleur {
 		return rand.nextInt((mots.size()));
 	}
 	
-	//création du mot qui sera affiché (on montre les lettres qui ont déjà été trouvées)
+	//création du mot qui sera affiché (on montre les lettres qui ont déjà été trouvées) prend en paramètre la liste
 	private StringBuilder motCache(char[] tabLettres){
 		motCache = new StringBuilder();
 				
@@ -138,6 +162,12 @@ public class Controleur {
 				caract = '_';
 			} else {
 				//comparer les lettres contenues dans tabLettres aux lettres contenues dans listeLettresTrouvees
+				for(char l : listeLettresTrouvees){
+					if(caract.equals(l)){
+						caract = l;
+					}
+						
+				}
 			}
 			
 			motCache.append(caract);

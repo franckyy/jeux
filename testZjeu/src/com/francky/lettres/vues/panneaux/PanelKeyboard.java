@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.francky.lettres.ctrl.Controleur;
+import com.francky.lettres.ctrl.ListenerBoutons;
 import com.francky.lettres.modele.BoutonsMap;
 
 public class PanelKeyboard extends JPanel {
@@ -54,18 +55,20 @@ public class PanelKeyboard extends JPanel {
 	 * Déclaration des boutons du clavier et d'une HashMap
 	 */
 	
-	HashMap<Character, JButton> boutons;
-	BoutonsMap bm;
-	List<Character> lettres;
+	HashMap<Character, JButton> boutons;	//HashMap qui associe un JButton à une lettre de l'alphabet
+	BoutonsMap bm;							//Création d'une instance de la classe BoutonsMap
+	List<Character> lettres;				//Liste de toutes les lettres de l'alphabet
 	
 	/*
 	 * Instanciation du controleur
 	 */
 	private Controleur ctrl;
+	private ListenerBoutons btnListener;
 	
 	//************************************************************CONSTUCTEUR
 	public PanelKeyboard(Controleur ctrl) {
 		this.ctrl = ctrl;
+		this.btnListener = new ListenerBoutons(ctrl);
 		
 		setPreferredSize(new Dimension(KEYBOARD_WIDTH, KEYBOARD_HEIGTH));
 		setBackground(ctrl.COL_FOND);
@@ -74,13 +77,15 @@ public class PanelKeyboard extends JPanel {
 		setLayout(new GridLayout(ROWS_NUMBER, COLS_NUMBER, KEY_MARGE, KEY_MARGE));
 
 		//Construction des boutons du clavier
-		bm = new BoutonsMap();
-		boutons = bm.remplissageBoutons();
-		lettres= new ArrayList<Character>();
-		
+		bm = new BoutonsMap();					//Instanciation de BoutonsMap
+		boutons = bm.remplissageBoutons();		//chargement de la hashmap des boutons
+		lettres = new ArrayList<Character>();	//instanciation de la liste des lettres
+			
+		//remplissage de la liste des lettres avec toutes les lettres de l'alphabet
 		for(char alphabet = 'A'; alphabet <= 'Z';alphabet++) {
 		    lettres.add(alphabet);
 		}
+		
 		lettres.add('a');
 		lettres.add('b');
 		lettres.add('c');
@@ -88,6 +93,7 @@ public class PanelKeyboard extends JPanel {
 		
 		for(int i = 0; i < boutons.size(); i++){
 			add(boutons.get(lettres.get(i)));
+			boutons.get(lettres.get(i)).addActionListener(btnListener);
 		}
 		
 		//définition d'une marge autour du panneau clavier
