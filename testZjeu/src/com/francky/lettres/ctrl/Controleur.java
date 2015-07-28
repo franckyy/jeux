@@ -45,6 +45,7 @@ public class Controleur {
 	public Color COL_GRAPH;
 	
 	//***********************************************************CONSTRUCTEUR
+	
 	public Controleur() {
 		//************************************Initialisations
 		resetGame();
@@ -52,6 +53,25 @@ public class Controleur {
 		resetColors();		
 		
 		List<Character> listeLettresTrouvees = null;
+		
+		choixNouveauMot();
+		
+		//************************************création de la fenêtre
+		fenetreprincipale = new FenetrePrincipale(this);
+		
+		fenetreprincipale.setVisible(true);
+	}
+	
+	private char[] motToLettersTab(String mot2) {
+		char[] resultTab = mot.toCharArray();		
+		return resultTab;
+	}
+
+	//***********************************************************METHODES
+	
+	//Choix d'un nouveau mot parmi la liste, on retire le mot choisi de la liste,
+	//on génère le tableau de lettres du mot choisi, on génère le mot caché 
+	private void choixNouveauMot() {
 		
 		randomNum = randomNum();
 		
@@ -66,6 +86,7 @@ public class Controleur {
 		
 		mot = mots.get(randomNum).getChaine();
 		
+		
 		//on enleve de la liste le mot qui a été tiré au hazard pour qu'il ne soit pas choisi au hasard plusieurs fois
 		mots.remove(randomNum);
 		
@@ -78,19 +99,8 @@ public class Controleur {
 		
 		setTabLettres(motToLettersTab(mot));
 		motCache = motCache(tabLettres);
-		
-		//************************************création de la fenêtre
-		fenetreprincipale = new FenetrePrincipale(this);
-		
-		fenetreprincipale.setVisible(true);
 	}
 	
-	private char[] motToLettersTab(String mot2) {
-		char[] resultTab = mot.toCharArray();		
-		return resultTab;
-	}
-
-	//***********************************************************METHODES
 	//réinitialisation des couleurs
 	private void resetColors() {
 		//initialisation des couleurs - a l'avenir il faudra aller chercher le theme dans un .xml

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mots>
-	<mot genre="true" composed="false" pluriel="chapeaux" lang="fr">CHAPEAU</mot>
-	<mot genre="false" composed="false" pluriel="chaises" lang="fr">CHAISE</mot>
-	<mot genre="true" composed="false" pluriel="bateaux" lang="fr">BATEAU</mot>
-	<mot genre="true" composed="false" pluriel="bureaux" lang="fr">BUREAU</mot>
-	<mot genre="false" composed="false" pluriel="animations" lang="fr">ANIMATION</mot>
+	<listemots lang="fr">
+		<mot genre="true" composed="false" pluriel="chapeaux" lang="fr">CHAPEAU</mot>
+		<mot genre="false" composed="false" pluriel="chaises" lang="fr">CHAISE</mot>
+		<mot genre="true" composed="false" pluriel="bateaux" lang="fr">BATEAU</mot>
+		<mot genre="true" composed="false" pluriel="bureaux" lang="fr">BUREAU</mot>
+		<mot genre="false" composed="false" pluriel="animations" lang="fr">ANIMATION</mot>
+	</listemots>
 </mots>
