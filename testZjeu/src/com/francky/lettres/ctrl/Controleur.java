@@ -1,6 +1,8 @@
 package com.francky.lettres.ctrl;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Vector;
 
@@ -10,7 +12,7 @@ import com.francky.lettres.vues.FenetrePrincipale;
 
 public class Controleur {
 
-	//DECLARATIONS
+	//***********************************************************DECLARATIONS
 	FenetrePrincipale fenetreprincipale;
 	MotDAO motdao = new MotDAO("mots.xml");
 	Vector<Mot> mots = null;		//contenant de tous les objets Mot
@@ -27,9 +29,10 @@ public class Controleur {
 	/*
 	 * Gestion du mot à rechercher et à cacher
 	 */
-	private String mot;
-	private String motCache;
-	
+	private String mot;									//le mot qui a été choisi au hasard
+	private StringBuilder motCache;							//le mot transformé pour affichage
+	private char[] tabLettres;							//le tableau contenant toute les lettres du mot choisi au hasard
+	private List<Character> listeLettresTrouvees;		//Liste des lettres qui ont été trouvées
 	/*
 	 * Définition de la palette des couleurs pour le jeu (1 -> clair, 5 -> foncé)	 
 	 */
@@ -51,14 +54,16 @@ public class Controleur {
 	public final Color COL_MOT = COL_PRIMAIRE_3;
 	public final Color COL_GRAPH = COL_PRIMAIRE_1;
 	
-	//CONSTRUCTEUR
+	//***********************************************************CONSTRUCTEUR
 	public Controleur() {
 		//************************************Initialisations
+		debug = true;
 		setScore(0);
 		setMotsTrouves(0);
 		setNbreLettres(0);
 		setNiveau(1);
-		debug = true;
+		
+		List<Character> listeLettresTrouvees = null;
 		
 		mots = motdao.chargerMots();
 		
@@ -74,7 +79,9 @@ public class Controleur {
 					}
 		
 		mot = mots.get(randomNum).getChaine();
-		setMotCache(motCache(mot));
+		
+		setTabLettres(motToLettersTab(mot));
+		motCache = motCache(tabLettres);
 		
 		//************************************création de la fenêtre
 		fenetreprincipale = new FenetrePrincipale(this);
@@ -82,21 +89,36 @@ public class Controleur {
 		fenetreprincipale.setVisible(true);
 	}
 	
-	//METHODES
+	private char[] motToLettersTab(String mot2) {
+		char[] resultTab = mot.toCharArray();		
+		return resultTab;
+	}
+
+	//***********************************************************METHODES
+	//génération d'un entier au hasard compris entre 0 et les nombre de mots contenus dans la liste des mots en .xml
 	private int randomNum(){
 		Random rand = new Random();
 		return rand.nextInt((mots.size()));
 	}
 	
-	private String motCache(String mot){
-		String motCache = "";
-		for(int nbreChar = 0; nbreChar < mot.length(); nbreChar++){
-			motCache = motCache + "_";
+	//création du mot qui sera affiché (on montre les lettres qui ont déjà été trouvées)
+	private StringBuilder motCache(char[] tabLettres){
+		motCache = new StringBuilder();
+				
+		for(Character caract : tabLettres){
+			if(listeLettresTrouvees == null) {
+				caract = '_';
+			} else {
+				//comparer les lettres contenues dans tabLettres aux lettres contenues dans listeLettresTrouvees
+			}
+			
+			motCache.append(caract);
 		}
+		
 		return motCache;
 	}
 	
-	//GETTERS & SETTERS
+	//***********************************************************GETTERS & SETTERS
 	public int getScore() {return score;}
 	public void setScore(int score) {this.score = score;}
 
@@ -112,6 +134,9 @@ public class Controleur {
 	public String getMot() {return mot;}
 	public void setMot(String mot) {this.mot = mot;}
 
-	public String getMotCache() {return motCache;}
-	public void setMotCache(String motCache) {this.motCache = motCache;}
+	public char[] getTabLettres() {return tabLettres;}
+	public void setTabLettres(char[] tabLettres) {this.tabLettres = tabLettres;}
+
+	public StringBuilder getMotCache() {return motCache;}
+	public void setMotCache(StringBuilder motCache) {this.motCache = motCache;}
 }

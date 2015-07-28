@@ -27,7 +27,7 @@ public class PanelAffichage extends JPanel {
 	/*
 	 * Taille et position de la zone d'affichage du texte
 	 */
-	private static final int TEXT_ZONE_WIDTH = PanelKeyboard.KEYBOARD_WIDTH - PanelKeyboard.KEY_MARGE * 2 - 10;
+	private static final int TEXT_ZONE_WIDTH = PanelKeyboard.KEYBOARD_WIDTH + PanelScore.SCORE_WIDTH - 20;
 	private static final int TEXT_ZONE_HEIGHT = 100;
 	private static final int TEXT_ZONE_X = 10;
 	private static final int TEXT_ZONE_Y = 25;
@@ -58,14 +58,14 @@ public class PanelAffichage extends JPanel {
 		g.setColor(ctrl.COL_GRAPH);
 		g.drawRect(TEXT_ZONE_X, TEXT_ZONE_Y, TEXT_ZONE_WIDTH, TEXT_ZONE_HEIGHT);
 		
-		
+		//affichage du mot caché
 		g.setColor(ctrl.COL_MOT);
 		g.setFont(MOT_FONT);
 		int decal = 0;
-		for(int caractere = 0; caractere < ctrl.getMot().length(); caractere++){
-			g.drawString("_", MOT_X + decal, MOT_Y);
+		
+		for(int caractere = 0; caractere < ctrl.getMotCache().length(); caractere++){
+			g.drawString("" + ctrl.getMotCache().charAt(caractere), MOT_X + decal, MOT_Y);
 			decal += 45;
 		}
-//		g.drawString(ctrl.getMotCache(), MOT_X, MOT_Y);
 	}
 }
