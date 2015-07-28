@@ -4,6 +4,14 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 public class CouleurThemes {
+	
+	/*
+	 * 
+	 * Choix des couleurs sur http://paletton.com/
+	 * 
+	 * 
+	 */
+	
 
 			private static Color ColPrimaire_1, ColPrimaire_2, ColPrimaire_3, ColPrimaire_4, ColPrimaire_5;
 			private static Color ColComplementaire_1, ColComplementaire_2, ColComplementaire_3, ColComplementaire_4, ColComplementaire_5;
@@ -36,6 +44,45 @@ public class CouleurThemes {
 			ColComplementaire_3 = new Color(0xFF9D9D);
 			ColComplementaire_4 = new Color(0xFE7979);
 			ColComplementaire_5 = new Color(0xD84B4B);
+		} else if (theme.equals("theme3")) {
+			//Theme 3
+			ColPrimaire_1 = new Color(0xFFFFBA);
+			ColPrimaire_2 = new Color(0xFFFF8F);
+			ColPrimaire_3 = new Color(0xFFFF6B);
+			ColPrimaire_4 = new Color(0xFFFF4C);
+			ColPrimaire_5 = new Color(0xE9E925);
+
+			ColComplementaire_1 = new Color(0xDAB2F0);
+			ColComplementaire_2 = new Color(0xBC80DC);
+			ColComplementaire_3 = new Color(0x9F59C6);
+			ColComplementaire_4 = new Color(0x843AAD);
+			ColComplementaire_5 = new Color(0x70209C);
+		} else if (theme.equals("theme4")) {
+			//Theme 4
+			ColPrimaire_1 = new Color(0xA9DFFF);
+			ColPrimaire_2 = new Color(0x78CDFF);
+			ColPrimaire_3 = new Color(0x0EA5FF);
+			ColPrimaire_4 = new Color(0x00578A);
+			ColPrimaire_5 = new Color(0x00436A);
+
+			ColComplementaire_1 = new Color(0xFFD6A4);
+			ColComplementaire_2 = new Color(0xFFBF70);
+			ColComplementaire_3 = new Color(0xFF8C00);
+			ColComplementaire_4 = new Color(0xD97700);
+			ColComplementaire_5 = new Color(0xA75C00);
+		} else if (theme.equals("theme5")) {
+			//Theme 5
+			ColPrimaire_1 = new Color(0xFFD6A4);
+			ColPrimaire_2 = new Color(0xFFBF70);
+			ColPrimaire_3 = new Color(0xFF8C00);
+			ColPrimaire_4 = new Color(0xD97700);
+			ColPrimaire_5 = new Color(0xA75C00);
+			
+			ColComplementaire_1 = new Color(0xA9DFFF);
+			ColComplementaire_2 = new Color(0x78CDFF);
+			ColComplementaire_3 = new Color(0x0EA5FF);
+			ColComplementaire_4 = new Color(0x00578A);
+			ColComplementaire_5 = new Color(0x00436A);
 		} else {
 			//Theme 1
 			ColPrimaire_1 = new Color(0xD7ECD7);
