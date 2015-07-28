@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Vector;
 
+import com.francky.lettres.modele.CouleurThemes;
 import com.francky.lettres.modele.Mot;
 import com.francky.lettres.modele.MotDAO;
 import com.francky.lettres.vues.FenetrePrincipale;
@@ -34,34 +35,21 @@ public class Controleur {
 	private char[] tabLettres;							//le tableau contenant toute les lettres du mot choisi au hasard
 	private List<Character> listeLettresTrouvees;		//Liste des lettres qui ont été trouvées
 	/*
-	 * Définition de la palette des couleurs pour le jeu (1 -> clair, 5 -> foncé)	 
+	 * Définition de la palette des couleurs pour le jeu 
 	 */
-	private static final Color COL_PRIMAIRE_1 = new Color(0xD7ECD7);
-	private static final Color COL_PRIMAIRE_2 = new Color(0xAED9AE);
-	private static final Color COL_PRIMAIRE_3 = new Color(0x80C080);
-	private static final Color COL_PRIMAIRE_4 = new Color(0x53A153);
-	private static final Color COL_PRIMAIRE_5 = new Color(0x2F812F);
-
-	private static final Color COL_COMPLEMENTAIRE_1 = new Color(0xFFE8E8);
-	private static final Color COL_COMPLEMENTAIRE_2 = new Color(0xFFCCCC);
-	private static final Color COL_COMPLEMENTAIRE_3 = new Color(0xF0A0A0);
-	private static final Color COL_COMPLEMENTAIRE_4 = new Color(0xC96767);
-	private static final Color COL_COMPLEMENTAIRE_5 = new Color(0xA23B3B);
 	
-	public final Color COL_FOND = COL_COMPLEMENTAIRE_5;
-	public final Color COL_TEXTE_1 = COL_PRIMAIRE_3;
-	public final Color COL_TEXTE_2 = COL_PRIMAIRE_2;
-	public final Color COL_MOT = COL_PRIMAIRE_3;
-	public final Color COL_GRAPH = COL_PRIMAIRE_1;
+	public Color COL_FOND;
+	public Color COL_TEXTE_1;
+	public Color COL_TEXTE_2;
+	public Color COL_MOT;
+	public Color COL_GRAPH;
 	
 	//***********************************************************CONSTRUCTEUR
 	public Controleur() {
 		//************************************Initialisations
-		debug = true;
-		setScore(0);
-		setMotsTrouves(0);
-		setNbreLettres(0);
-		setNiveau(1);
+		resetGame();
+		
+		resetColors();		
 		
 		List<Character> listeLettresTrouvees = null;
 		
@@ -95,6 +83,27 @@ public class Controleur {
 	}
 
 	//***********************************************************METHODES
+	//réinitialisation des couleurs
+	private void resetColors() {
+		//initialisation des couleurs - a l'avenir il faudra aller chercher le theme dans un .xml
+		CouleurThemes coul = new CouleurThemes("theme1");
+		
+		COL_FOND = coul.getColComplementaire_5();
+		COL_TEXTE_1 = coul.getColPrimaire_3();
+		COL_TEXTE_2 = coul.getColPrimaire_2();
+		COL_MOT = coul.getColPrimaire_3();
+		COL_GRAPH = coul.getColPrimaire_1();
+	}
+	
+	//remise à zéro des paramètres d'initialisation
+	private void resetGame() {
+		debug = true;
+		setScore(0);
+		setMotsTrouves(0);
+		setNbreLettres(0);
+		setNiveau(1);
+	}
+	
 	//génération d'un entier au hasard compris entre 0 et les nombre de mots contenus dans la liste des mots en .xml
 	private int randomNum(){
 		Random rand = new Random();
