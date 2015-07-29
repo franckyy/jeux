@@ -17,7 +17,7 @@ public class PanelAffichage extends JPanel {
 
 	//***********************************************************DECLARATIONS
 	private Controleur ctrl;
-	
+	int x = 0;
 	/*
 	 * Taille du panneau affichage
 	 */
@@ -63,8 +63,9 @@ public class PanelAffichage extends JPanel {
 		g.setFont(MOT_FONT);
 		int decal = 0;
 		
-		for(int caractere = 0; caractere < ctrl.getMotCache().length(); caractere++){
-			g.drawString("" + ctrl.getMotCache().charAt(caractere), MOT_X + decal, MOT_Y);
+		for(int caractere = 0; caractere < ctrl.getListeLettres().size(); caractere++){
+			g.drawString("" + ctrl.getListeLettres().get(caractere), MOT_X + decal, MOT_Y);
+			System.out.println("paint is called");
 			decal += 45;
 		}
 	}

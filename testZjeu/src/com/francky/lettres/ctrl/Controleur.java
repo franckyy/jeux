@@ -39,8 +39,9 @@ public class Controleur {
 	 */
 	private String mot;											//le mot qui a été choisi au hasard
 	private StringBuilder motCache;								//le mot transformé pour affichage
-	private char[] tabLettres;									//le tableau contenant toute les lettres du mot choisi au hasard
+	private ArrayList<Character> listeLettres;					//le tableau contenant toute les lettres du mot choisi au hasard
 	private List<Character> listeLettresTrouvees;				//Liste des lettres qui ont été trouvées
+	private Character lettreTrouvee;							//dernière lettre trouvée
 	
 	/*
 	 * Définition de la palette des couleurs pour le jeu 
@@ -77,21 +78,22 @@ public class Controleur {
 	
 	//recherche d'une lettre cliquée dans le mot
 	public void searchLetter(Character lettreClic) {
-		for(Character lettre : tabLettres) {
+		for(Character lettre : mot.toCharArray()) {
 			if(lettre.equals(lettreClic)){
-				System.out.println("lettre trouvée !");
+														if(debug)System.out.println("lettre trouvée !");		//debug
 				message = "lettre trouvée !";
 				listeLettresTrouvees.add(lettreClic);
+				lettreTrouvee = lettreClic;
+				
+				//générer et ré afficher le mot caché
+				listeLettres = setlisteLettres(listeLettres);
+				panelaffichage.repaint();
+				break;
 			} else {
-				System.out.println("Lettre non trouvée !");
+														if(debug)System.out.println("Lettre non trouvée !");	//debug
 				message = "lettre non trouvée !";
 			}
 		}
-		
-		//générer et ré afficher le mot caché
-		motCache = motCache(tabLettres);
-		
-		panelaffichage.repaint();
 	}
 	
 	
@@ -123,8 +125,10 @@ public class Controleur {
 						}		
 					}
 		
-		setTabLettres(motToLettersTab(mot));
-		motCache = motCache(tabLettres);
+		//lorsque le nouveau mot a été choisi, il faut remplir un tableau de Character avec des underscores
+		for(int rank = 0; rank < mot.length(); rank++){
+			listeLettres.add('_');
+		}
 	}
 	
 	//réinitialisation des couleurs
@@ -146,6 +150,9 @@ public class Controleur {
 		setMotsTrouves(0);
 		setNbreLettres(0);
 		setNiveau(1);
+		listeLettres = new ArrayList<Character>();
+		lettreTrouvee = ' ';
+		motCache = new StringBuilder();
 		listeLettresTrouvees = new ArrayList<Character>();
 		panelaffichage = new PanelAffichage(this);
 		mots = motdao.chargerMots();
@@ -158,34 +165,37 @@ public class Controleur {
 	}
 	
 	//création du mot qui sera affiché (on montre les lettres qui ont déjà été trouvées) prend en paramètre la liste
-	private StringBuilder motCache(char[] tabLettres){
-		motCache = new StringBuilder();
-				
-		for(Character caract : tabLettres){
-			if(listeLettresTrouvees == null) {
-				caract = '_';
-			} else if (listeLettresTrouvees.size() == 0 ) {
+/*	private StringBuilder setMotCache(char[] listeLettres){				
+		for(Character caract : listeLettres){
+			if (lettreTrouvee.equals(' ') ) {
 				caract = '_';
 			} else {
-
-				//comparer les lettres contenues dans tabLettres aux lettres contenues dans listeLettresTrouvees
-				for(char l : listeLettresTrouvees){
-					if(caract.equals(l)){
-						caract = l;
-					} else {
-						caract = '_';
-					}
-						
+				//comparer les lettres contenues dans listeLettres aux lettres contenues dans listeLettresTrouvees
+				if(caract.equals(lettreTrouvee)){
+					caract = lettreTrouvee;
+				} else {
+					caract = '_';
 				}
-				
 			}
 			
 			motCache.append(caract);
 		}
 		
 		return motCache;
-	}
+	}*/
 	
+	
+	private ArrayList<Character> setlisteLettres(ArrayList<Character> listeLettres){	
+		for (int rank = 0; rank < listeLettres.size(); rank++){
+			if(listeLettres.get(rank).equals('_')){
+				if(lettreTrouvee.equals(mot.charAt(rank))){
+					listeLettres.set(rank, lettreTrouvee);
+				}
+			}
+		}		
+		
+		return listeLettres;
+	}
 	//***********************************************************GETTERS & SETTERS
 	public int getScore() {return score;}
 	public void setScore(int score) {this.score = score;}
@@ -202,9 +212,5 @@ public class Controleur {
 	public String getMot() {return mot;}
 	public void setMot(String mot) {this.mot = mot;}
 
-	public char[] getTabLettres() {return tabLettres;}
-	public void setTabLettres(char[] tabLettres) {this.tabLettres = tabLettres;}
-
-	public StringBuilder getMotCache() {return motCache;}
-	public void setMotCache(StringBuilder motCache) {this.motCache = motCache;}
+	public List<Character> getListeLettres() {return listeLettres;}
 }
