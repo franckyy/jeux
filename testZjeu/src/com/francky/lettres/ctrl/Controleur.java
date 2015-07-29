@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.Vector;
 
+import javax.swing.JButton;
+
+import com.francky.lettres.modele.BoutonsMap;
 import com.francky.lettres.modele.CouleurThemes;
 import com.francky.lettres.modele.Mot;
 import com.francky.lettres.modele.MotDAO;
@@ -16,11 +19,12 @@ public class Controleur {
 
 	//***********************************************************DECLARATIONS
 	FenetrePrincipale fenetreprincipale;
-	PanelAffichage panelaffichage;
 	MotDAO motdao = new MotDAO("mots.xml");
 	Vector<Mot> mots = null;		//contenant de tous les objets Mot
 	public boolean debug;			//variable pour le débuggage
 	private int randomNum;			//variable contenant le numéro trouvé par le random
+	private BoutonsMap btnMap;		//Instance de BoutonsMap qui va m'aider à récupérer les btn pour les griser / dégriser
+	
 	/*
 	 * Gestion du score et des statistiques
 	 */
@@ -42,7 +46,7 @@ public class Controleur {
 	private ArrayList<Character> listeLettres;					//le tableau contenant toute les lettres du mot choisi au hasard
 	private List<Character> listeLettresTrouvees;				//Liste des lettres qui ont été trouvées
 	private Character lettreTrouvee;							//dernière lettre trouvée
-	
+
 	/*
 	 * Définition de la palette des couleurs pour le jeu 
 	 */
@@ -154,8 +158,12 @@ public class Controleur {
 		lettreTrouvee = ' ';
 		motCache = new StringBuilder();
 		listeLettresTrouvees = new ArrayList<Character>();
-		panelaffichage = new PanelAffichage(this);
 		mots = motdao.chargerMots();
+	}
+	
+	//méthode d'instanciation de la classe BoutonsMap
+	public void instancierBoutonsMap(BoutonsMap bm) {
+		this.btnMap = bm;
 	}
 	
 	//génération d'un entier au hasard compris entre 0 et les nombre de mots contenus dans la liste des mots en .xml
@@ -177,6 +185,13 @@ public class Controleur {
 		return listeLettres;
 	}
 	
+	//griseur de boutons
+//	public void btnGriseur(String btnValue) {
+//		JButton btn = new JButton();
+//		btn = btnMap.getJBouton(btnValue);
+//		btn.setEnabled(false);
+//		System.out.println("griser le bouton " + btnValue);
+//	}
 	//***********************************************************GETTERS & SETTERS
 	public int getScore() {return score;}
 	public void setScore(int score) {this.score = score;}

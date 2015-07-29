@@ -78,6 +78,7 @@ public class PanelKeyboard extends JPanel {
 
 		//Construction des boutons du clavier
 		bm = new BoutonsMap();					//Instanciation de BoutonsMap
+		
 		boutons = bm.remplissageBoutons();		//chargement de la hashmap des boutons
 		lettres = new ArrayList<Character>();	//instanciation de la liste des lettres
 			
