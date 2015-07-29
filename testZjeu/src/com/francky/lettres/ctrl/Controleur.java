@@ -87,7 +87,7 @@ public class Controleur {
 				
 				//générer et ré afficher le mot caché
 				listeLettres = setlisteLettres(listeLettres);
-				panelaffichage.repaint();
+				fenetreprincipale.repaint();
 				break;
 			} else {
 														if(debug)System.out.println("Lettre non trouvée !");	//debug
@@ -165,26 +165,6 @@ public class Controleur {
 	}
 	
 	//création du mot qui sera affiché (on montre les lettres qui ont déjà été trouvées) prend en paramètre la liste
-/*	private StringBuilder setMotCache(char[] listeLettres){				
-		for(Character caract : listeLettres){
-			if (lettreTrouvee.equals(' ') ) {
-				caract = '_';
-			} else {
-				//comparer les lettres contenues dans listeLettres aux lettres contenues dans listeLettresTrouvees
-				if(caract.equals(lettreTrouvee)){
-					caract = lettreTrouvee;
-				} else {
-					caract = '_';
-				}
-			}
-			
-			motCache.append(caract);
-		}
-		
-		return motCache;
-	}*/
-	
-	
 	private ArrayList<Character> setlisteLettres(ArrayList<Character> listeLettres){	
 		for (int rank = 0; rank < listeLettres.size(); rank++){
 			if(listeLettres.get(rank).equals('_')){
@@ -196,6 +176,7 @@ public class Controleur {
 		
 		return listeLettres;
 	}
+	
 	//***********************************************************GETTERS & SETTERS
 	public int getScore() {return score;}
 	public void setScore(int score) {this.score = score;}

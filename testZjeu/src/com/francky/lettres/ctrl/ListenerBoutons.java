@@ -18,6 +18,7 @@ public class ListenerBoutons implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand()){
 		case "A":
+			//griser les boutons lorsqu'ils ont été cliqués
 		case "B":
 		case "C":
 		case "D":

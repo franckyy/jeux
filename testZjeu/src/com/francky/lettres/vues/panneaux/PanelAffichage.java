@@ -52,6 +52,8 @@ public class PanelAffichage extends JPanel {
 	
 	//***********************************************************METHODES
 	@Override
+	public void paint(Graphics g) {paintComponent(g);};
+	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		

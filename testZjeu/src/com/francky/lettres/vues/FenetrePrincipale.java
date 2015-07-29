@@ -1,10 +1,13 @@
 package com.francky.lettres.vues;
 
 import java.awt.BorderLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
 import com.francky.lettres.ctrl.Controleur;
+import com.francky.lettres.ctrl.ListenerClavier;
 import com.francky.lettres.vues.panneaux.PanelAffichage;
 import com.francky.lettres.vues.panneaux.PanelKeyboard;
 import com.francky.lettres.vues.panneaux.PanelScore;
@@ -18,6 +21,7 @@ public class FenetrePrincipale extends JFrame {
 	
 	//********************************************************DECLARATIONS
 	private Controleur ctrl;
+	private ListenerClavier keyListener;
 	
 	public FenetrePrincipale(Controleur ctrl) {
 		//construction de la fenêtre
@@ -27,6 +31,9 @@ public class FenetrePrincipale extends JFrame {
 		setResizable(false);
 		
 		this.ctrl = ctrl;
+		keyListener = new ListenerClavier(ctrl);
+		
+		this.addKeyListener(keyListener);
 		
 		/*
 		 * Initialisation des panneaux
