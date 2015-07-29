@@ -5,6 +5,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 
 import com.francky.lettres.ctrl.Controleur;
 import com.francky.lettres.ctrl.ListenerClavier;
@@ -22,6 +24,8 @@ public class FenetrePrincipale extends JFrame {
 	//********************************************************DECLARATIONS
 	private Controleur ctrl;
 	private ListenerClavier keyListener;
+	private JMenuBar barre;
+	private JMenu menu1, sousmenu1;
 	
 	public FenetrePrincipale(Controleur ctrl) {
 		//construction de la fenêtre
@@ -35,6 +39,21 @@ public class FenetrePrincipale extends JFrame {
 		
 		this.addKeyListener(keyListener);
 		
+		// ajout d'un menu
+		barre = new JMenuBar();
+		menu1 = new JMenu("Affichage");
+		barre.add(menu1);
+		
+		sousmenu1 = new JMenu("Themes couleurs");
+		menu1.add(sousmenu1);
+		
+		sousmenu1.add("theme1");
+		sousmenu1.add("theme2");
+		sousmenu1.add("theme3");
+		sousmenu1.add("theme4");
+		sousmenu1.add("theme5");
+		
+		setJMenuBar(barre);
 		/*
 		 * Initialisation des panneaux
 		 */

@@ -2,6 +2,7 @@ package com.francky.lettres.vues.panneaux;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
@@ -65,10 +66,11 @@ public class PanelAffichage extends JPanel {
 		g.setFont(MOT_FONT);
 		int decal = 0;
 		
+		
 		for(int caractere = 0; caractere < ctrl.getListeLettres().size(); caractere++){
 			g.drawString("" + ctrl.getListeLettres().get(caractere), MOT_X + decal, MOT_Y);
-			System.out.println("paint is called");
-			decal += 45;
+			System.out.println("paint is called and fontmetrics de " + ctrl.getListeLettres().get(caractere) + " : " + g.getFontMetrics().stringWidth("" + ctrl.getListeLettres().get(caractere)));
+			decal += (g.getFontMetrics().stringWidth("" + ctrl.getListeLettres().get(caractere)) + 15);
 		}
 	}
 }
