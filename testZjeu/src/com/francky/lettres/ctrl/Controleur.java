@@ -10,11 +10,13 @@ import com.francky.lettres.modele.CouleurThemes;
 import com.francky.lettres.modele.Mot;
 import com.francky.lettres.modele.MotDAO;
 import com.francky.lettres.vues.FenetrePrincipale;
+import com.francky.lettres.vues.panneaux.PanelAffichage;
 
 public class Controleur {
 
 	//***********************************************************DECLARATIONS
 	FenetrePrincipale fenetreprincipale;
+	PanelAffichage panelaffichage;
 	MotDAO motdao = new MotDAO("mots.xml");
 	Vector<Mot> mots = null;		//contenant de tous les objets Mot
 	public boolean debug;			//variable pour le débuggage
@@ -38,12 +40,12 @@ public class Controleur {
 	private String mot;											//le mot qui a été choisi au hasard
 	private StringBuilder motCache;								//le mot transformé pour affichage
 	private char[] tabLettres;									//le tableau contenant toute les lettres du mot choisi au hasard
-	private List<Character> listeLettresTrouvees;		//Liste des lettres qui ont été trouvées
+	private List<Character> listeLettresTrouvees;				//Liste des lettres qui ont été trouvées
 	
 	/*
 	 * Définition de la palette des couleurs pour le jeu 
 	 */
-	private String COLOR_THEME = "theme1";	//theme1 ou theme2
+	private String COLOR_THEME = "theme3";	//theme1 à theme5
 	public Color COL_FOND;
 	public Color COL_TEXTE_1;
 	public Color COL_TEXTE_2;
@@ -89,6 +91,7 @@ public class Controleur {
 		//générer et ré afficher le mot caché
 		motCache = motCache(tabLettres);
 		
+		panelaffichage.repaint();
 	}
 	
 	
@@ -143,8 +146,8 @@ public class Controleur {
 		setMotsTrouves(0);
 		setNbreLettres(0);
 		setNiveau(1);
-		List<Character> listeLettresTrouvees = new ArrayList<Character>();
-		listeLettresTrouvees.add('e');
+		listeLettresTrouvees = new ArrayList<Character>();
+		panelaffichage = new PanelAffichage(this);
 		mots = motdao.chargerMots();
 	}
 	
@@ -161,14 +164,20 @@ public class Controleur {
 		for(Character caract : tabLettres){
 			if(listeLettresTrouvees == null) {
 				caract = '_';
+			} else if (listeLettresTrouvees.size() == 0 ) {
+				caract = '_';
 			} else {
+
 				//comparer les lettres contenues dans tabLettres aux lettres contenues dans listeLettresTrouvees
 				for(char l : listeLettresTrouvees){
 					if(caract.equals(l)){
 						caract = l;
+					} else {
+						caract = '_';
 					}
 						
 				}
+				
 			}
 			
 			motCache.append(caract);

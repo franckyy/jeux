@@ -44,7 +44,7 @@ public class ListenerBoutons implements ActionListener {
 		case "Y":
 		case "Z":
 			System.out.println(e.getActionCommand() + " key pressed");
-			ctrl.searchLetter(e.getActionCommand().toCharArray()[0]);
+			ctrl.searchLetter(e.getActionCommand().charAt(0));
 			break;
 		case "AIDE":
 			System.out.println("Help key pressed");
