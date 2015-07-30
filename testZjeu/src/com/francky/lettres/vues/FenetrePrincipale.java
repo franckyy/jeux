@@ -1,15 +1,10 @@
 package com.francky.lettres.vues;
 
 import java.awt.BorderLayout;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
 
 import com.francky.lettres.ctrl.Controleur;
-import com.francky.lettres.ctrl.ListenerClavier;
 import com.francky.lettres.vues.panneaux.PanelAffichage;
 import com.francky.lettres.vues.panneaux.PanelKeyboard;
 import com.francky.lettres.vues.panneaux.PanelScore;
@@ -23,9 +18,7 @@ public class FenetrePrincipale extends JFrame {
 	
 	//********************************************************DECLARATIONS
 	private Controleur ctrl;
-	private JMenuBar barre;
-	private JMenu menu1, sousmenu1;
-	
+	Menu menu;
 	public FenetrePrincipale(Controleur ctrl) {
 		//construction de la fenêtre
 		super("Lettres");
@@ -37,20 +30,7 @@ public class FenetrePrincipale extends JFrame {
 		
 		
 		// ajout d'un menu
-		barre = new JMenuBar();
-		menu1 = new JMenu("Affichage");
-		barre.add(menu1);
-		
-		sousmenu1 = new JMenu("Themes couleurs");
-		menu1.add(sousmenu1);
-		
-		sousmenu1.add("theme1");
-		sousmenu1.add("theme2");
-		sousmenu1.add("theme3");
-		sousmenu1.add("theme4");
-		sousmenu1.add("theme5");
-		
-		setJMenuBar(barre);
+		menu = new Menu(this);
 		/*
 		 * Initialisation des panneaux
 		 */
