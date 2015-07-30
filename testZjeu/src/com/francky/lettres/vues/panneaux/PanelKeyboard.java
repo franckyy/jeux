@@ -12,7 +12,6 @@ import javax.swing.border.EmptyBorder;
 
 import com.francky.lettres.ctrl.Controleur;
 import com.francky.lettres.ctrl.Ecouteur;
-import com.francky.lettres.ctrl.ListenerClavier;
 import com.francky.lettres.modele.BoutonsMap;
 
 public class PanelKeyboard extends JPanel {

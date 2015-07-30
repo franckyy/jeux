@@ -1,18 +1,12 @@
 package com.francky.lettres.modele;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.swing.JButton;
-import javax.xml.crypto.dsig.keyinfo.KeyValue;
 
 import com.francky.lettres.ctrl.Ecouteur;
 
 public class BoutonsMap {
-
-	private static final long serialVersionUID = -6725907661307041765L;
 
 	//DECLARATIONS
 	private HashMap<Character, JButton> boutons;

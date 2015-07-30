@@ -77,12 +77,6 @@ public class Controleur {
 		fenetreprincipale.setVisible(true);
 		fenetreprincipale.requestFocus();
 	}
-	
-	private char[] motToLettersTab(String mot2) {
-		char[] resultTab = mot.toCharArray();		
-		return resultTab;
-	}
-
 	//***********************************************************METHODES
 	
 	//recherche d'une lettre cliquée dans le mot

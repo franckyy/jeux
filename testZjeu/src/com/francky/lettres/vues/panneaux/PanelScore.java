@@ -1,6 +1,5 @@
 package com.francky.lettres.vues.panneaux;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -8,7 +7,6 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import com.francky.lettres.ctrl.Controleur;
-import com.francky.lettres.vues.FenetrePrincipale;
 
 public class PanelScore extends JPanel {
 
@@ -24,23 +22,6 @@ public class PanelScore extends JPanel {
 	 */
 	private static final int SCORE_HEIGTH = PanelKeyboard.KEYBOARD_HEIGTH;
 	public static final int SCORE_WIDTH = 200;
-		
-	/**
-	 * The number of rows and columns in the preview window. Set to
-	 * 5 because we can show any piece with some sort of padding.
-	 */
-	private static final int TILE_COUNT = 5;
-	
-	/**
-	 * The center x of the next piece preview box.
-	 */
-	private static final int SQUARE_CENTER_X = 130;
-	
-	/**
-	 * The center y of the next piece preview box.
-	 */
-	private static final int SQUARE_CENTER_Y = 65;
-	
 	
 	/**
 	 * The number of pixels used on a small insets (generally used for categories).

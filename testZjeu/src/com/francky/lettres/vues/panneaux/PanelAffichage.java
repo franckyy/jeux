@@ -2,7 +2,6 @@ package com.francky.lettres.vues.panneaux;
 
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
