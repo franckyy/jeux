@@ -6,14 +6,11 @@ import java.util.List;
 import java.util.Random;
 import java.util.Vector;
 
-import javax.swing.JButton;
-
 import com.francky.lettres.modele.BoutonsMap;
 import com.francky.lettres.modele.CouleurThemes;
 import com.francky.lettres.modele.Mot;
 import com.francky.lettres.modele.MotDAO;
 import com.francky.lettres.vues.FenetrePrincipale;
-import com.francky.lettres.vues.panneaux.PanelAffichage;
 
 public class Controleur {
 
@@ -42,7 +39,6 @@ public class Controleur {
 	 * Gestion du mot à rechercher et à cacher
 	 */
 	private String mot;											//le mot qui a été choisi au hasard
-	private StringBuilder motCache;								//le mot transformé pour affichage
 	private ArrayList<Character> listeLettres;					//le tableau contenant toute les lettres du mot choisi au hasard
 	private List<Character> listeLettresTrouvees;				//Liste des lettres qui ont été trouvées
 	private Character lettreTrouvee;							//dernière lettre trouvée
@@ -52,7 +48,7 @@ public class Controleur {
 	/*
 	 * Définition de la palette des couleurs pour le jeu 
 	 */
-	private String COLOR_THEME = "theme3";	//theme1 à theme5
+	private String COLOR_THEME = "THEME3";	//THEME1 à THEME5
 	public Color COL_FOND;
 	public Color COL_TEXTE_1;
 	public Color COL_TEXTE_2;
@@ -65,7 +61,7 @@ public class Controleur {
 		//************************************Initialisations
 		resetGame();
 		
-		resetColors();		
+		resetColors(COLOR_THEME);		
 		
 		keyListener = new ListenerClavier(this);
 		
@@ -90,7 +86,6 @@ public class Controleur {
 	public void searchLetter(Character lettreClic) {
 		for(Character lettre : mot.toCharArray()) {
 			if(lettre.equals(lettreClic)){
-														if(debug)System.out.println("lettre trouvée !");		//debug
 				message = "lettre trouvée !";
 				listeLettresTrouvees.add(lettreClic);
 				lettreTrouvee = lettreClic;
@@ -100,8 +95,6 @@ public class Controleur {
 				fenetreprincipale.repaint();
 				break;
 			} else {
-														if(debug)System.out.println("Lettre non trouvée !");	//debug
-				message = "lettre non trouvée !";
 			}
 		}
 	}
@@ -113,27 +106,10 @@ public class Controleur {
 		
 		randomNum = randomNum();
 		
-					//affichage dans console pour debug
-					if (debug){
-						for(Mot m : mots){
-							System.out.println("mot : " + m.getChaine() + ", genre : " + m.isGenre() + ", composed : " + m.isComposed());
-						}		
-						System.out.println("randomNum = " + randomNum);
-						System.out.println("le mot est : " + mots.get(randomNum).getChaine());
-					}
-		
 		mot = mots.get(randomNum).getChaine();
-		
 		
 		//on enleve de la liste le mot qui a été tiré au hazard pour qu'il ne soit pas choisi au hasard plusieurs fois
 		mots.remove(randomNum);
-		
-					//affichage dans console pour debug
-					if (debug){
-						for(Mot m : mots){
-							System.out.println("mot : " + m.getChaine() + ", genre : " + m.isGenre() + ", composed : " + m.isComposed());
-						}		
-					}
 		
 		//lorsque le nouveau mot a été choisi, il faut remplir un tableau de Character avec des underscores
 		for(int rank = 0; rank < mot.length(); rank++){
@@ -142,15 +118,16 @@ public class Controleur {
 	}
 	
 	//réinitialisation des couleurs
-	private void resetColors() {
+	public void resetColors(String theme) {
 		//initialisation des couleurs - a l'avenir il faudra aller chercher le theme dans un .xml
-		CouleurThemes coul = new CouleurThemes(COLOR_THEME);
+		CouleurThemes coul = new CouleurThemes(theme);
 		
 		COL_FOND = coul.getColComplementaire_5();
 		COL_TEXTE_1 = coul.getColPrimaire_3();
 		COL_TEXTE_2 = coul.getColPrimaire_2();
 		COL_MOT = coul.getColPrimaire_3();
 		COL_GRAPH = coul.getColPrimaire_1();
+		
 	}
 	
 	//remise à zéro des paramètres d'initialisation
@@ -163,7 +140,6 @@ public class Controleur {
 		listeLettres = new ArrayList<Character>();
 		lettreTrouvee = ' ';
 		btnMap = new BoutonsMap();
-		motCache = new StringBuilder();
 		listeLettresTrouvees = new ArrayList<Character>();
 		mots = motdao.chargerMots();
 	}
@@ -190,6 +166,11 @@ public class Controleur {
 	//griseur de boutons
 	public void btnGriseur(String btnValue) {
 		btnMap.griserBouton(btnMap.getJBouton(btnValue));
+	}
+	
+	//modifieScore
+	public void modifieScore(int ajout) {
+		setScore(getScore() + ajout);
 	}
 	//***********************************************************GETTERS & SETTERS
 	public int getScore() {return score;}

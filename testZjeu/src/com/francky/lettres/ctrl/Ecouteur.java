@@ -44,19 +44,17 @@ public class Ecouteur implements ActionListener {
 		case "X":
 		case "Y":
 		case "Z":
-			System.out.println(e.getActionCommand() + " key pressed");
 			ctrl.btnGriseur(e.getActionCommand());
 			ctrl.searchLetter(e.getActionCommand().charAt(0));
 			break;
 		case "h":
-			System.out.println("Help key pressed");
 			break;
 		case "THEME1":
 		case "THEME2":
 		case "THEME3":
 		case "THEME4":
 		case "THEME5":
-			System.out.println("menuItem " + e.getActionCommand());
+			ctrl.resetColors(e.getActionCommand());
 			break;
 		}
 	}

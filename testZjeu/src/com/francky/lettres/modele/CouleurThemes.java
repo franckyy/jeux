@@ -1,7 +1,6 @@
 package com.francky.lettres.modele;
 
 import java.awt.Color;
-import java.util.ArrayList;
 
 public class CouleurThemes {
 	
@@ -18,8 +17,8 @@ public class CouleurThemes {
 			
 	public CouleurThemes(String theme) {
 		
-		if (theme.equals("theme1")){
-			//Theme 1
+		if (theme.equals("THEME1")){
+			//THEME 1
 			ColPrimaire_1 = new Color(0xD7ECD7);
 			ColPrimaire_2 = new Color(0xAED9AE);
 			ColPrimaire_3 = new Color(0x80C080);
@@ -31,8 +30,8 @@ public class CouleurThemes {
 			ColComplementaire_3 = new Color(0xF0A0A0);
 			ColComplementaire_4 = new Color(0xC96767);
 			ColComplementaire_5 = new Color(0xA23B3B);
-		} else if (theme.equals("theme2")) {
-			//Theme 2
+		} else if (theme.equals("THEME2")) {
+			//THEME 2
 			ColPrimaire_1 = new Color(0xE0FAE0);
 			ColPrimaire_2 = new Color(0xB5EFB5);
 			ColPrimaire_3 = new Color(0x8ADF8A);
@@ -44,8 +43,8 @@ public class CouleurThemes {
 			ColComplementaire_3 = new Color(0xFF9D9D);
 			ColComplementaire_4 = new Color(0xFE7979);
 			ColComplementaire_5 = new Color(0xD84B4B);
-		} else if (theme.equals("theme3")) {
-			//Theme 3
+		} else if (theme.equals("THEME3")) {
+			//THEME 3
 			ColPrimaire_1 = new Color(0xFFFFBA);
 			ColPrimaire_2 = new Color(0xFFFF8F);
 			ColPrimaire_3 = new Color(0xFFFF6B);
@@ -57,8 +56,8 @@ public class CouleurThemes {
 			ColComplementaire_3 = new Color(0x9F59C6);
 			ColComplementaire_4 = new Color(0x843AAD);
 			ColComplementaire_5 = new Color(0x70209C);
-		} else if (theme.equals("theme4")) {
-			//Theme 4
+		} else if (theme.equals("THEME4")) {
+			//THEME 4
 			ColPrimaire_1 = new Color(0xA9DFFF);
 			ColPrimaire_2 = new Color(0x78CDFF);
 			ColPrimaire_3 = new Color(0x0EA5FF);
@@ -70,8 +69,8 @@ public class CouleurThemes {
 			ColComplementaire_3 = new Color(0xFF8C00);
 			ColComplementaire_4 = new Color(0xD97700);
 			ColComplementaire_5 = new Color(0xA75C00);
-		} else if (theme.equals("theme5")) {
-			//Theme 5
+		} else if (theme.equals("THEME5")) {
+			//THEME 5
 			ColPrimaire_1 = new Color(0xFFD6A4);
 			ColPrimaire_2 = new Color(0xFFBF70);
 			ColPrimaire_3 = new Color(0xFF8C00);
@@ -84,7 +83,7 @@ public class CouleurThemes {
 			ColComplementaire_4 = new Color(0x00578A);
 			ColComplementaire_5 = new Color(0x00436A);
 		} else {
-			//Theme 1
+			//THEME 1
 			ColPrimaire_1 = new Color(0xD7ECD7);
 			ColPrimaire_2 = new Color(0xAED9AE);
 			ColPrimaire_3 = new Color(0x80C080);
