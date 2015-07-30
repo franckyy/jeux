@@ -101,13 +101,11 @@ public class BoutonsMap {
 		return boutons;
 	}
 	
-	public JButton getJBouton(String btnValue) {		
-		System.out.println("grisage boutons");
+	public JButton getJBouton(String btnValue) {	
 		return boutons.get(btnValue.charAt(0));
 	}
 
 	public void griserBouton(JButton jBouton) {
-//		jBouton.setEnabled(false);
-		this.btnA.setEnabled(false);
+		jBouton.setEnabled(false);
 	}
 }
