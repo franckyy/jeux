@@ -105,4 +105,8 @@ public class PanelKeyboard extends JPanel {
 	}
 	
 	//************************************************************METHODES
+	//modifier le background du panel
+	public void modifieBackgroundColor() {
+		setBackground(ctrl.COL_FOND);
+	}
 }

@@ -168,6 +168,12 @@ public class Controleur {
 		btnMap.griserBouton(btnMap.getJBouton(btnValue));
 	}
 	
+	//repaint
+	public void rafraichiJeu() {
+		fenetreprincipale.modifieBackgrounds();
+		
+	}
+	
 	//modifieScore
 	public void modifieScore(int ajout) {
 		setScore(getScore() + ajout);

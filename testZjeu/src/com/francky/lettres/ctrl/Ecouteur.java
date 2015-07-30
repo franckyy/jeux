@@ -55,6 +55,7 @@ public class Ecouteur implements ActionListener {
 		case "THEME4":
 		case "THEME5":
 			ctrl.resetColors(e.getActionCommand());
+			ctrl.rafraichiJeu();
 			break;
 		}
 	}

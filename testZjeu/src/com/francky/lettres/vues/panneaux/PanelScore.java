@@ -94,6 +94,11 @@ public class PanelScore extends JPanel {
 	
 
 	//************************************************************METHODES
+	//modifier le background du panel
+	public void modifieBackgroundColor() {
+		setBackground(ctrl.COL_FOND);
+	}
+	
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);

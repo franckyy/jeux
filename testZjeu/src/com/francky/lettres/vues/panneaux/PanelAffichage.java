@@ -52,11 +52,17 @@ public class PanelAffichage extends JPanel {
 	
 	
 	//***********************************************************METHODES
-	@Override
-	public void paint(Graphics g) {paintComponent(g);};
+	//modifier le background du panel
+	public void modifieBackgroundColor() {
+		setBackground(ctrl.COL_FOND);
+	}
+	
+	
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		
+		g.setColor(ctrl.COL_FOND);
 		
 		g.setColor(ctrl.COL_GRAPH);
 		g.drawRect(TEXT_ZONE_X, TEXT_ZONE_Y, TEXT_ZONE_WIDTH, TEXT_ZONE_HEIGHT);
@@ -69,7 +75,6 @@ public class PanelAffichage extends JPanel {
 		
 		for(int caractere = 0; caractere < ctrl.getListeLettres().size(); caractere++){
 			g.drawString("" + ctrl.getListeLettres().get(caractere), MOT_X + decal, MOT_Y);
-			System.out.println("paint is called and fontmetrics de " + ctrl.getListeLettres().get(caractere) + " : " + g.getFontMetrics().stringWidth("" + ctrl.getListeLettres().get(caractere)));
 			decal += (g.getFontMetrics().stringWidth("" + ctrl.getListeLettres().get(caractere)) + 15);
 		}
 	}
