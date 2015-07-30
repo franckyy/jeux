@@ -11,11 +11,11 @@ public class BoutonsMap {
 	//DECLARATIONS
 	private HashMap<Character, JButton> boutons;
 	
-	JButton btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnJ, btnK, btnL
+	private JButton btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnJ, btnK, btnL
 				, btnM, btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW
 				, btnX, btnY, btnZ, btnHelp;
 	
-	JButton btnVide, btnVide1, btnVide2;
+	private JButton btnVide, btnVide1, btnVide2;
 	
 	//CONSTRUCTEUR
 	public BoutonsMap(Ecouteur btnListener) {
@@ -105,4 +105,36 @@ public class BoutonsMap {
 	public void griserBouton(JButton jBouton) {
 		jBouton.setEnabled(false);
 	}
+
+	//GETTERS & SETTERS
+	public JButton getBtnA() {return btnA;}
+	public JButton getBtnB() {return btnB;}
+	public JButton getBtnC() {return btnC;}
+	public JButton getBtnD() {return btnD;}
+	public JButton getBtnE() {return btnE;}
+	public JButton getBtnF() {return btnF;}
+	public JButton getBtnG() {return btnG;}
+	public JButton getBtnH() {return btnH;}
+	public JButton getBtnI() {return btnI;}
+	public JButton getBtnJ() {return btnJ;}
+	public JButton getBtnK() {return btnK;}
+	public JButton getBtnL() {return btnL;}
+	public JButton getBtnM() {return btnM;}
+	public JButton getBtnN() {return btnN;}
+	public JButton getBtnO() {return btnO;}
+	public JButton getBtnP() {return btnP;}
+	public JButton getBtnQ() {return btnQ;}
+	public JButton getBtnR() {return btnR;}
+	public JButton getBtnS() {return btnS;}
+	public JButton getBtnT() {return btnT;}
+	public JButton getBtnU() {return btnU;}
+	public JButton getBtnV() {return btnV;}
+	public JButton getBtnW() {return btnW;}
+	public JButton getBtnX() {return btnX;}
+	public JButton getBtnY() {return btnY;}
+	public JButton getBtnZ() {return btnZ;}
+	public JButton getBtnHelp() {return btnHelp;}
+	public JButton getBtnVide() {return btnVide;}
+	public JButton getBtnVide1() {return btnVide1;}
+	public JButton getBtnVide2() {return btnVide2;}
 }

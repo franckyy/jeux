@@ -25,10 +25,11 @@ public class Controleur {
 	/*
 	 * Gestion du score et des statistiques
 	 */
-	private int score;
-	private int motsTrouves;
-	private int nbreLettres;
-	private int niveau;
+	private int score;				//le score ...
+	private int motsTrouves;		//le nombre de mots qui ont été trouvés
+	private int nbreLettres;		//le nbre de lettres qui ont été trouvées
+	private int nbreEssais;			//nombres de fois que l'on clique sur une lettre
+	private int niveau;				//le niveau de difficulté du jeu
 	
 	/*
 	 * Message d'information
@@ -84,15 +85,20 @@ public class Controleur {
 		for(Character lettre : mot.toCharArray()) {
 			if(lettre.equals(lettreClic)){
 				message = "lettre trouvée !";
+				setNbreLettres(++nbreLettres);
+				setNbreEssais(++nbreEssais);
 				listeLettresTrouvees.add(lettreClic);
 				lettreTrouvee = lettreClic;
+				int gain = scoreLettreTrouvee(lettreClic);
+				System.out.println("le gain : " + gain);
 				
 				//générer et ré afficher le mot caché
 				listeLettres = setlisteLettres(listeLettres);
 				fenetreprincipale.repaint();
 				break;
 			} else {
-			}
+				message = "lettre non trouvée !";
+				setNbreEssais(++nbreEssais);}
 		}
 	}
 	
@@ -133,6 +139,7 @@ public class Controleur {
 		setScore(0);
 		setMotsTrouves(0);
 		setNbreLettres(0);
+		setNbreEssais(0);
 		setNiveau(1);
 		listeLettres = new ArrayList<Character>();
 		lettreTrouvee = ' ';
@@ -176,6 +183,128 @@ public class Controleur {
 	public void modifieScore(int ajout) {
 		setScore(getScore() + ajout);
 	}
+	
+	//******************METHODES POUR LE SCORE
+	private int scoreLettreTrouvee(Character lettre){
+		int gain = 0;
+		//On accorde un nombre de points par lettre trouvée
+		//ce nbre de points est similaire aux points du scrabble
+		switch(lettre){
+		case 'Z':
+		case 'Y':
+		case 'X':
+		case 'W':
+		case 'K':
+			gain = 10;
+			break;
+		case 'Q':
+		case 'J':
+			gain = 8;
+			break;
+		case 'V':
+		case 'H':
+		case 'F':
+			gain = 4;
+			break;
+		case 'P':
+		case 'C':
+		case 'B':
+			gain = 3;
+			break;
+		case 'M':
+		case 'G':
+		case 'D':
+			gain = 2;
+			break;
+		case 'U':
+		case 'T':
+		case 'S':
+		case 'R':
+		case 'O':
+		case 'N':
+		case 'L':
+		case 'I':
+		case 'E':
+		case 'A':
+			gain = 1;
+			break;
+		}
+		
+		//multiplier par un coeff en fonction du nombre d'essais
+		//1er essai = X2O
+		//2eme essai = X18
+		//3eme essai = X16
+		//4eme essai = X14
+		//5eme essai = X12 .... etc
+		int coeff = 1;
+		int essais = getNbreEssais();
+		switch(essais){
+		case 1:
+			coeff = 20;
+			break;
+		case 2:
+			coeff = 18;
+			break;
+		case 3:
+			coeff = 16;
+			break;
+		case 4:
+			coeff = 14;
+			break;
+		case 5:
+			coeff = 12;
+			break;
+		case 6:
+			coeff = 10;
+			break;
+		case 7:
+			coeff = 9;
+			break;
+		case 8:
+			coeff = 8;
+			break;
+		case 9:
+			coeff = 7;
+			break;
+		case 10:
+			coeff = 6;
+			break;
+		case 11:
+			coeff = 5;
+			break;
+		case 12:
+			coeff = 4;
+			break;
+		case 13:
+			coeff = 3;
+			break;
+		case 14:
+			coeff = 2;
+			break;
+		case 15:
+			coeff = 1;
+			break;
+		case 16:
+			coeff = 1;
+			break;
+		case 17:
+			coeff = 1;
+			break;
+		case 18:
+			coeff = 1;
+			break;
+		case 19:
+			coeff = 1;
+			break;
+		case 20:
+			coeff = 1;
+			break;
+		}
+		
+		return gain * coeff;
+	}
+	
+	
 	//***********************************************************GETTERS & SETTERS
 	public int getScore() {return score;}
 	public void setScore(int score) {this.score = score;}
@@ -193,4 +322,7 @@ public class Controleur {
 	public void setMot(String mot) {this.mot = mot;}
 
 	public List<Character> getListeLettres() {return listeLettres;}
+
+	public int getNbreEssais() {return nbreEssais;}
+	public void setNbreEssais(int nbreEssais) {this.nbreEssais = nbreEssais;}
 }
