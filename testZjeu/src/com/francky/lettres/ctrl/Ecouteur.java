@@ -3,13 +3,13 @@ package com.francky.lettres.ctrl;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ListenerBoutons implements ActionListener {
+public class Ecouteur implements ActionListener {
 
 	//DECLARATIONS
 	Controleur ctrl;
 	
 	//CONSTRUCTEUR
-	public ListenerBoutons(Controleur ctrl) {
+	public Ecouteur(Controleur ctrl) {
 		super();
 		this.ctrl = ctrl;
 	}
@@ -48,7 +48,7 @@ public class ListenerBoutons implements ActionListener {
 			ctrl.btnGriseur(e.getActionCommand());
 			ctrl.searchLetter(e.getActionCommand().charAt(0));
 			break;
-		case "AIDE":
+		case "h":
 			System.out.println("Help key pressed");
 			break;
 			

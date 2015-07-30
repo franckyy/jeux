@@ -30,7 +30,7 @@ public class FenetrePrincipale extends JFrame {
 		
 		
 		// ajout d'un menu
-		menu = new Menu(this);
+		menu = new Menu(this, ctrl);
 		/*
 		 * Initialisation des panneaux
 		 */

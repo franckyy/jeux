@@ -75,8 +75,8 @@ public class Controleur {
 		fenetreprincipale = new FenetrePrincipale(this);
 
 		fenetreprincipale.addKeyListener(keyListener);
-		fenetreprincipale.requestFocus();
 		fenetreprincipale.setVisible(true);
+		fenetreprincipale.requestFocus();
 	}
 	
 	private char[] motToLettersTab(String mot2) {

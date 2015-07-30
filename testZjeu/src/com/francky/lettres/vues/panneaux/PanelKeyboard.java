@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import com.francky.lettres.ctrl.Controleur;
-import com.francky.lettres.ctrl.ListenerBoutons;
+import com.francky.lettres.ctrl.Ecouteur;
 import com.francky.lettres.ctrl.ListenerClavier;
 import com.francky.lettres.modele.BoutonsMap;
 
@@ -64,13 +64,13 @@ public class PanelKeyboard extends JPanel {
 	 * Instanciation du controleur
 	 */
 	private Controleur ctrl;
-	private ListenerBoutons btnListener;
+	private Ecouteur btnListener;
 
 	
 	//************************************************************CONSTUCTEUR
 	public PanelKeyboard(Controleur ctrl) {
 		this.ctrl = ctrl;
-		this.btnListener = new ListenerBoutons(ctrl);
+		this.btnListener = new Ecouteur(ctrl);
 		
 		setPreferredSize(new Dimension(KEYBOARD_WIDTH, KEYBOARD_HEIGTH));
 		setBackground(ctrl.COL_FOND);
@@ -97,6 +97,7 @@ public class PanelKeyboard extends JPanel {
 		for(int i = 0; i < boutons.size(); i++){
 			add(boutons.get(lettres.get(i)));
 			boutons.get(lettres.get(i)).addActionListener(btnListener);
+			boutons.get(lettres.get(i)).setActionCommand("" + lettres.get(i));
 		}
 		
 		//définition d'une marge autour du panneau clavier
