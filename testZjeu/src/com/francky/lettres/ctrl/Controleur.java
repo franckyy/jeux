@@ -55,6 +55,9 @@ public class Controleur {
 	public Color COL_MOT;
 	public Color COL_GRAPH;
 	
+	
+	Ecouteur ecouteur;
+	
 	//***********************************************************CONSTRUCTEUR
 	
 	public Controleur() {
@@ -139,7 +142,8 @@ public class Controleur {
 		setNiveau(1);
 		listeLettres = new ArrayList<Character>();
 		lettreTrouvee = ' ';
-		btnMap = new BoutonsMap();
+		ecouteur = new Ecouteur(this);
+		btnMap = new BoutonsMap(ecouteur);
 		listeLettresTrouvees = new ArrayList<Character>();
 		mots = motdao.chargerMots();
 	}

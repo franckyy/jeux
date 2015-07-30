@@ -1,11 +1,14 @@
 package com.francky.lettres.modele;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.swing.JButton;
 import javax.xml.crypto.dsig.keyinfo.KeyValue;
+
+import com.francky.lettres.ctrl.Ecouteur;
 
 public class BoutonsMap {
 
@@ -21,10 +24,10 @@ public class BoutonsMap {
 	JButton btnVide, btnVide1, btnVide2;
 	
 	//CONSTRUCTEUR
-	public BoutonsMap() {
+	public BoutonsMap(Ecouteur btnListener) {
 		super();
-
 		boutons = new HashMap<Character, JButton>();
+		
 		boutons = remplissageBoutons();
 	}
 	

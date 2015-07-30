@@ -79,7 +79,7 @@ public class PanelKeyboard extends JPanel {
 		setLayout(new GridLayout(ROWS_NUMBER, COLS_NUMBER, KEY_MARGE, KEY_MARGE));
 
 		//Construction des boutons du clavier
-		bm = new BoutonsMap();					//Instanciation de BoutonsMap
+		bm = new BoutonsMap(btnListener);					//Instanciation de BoutonsMap
 		
 		boutons = bm.getBoutons();				//chargement de la hashmap des boutons
 		lettres = new ArrayList<Character>();	//instanciation de la liste des lettres
