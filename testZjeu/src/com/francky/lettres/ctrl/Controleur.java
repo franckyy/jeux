@@ -156,14 +156,10 @@ public class Controleur {
 		setNiveau(1);
 		listeLettres = new ArrayList<Character>();
 		lettreTrouvee = ' ';
+		btnMap = new BoutonsMap();
 		motCache = new StringBuilder();
 		listeLettresTrouvees = new ArrayList<Character>();
 		mots = motdao.chargerMots();
-	}
-	
-	//méthode d'instanciation de la classe BoutonsMap
-	public void instancierBoutonsMap(BoutonsMap bm) {
-		this.btnMap = bm;
 	}
 	
 	//génération d'un entier au hasard compris entre 0 et les nombre de mots contenus dans la liste des mots en .xml
@@ -186,12 +182,9 @@ public class Controleur {
 	}
 	
 	//griseur de boutons
-//	public void btnGriseur(String btnValue) {
-//		JButton btn = new JButton();
-//		btn = btnMap.getJBouton(btnValue);
-//		btn.setEnabled(false);
-//		System.out.println("griser le bouton " + btnValue);
-//	}
+	public void btnGriseur(String btnValue) {
+		btnMap.griserBouton(btnMap.getJBouton(btnValue));
+	}
 	//***********************************************************GETTERS & SETTERS
 	public int getScore() {return score;}
 	public void setScore(int score) {this.score = score;}

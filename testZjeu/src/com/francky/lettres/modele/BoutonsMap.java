@@ -23,6 +23,9 @@ public class BoutonsMap {
 	//CONSTRUCTEUR
 	public BoutonsMap() {
 		super();
+
+		boutons = new HashMap<Character, JButton>();
+		boutons = remplissageBoutons();
 	}
 	
 	//METHODES
@@ -59,7 +62,6 @@ public class BoutonsMap {
 		btnVide1 = new JButton("");
 		btnVide2 = new JButton("");
 		
-		boutons = new HashMap<Character, JButton>();
 		
 		boutons.put('A', btnA);
 		boutons.put('B', btnB);
@@ -95,7 +97,16 @@ public class BoutonsMap {
 		return boutons;
 	}
 	
+	public HashMap<Character, JButton> getBoutons() {
+		return boutons;
+	}
+	
 	public JButton getJBouton(String btnValue) {		
+		System.out.println("grisage boutons");
 		return boutons.get(btnValue.charAt(0));
+	}
+
+	public void griserBouton(JButton jBouton) {
+		jBouton.setEnabled(false);
 	}
 }

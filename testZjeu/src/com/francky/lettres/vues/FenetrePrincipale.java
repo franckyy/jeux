@@ -23,7 +23,6 @@ public class FenetrePrincipale extends JFrame {
 	
 	//********************************************************DECLARATIONS
 	private Controleur ctrl;
-	private ListenerClavier keyListener;
 	private JMenuBar barre;
 	private JMenu menu1, sousmenu1;
 	
@@ -35,9 +34,7 @@ public class FenetrePrincipale extends JFrame {
 		setResizable(false);
 		
 		this.ctrl = ctrl;
-		keyListener = new ListenerClavier(ctrl);
 		
-		this.addKeyListener(keyListener);
 		
 		// ajout d'un menu
 		barre = new JMenuBar();

@@ -18,7 +18,7 @@ public class ListenerClavier implements KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
+		System.out.println("key pressed : " + e.getKeyChar());
 
 	}
 
