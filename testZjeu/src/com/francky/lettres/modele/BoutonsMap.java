@@ -107,6 +107,7 @@ public class BoutonsMap {
 	}
 
 	public void griserBouton(JButton jBouton) {
-		jBouton.setEnabled(false);
+//		jBouton.setEnabled(false);
+		this.btnA.setEnabled(false);
 	}
 }

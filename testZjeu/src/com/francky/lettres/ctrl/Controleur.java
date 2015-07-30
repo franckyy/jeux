@@ -47,6 +47,8 @@ public class Controleur {
 	private List<Character> listeLettresTrouvees;				//Liste des lettres qui ont été trouvées
 	private Character lettreTrouvee;							//dernière lettre trouvée
 
+	private ListenerClavier keyListener;
+	
 	/*
 	 * Définition de la palette des couleurs pour le jeu 
 	 */
@@ -65,11 +67,15 @@ public class Controleur {
 		
 		resetColors();		
 		
+		keyListener = new ListenerClavier(this);
+		
 		choixNouveauMot();
 		
 		//************************************création de la fenêtre
 		fenetreprincipale = new FenetrePrincipale(this);
-		
+
+		fenetreprincipale.addKeyListener(keyListener);
+		fenetreprincipale.requestFocus();
 		fenetreprincipale.setVisible(true);
 	}
 	

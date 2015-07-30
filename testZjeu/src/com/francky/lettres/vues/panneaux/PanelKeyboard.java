@@ -66,15 +66,12 @@ public class PanelKeyboard extends JPanel {
 	private Controleur ctrl;
 	private ListenerBoutons btnListener;
 
-	private ListenerClavier keyListener;
 	
 	//************************************************************CONSTUCTEUR
 	public PanelKeyboard(Controleur ctrl) {
 		this.ctrl = ctrl;
 		this.btnListener = new ListenerBoutons(ctrl);
-		keyListener = new ListenerClavier(ctrl);
-
-		this.addKeyListener(keyListener);
+		
 		setPreferredSize(new Dimension(KEYBOARD_WIDTH, KEYBOARD_HEIGTH));
 		setBackground(ctrl.COL_FOND);
 		
@@ -84,7 +81,7 @@ public class PanelKeyboard extends JPanel {
 		//Construction des boutons du clavier
 		bm = new BoutonsMap();					//Instanciation de BoutonsMap
 		
-		boutons = bm.getBoutons();		//chargement de la hashmap des boutons
+		boutons = bm.getBoutons();				//chargement de la hashmap des boutons
 		lettres = new ArrayList<Character>();	//instanciation de la liste des lettres
 			
 		//remplissage de la liste des lettres avec toutes les lettres de l'alphabet
