@@ -81,25 +81,22 @@ public class Controleur {
 	//***********************************************************METHODES
 	
 	//recherche d'une lettre cliquée dans le mot
-	public void searchLetter(Character lettreClic) {
-		for(Character lettre : mot.toCharArray()) {
-			if(lettre.equals(lettreClic)){
+	public void searchLetter(String lettreClic) {
+			if(mot.contains(lettreClic)){
 				message = "lettre trouvée !";
 				setNbreLettres(++nbreLettres);
 				setNbreEssais(++nbreEssais);
-				listeLettresTrouvees.add(lettreClic);
-				lettreTrouvee = lettreClic;
-				int gain = scoreLettreTrouvee(lettreClic);
+				listeLettresTrouvees.add(lettreClic.charAt(0));
+				lettreTrouvee = lettreClic.charAt(0);
+				int gain = scoreLettreTrouvee(lettreClic.charAt(0));
 				System.out.println("le gain : " + gain);
 				
 				//générer et ré afficher le mot caché
 				listeLettres = setlisteLettres(listeLettres);
 				fenetreprincipale.repaint();
-				break;
 			} else {
 				message = "lettre non trouvée !";
 				setNbreEssais(++nbreEssais);}
-		}
 	}
 	
 	
