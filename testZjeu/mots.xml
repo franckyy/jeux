@@ -6,5 +6,6 @@
 		<mot genre="true" composed="false" pluriel="bateaux" lang="fr">BATEAU</mot>
 		<mot genre="true" composed="false" pluriel="bureaux" lang="fr">BUREAU</mot>
 		<mot genre="false" composed="false" pluriel="animations" lang="fr">ANIMATION</mot>
+		<mot genre="true" composed="false" pluriel="zèbres" lang="fr">ZEBRE</mot>
 	</listemots>
 </mots>

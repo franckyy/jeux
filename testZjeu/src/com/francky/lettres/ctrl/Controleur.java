@@ -56,6 +56,10 @@ public class Controleur {
 	public Color COL_MOT;
 	public Color COL_GRAPH;
 	
+	/*
+	 * Définition des scores
+	 */
+	private int GAIN_MOT_TROUVE = 100;
 	
 	Ecouteur ecouteur;
 	
@@ -84,19 +88,38 @@ public class Controleur {
 	public void searchLetter(String lettreClic) {
 			if(mot.contains(lettreClic)){
 				message = "lettre trouvée !";
-				setNbreLettres(++nbreLettres);
-				setNbreEssais(++nbreEssais);
-				listeLettresTrouvees.add(lettreClic.charAt(0));
-				lettreTrouvee = lettreClic.charAt(0);
-				int gain = scoreLettreTrouvee(lettreClic.charAt(0));
+				
+				setNbreLettres(++nbreLettres);		//incrémentation du nombre de lettres trouvées
+				setNbreEssais(++nbreEssais);		//incrémentation du nombre de fois que l'on a cliqué une lettre
+				listeLettresTrouvees.add(lettreClic.charAt(0));		//ajout de la lettre dans la liste des lettres trouvées
+				lettreTrouvee = lettreClic.charAt(0);		//sauvegarde de la lettre trouvée
+				
+				int gain = scoreLettreTrouvee(lettreClic.charAt(0));	//calcul du gain suite au clic sur une lettre présente dans le mot
+				setScore(gain);
+				
 				System.out.println("le gain : " + gain);
 				
 				//générer et ré afficher le mot caché
 				listeLettres = setlisteLettres(listeLettres);
+				
+				//vérification pour savoir si le mot à été trouvé. 
+				//si listeLettre ne contient pas  '_' alors le mot a été trouvé.
+				if(!listeLettres.contains('_')){
+					//si mot trouvé
+					
+
+					//affichage BRAVO !!!
+					//temporisation
+					
+					gain = scoreMotTrouve();
+					setScore(gain);
+					
+					//nouveau mot
+				}
 				fenetreprincipale.repaint();
 			} else {
 				message = "lettre non trouvée !";
-				setNbreEssais(++nbreEssais);}
+				setNbreEssais(++nbreEssais);}		//incrémentation du nombre de fois que l'on a cliqué une lettre
 	}
 	
 	
@@ -182,6 +205,59 @@ public class Controleur {
 	}
 	
 	//******************METHODES POUR LE SCORE
+	private int scoreMotTrouve(){
+		int gain = 0;
+		System.out.println("nbreEssais : " + nbreEssais + " / longueur mot : " + mot.length());
+		
+		//vérification des lettres en doubles dans le mot
+		//si lettres doubles, le nombre d'essais pour trouver le mot sans se tromper diminue d'autant plus
+		int nbreLettresDoubles = 0;
+		for(int i = 0; i < mot.length(); i++){
+			for(int j = i + 1; j < mot.length(); j++) {
+				if(Character.toString(mot.charAt(i)).equals(Character.toString(mot.charAt(j)))){
+					nbreLettresDoubles++;
+					break;
+				}
+			}
+		}
+		
+		//si on trouve toutes les lettres sans se tromper -> ultra bonus 100pts
+		if (nbreEssais == mot.length() - nbreLettresDoubles){
+			gain = GAIN_MOT_TROUVE + 20;
+		}
+		
+		int reste = nbreEssais - mot.length();
+		
+		switch(reste){
+		case 1:
+			gain = GAIN_MOT_TROUVE - 2;
+			break;
+		case 2:
+			gain = GAIN_MOT_TROUVE - 4;
+			break;
+		case 3:
+			gain = GAIN_MOT_TROUVE - 8;
+			break;
+		case 4:
+			gain = GAIN_MOT_TROUVE - 15;
+			break;
+		case 5:
+			gain = GAIN_MOT_TROUVE - 25;
+			break;
+		case 6:
+			gain = GAIN_MOT_TROUVE - 40;
+			break;
+		case 7:
+			gain = GAIN_MOT_TROUVE - 70;
+			break;
+		case 8:
+			gain = GAIN_MOT_TROUVE - 90;
+			break;
+		}
+		
+		return gain;
+	}
+	
 	private int scoreLettreTrouvee(Character lettre){
 		int gain = 0;
 		//On accorde un nombre de points par lettre trouvée
@@ -304,7 +380,7 @@ public class Controleur {
 	
 	//***********************************************************GETTERS & SETTERS
 	public int getScore() {return score;}
-	public void setScore(int score) {this.score = score;}
+	public void setScore(int gain) {this.score += gain;}
 
 	public int getMotsTrouves() {return motsTrouves;}
 	public void setMotsTrouves(int motsTrouves) {this.motsTrouves = motsTrouves;}
