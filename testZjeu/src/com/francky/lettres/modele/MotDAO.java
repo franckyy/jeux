@@ -26,7 +26,6 @@ public class MotDAO {
 		Vector<Mot> mots = new Vector<Mot>();
 		
 		try {
-			System.out.println("chargerMots");
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document doc = db.parse(motsXML);

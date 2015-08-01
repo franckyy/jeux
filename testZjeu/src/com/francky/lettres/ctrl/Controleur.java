@@ -83,7 +83,6 @@ public class Controleur {
 	public Controleur() {
 		//************************************Initialisations
 		resetGame();
-		
 		resetColors(COLOR_THEME);		
 		
 		keyListener = new ListenerClavier(this);
@@ -227,11 +226,16 @@ public class Controleur {
 		setNbreEssais(0);
 		setNbreLettresUtilisees(0);
 		setNiveau(1);
+		chargementMots();
 		listeLettres = new ArrayList<Character>();
 		lettreTrouvee = ' ';
 		ecouteur = new Ecouteur(this);
 //		btnMap = new BoutonsMap(ecouteur);
 		listeLettresTrouvees = new ArrayList<Character>();
+	}
+	
+	//chargement des mots
+	private void chargementMots() {
 		mots = motdao.chargerMots();
 	}
 	
@@ -246,7 +250,7 @@ public class Controleur {
 		catch (IllegalArgumentException argEx){System.out.println("Illegal Argument Exception captée");}
 		catch (ArrayIndexOutOfBoundsException bounds) {System.out.println("Array Index Out Of Bounds Exception captée");}
 		finally {
-			//recharger liste des mots
+			//reset game
 		}
 		
 		return numRank;
