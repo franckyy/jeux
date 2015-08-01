@@ -166,10 +166,15 @@ public class Controleur {
 		
 		randomNum = randomNum();
 		
-		mot = mots.get(randomNum).getChaine();
-		
-		//on enleve de la liste le mot qui a été tiré au hazard pour qu'il ne soit pas choisi au hasard plusieurs fois
-		mots.remove(randomNum);
+		if(randomNum > 0){
+
+			mot = mots.get(randomNum).getChaine();
+			
+			//on enleve de la liste le mot qui a été tiré au hazard pour qu'il ne soit pas choisi au hasard plusieurs fois
+			mots.remove(randomNum);
+		} else {
+			stopGame();
+		}
 		
 		//lorsque le nouveau mot a été choisi, il faut remplir un tableau de Character avec des underscores
 		for(int rank = 0; rank < mot.length(); rank++){
@@ -177,6 +182,12 @@ public class Controleur {
 		}
 	}
 	
+	private void stopGame() {
+		//enregistrer score si high score
+		//afficher mot de fin
+		//demander à taper sur une touche pour recommencer
+	}
+
 	//réinitialisation des couleurs
 	public void resetColors(String theme) {
 		//initialisation des couleurs - a l'avenir il faudra aller chercher le theme dans un .xml
@@ -218,7 +229,11 @@ public class Controleur {
 	//génération d'un entier au hasard compris entre 0 et les nombre de mots contenus dans la liste des mots en .xml
 	private int randomNum(){
 		Random rand = new Random();
-		return rand.nextInt((mots.size()));
+		if(mots.size() == 0){
+			return rand.nextInt((mots.size()));
+		} else {
+			return 0;
+		}
 	}
 	
 	//création du mot qui sera affiché (on montre les lettres qui ont déjà été trouvées) prend en paramètre la liste
