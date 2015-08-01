@@ -3,8 +3,11 @@ package com.francky.lettres.vues.panneaux;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import com.francky.lettres.ctrl.Controleur;
 
@@ -17,7 +20,18 @@ public class PanelAffichage extends JPanel {
 
 	//***********************************************************DECLARATIONS
 	private Controleur ctrl;
-	int x = 0;
+	
+	/*
+	 * Déclarations concernant le clignotement
+	 */
+	private int count;
+	private Timer animator;
+	
+	/*
+	 * indication du mot trouvé pour le panel affichage
+	 */
+	private boolean motTrouve = false;		//lorsque le mot est trouvé, l'affichage de congratulation par paintComponent
+	
 	/*
 	 * Taille du panneau affichage
 	 */
@@ -47,7 +61,6 @@ public class PanelAffichage extends JPanel {
 		setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 		setBackground(ctrl.COL_FOND);
 	}
-	//***********************************************************GETTERS & SETTERS
 	
 	
 	//***********************************************************METHODES
@@ -56,25 +69,101 @@ public class PanelAffichage extends JPanel {
 		setBackground(ctrl.COL_FOND);
 	}
 	
+	//régénération du graphisme
+	public void repaintPanelAffich() {
+		this.repaint();
+	}
 	
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
+		//AFFICHAGE DU RECTANGLE
 		g.setColor(ctrl.COL_FOND);
 		
 		g.setColor(ctrl.COL_GRAPH);
 		g.drawRect(TEXT_ZONE_X, TEXT_ZONE_Y, TEXT_ZONE_WIDTH, TEXT_ZONE_HEIGHT);
 		
-		//affichage du mot caché
-		g.setColor(ctrl.COL_MOT);
-		g.setFont(MOT_FONT);
-		int decal = 0;
 		
+		if(motTrouve){
+			//affichage de BRAVO
+			g.setFont(MOT_FONT);
+			switch(count){
+			case 1:
+				g.setColor(ctrl.COL_MOT_TROUVE1);
+				break;
+			case 2:
+				g.setColor(ctrl.COL_MOT_TROUVE2);
+				break;
+			case 3:
+				g.setColor(ctrl.COL_MOT_TROUVE3);
+				break;
+			case 4:
+				g.setColor(ctrl.COL_MOT_TROUVE4);
+				break;
+			case 5:
+				g.setColor(ctrl.COL_MOT_TROUVE5);
+				break;
+			case 6:
+				g.setColor(ctrl.COL_MOT_TROUVE6);
+				break;
+			case 7:
+				g.setColor(ctrl.COL_MOT_TROUVE7);
+				break;
+			case 8:
+				g.setColor(ctrl.COL_MOT_TROUVE8);
+				break;
+			case 9:
+				g.setColor(ctrl.COL_MOT_TROUVE9);
+				count = 0;
+				break;
+			}
+			
+			//on fait clignoter le mot 5 fois
+//			for(int nbreClignot = 0; nbreClignot <= 5; nbreClignot++){
+//					int decal = 0;			
+//					for(int caractere = 0; caractere < ctrl.getListeLettres().size(); caractere++){
+//						g.drawString("" + ctrl.getListeLettres().get(caractere), MOT_X + decal, MOT_Y);
+//						decal += (g.getFontMetrics().stringWidth("" + ctrl.getListeLettres().get(caractere)) + 15);
+//					}
+//			}
+			//je ne sais pas pourqupi il a fallu diviser le g.getFontMetrics().getHeight() par 3 ... je m'attendais plutôt à diviser par 2 mais ca passe mieux avec 3
+			g.drawString(ctrl.FELICIT_MOT_TROUVE, TEXT_ZONE_WIDTH / 2 + 10 - g.getFontMetrics().stringWidth(ctrl.FELICIT_MOT_TROUVE) / 2, TEXT_ZONE_HEIGHT / 2 + 25 + g.getFontMetrics().getHeight() / 3);
+			count++;
+		} 
 		
-		for(int caractere = 0; caractere < ctrl.getListeLettres().size(); caractere++){
-			g.drawString("" + ctrl.getListeLettres().get(caractere), MOT_X + decal, MOT_Y);
-			decal += (g.getFontMetrics().stringWidth("" + ctrl.getListeLettres().get(caractere)) + 15);
+		else {			
+			//affichage du mot caché
+			g.setColor(ctrl.COL_MOT);
+			g.setFont(MOT_FONT);
+			
+			int decal = 0;			
+			for(int caractere = 0; caractere < ctrl.getListeLettres().size(); caractere++){
+				g.drawString("" + ctrl.getListeLettres().get(caractere), MOT_X + decal, MOT_Y);
+				decal += (g.getFontMetrics().stringWidth("" + ctrl.getListeLettres().get(caractere)) + 15);
+			}
 		}
 	}
+
+	public void panelAffichFelicit() {
+		addNotify();
+	}
+	
+	private ActionListener animatorTask = new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			repaint();
+		}
+	};
+
+	public void addNotify() {
+		super.addNotify();
+		animator = new Timer(300, animatorTask);
+		animator.start();
+		
+		
+	}
+
+	//***********************************************************GETTERS & SETTERS
+	public boolean isMotTrouve() {return motTrouve;}
+	public void setMotTrouve(boolean motTrouve) {this.motTrouve = motTrouve;}
 }

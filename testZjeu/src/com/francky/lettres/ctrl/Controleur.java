@@ -54,12 +54,26 @@ public class Controleur {
 	public Color COL_TEXTE_1;
 	public Color COL_TEXTE_2;
 	public Color COL_MOT;
+	public Color COL_MOT_TROUVE1;
+	public Color COL_MOT_TROUVE2;
+	public Color COL_MOT_TROUVE3;
+	public Color COL_MOT_TROUVE4;
+	public Color COL_MOT_TROUVE5;
+	public Color COL_MOT_TROUVE6;
+	public Color COL_MOT_TROUVE7;
+	public Color COL_MOT_TROUVE8;
+	public Color COL_MOT_TROUVE9;
 	public Color COL_GRAPH;
 	
 	/*
 	 * Définition des scores
 	 */
 	private int GAIN_MOT_TROUVE = 100;
+	
+	/*
+	 * Messages
+	 */
+	public String FELICIT_MOT_TROUVE = "BRAVO !";
 	
 	Ecouteur ecouteur;
 	
@@ -109,8 +123,17 @@ public class Controleur {
 					
 
 					//affichage BRAVO !!!
-					//temporisation
+					fenetreprincipale.motTrouveBool(true);
+					listeLettres.clear(); 	//on vide la liste des lettres avant de remplir
 					
+					//on remplit la liste des lettres avec le mot de félicitation
+					for(int i = 0; i < FELICIT_MOT_TROUVE.length(); i++){
+						listeLettres.add(FELICIT_MOT_TROUVE.charAt(i));
+					}
+					//on demande l'affichage du mot de félicitation (avec clignotment codé dans panelAffichage)
+					fenetreprincipale.PanelAffichFelicit();
+					
+					//le gain du mot trouvé est ajouté au score
 					gain = scoreMotTrouve();
 					setScore(gain);
 					
@@ -149,6 +172,15 @@ public class Controleur {
 		COL_TEXTE_1 = coul.getColPrimaire_3();
 		COL_TEXTE_2 = coul.getColPrimaire_2();
 		COL_MOT = coul.getColPrimaire_3();
+		COL_MOT_TROUVE1 = coul.getColComplementaire_1();
+		COL_MOT_TROUVE2 = coul.getColComplementaire_2();
+		COL_MOT_TROUVE3 = coul.getColComplementaire_3();
+		COL_MOT_TROUVE4 = coul.getColComplementaire_4();
+		COL_MOT_TROUVE5 = coul.getColPrimaire_1();
+		COL_MOT_TROUVE6 = coul.getColPrimaire_2();
+		COL_MOT_TROUVE7 = coul.getColPrimaire_3();
+		COL_MOT_TROUVE8 = coul.getColPrimaire_4();
+		COL_MOT_TROUVE9 = coul.getColPrimaire_5();
 		COL_GRAPH = coul.getColPrimaire_1();
 		
 	}

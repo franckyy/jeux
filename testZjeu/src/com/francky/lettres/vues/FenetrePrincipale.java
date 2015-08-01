@@ -65,4 +65,12 @@ public class FenetrePrincipale extends JFrame {
 	public void griserBouton(String btnValue) {
 		panelkeyboard.griserBouton(btnValue);
 	}
+
+	public void motTrouveBool(boolean b) {
+		panelaffichage.setMotTrouve(b);
+	}
+	
+	public void PanelAffichFelicit() {
+		panelaffichage.panelAffichFelicit();
+	}
 }
