@@ -57,7 +57,6 @@ public class PanelKeyboard extends JPanel {
 	
 	HashMap<Character, JButton> boutons;	//HashMap qui associe un JButton à une lettre de l'alphabet
 	BoutonsMap bm;							//Création d'une instance de la classe BoutonsMap
-	List<Character> lettres;				//Liste de toutes les lettres de l'alphabet
 	
 	/*
 	 * Instanciation du controleur
@@ -78,26 +77,7 @@ public class PanelKeyboard extends JPanel {
 		setLayout(new GridLayout(ROWS_NUMBER, COLS_NUMBER, KEY_MARGE, KEY_MARGE));
 
 		//Construction des boutons du clavier
-		bm = new BoutonsMap(btnListener);					//Instanciation de BoutonsMap
-		
-		boutons = bm.getBoutons();				//chargement de la hashmap des boutons
-		lettres = new ArrayList<Character>();	//instanciation de la liste des lettres
-			
-		//remplissage de la liste des lettres avec toutes les lettres de l'alphabet
-		for(char alphabet = 'A'; alphabet <= 'Z';alphabet++) {
-		    lettres.add(alphabet);
-		}
-		
-		lettres.add('a');
-		lettres.add('b');
-		lettres.add('c');
-		lettres.add('h');
-		
-		for(int i = 0; i < boutons.size(); i++){
-			add(boutons.get(lettres.get(i)));
-			boutons.get(lettres.get(i)).addActionListener(btnListener);
-			boutons.get(lettres.get(i)).setActionCommand("" + lettres.get(i));
-		}
+		bm = new BoutonsMap(btnListener, this);					//Instanciation de BoutonsMap
 		
 		//définition d'une marge autour du panneau clavier
 		setBorder(new EmptyBorder(KEY_PANEL_MARGE_TOP, KEY_PANEL_MARGE_LEFT, KEY_PANEL_MARGE_BOTTOM, KEY_PANEL_MARGE_RIGHT));
@@ -107,5 +87,9 @@ public class PanelKeyboard extends JPanel {
 	//modifier le background du panel
 	public void modifieBackgroundColor() {
 		setBackground(ctrl.COL_FOND);
+	}
+
+	public void griserBouton(String btnValue) {
+		bm.griserBouton(btnValue);		
 	}
 }

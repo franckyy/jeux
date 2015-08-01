@@ -1,14 +1,19 @@
 package com.francky.lettres.modele;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JButton;
 
 import com.francky.lettres.ctrl.Ecouteur;
+import com.francky.lettres.vues.panneaux.PanelKeyboard;
 
 public class BoutonsMap {
 
 	//DECLARATIONS
+	PanelKeyboard panelkeyboard;
+	
 	private HashMap<Character, JButton> boutons;
 	
 	private JButton btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnJ, btnK, btnL
@@ -16,13 +21,34 @@ public class BoutonsMap {
 				, btnX, btnY, btnZ, btnHelp;
 	
 	private JButton btnVide, btnVide1, btnVide2;
+
+	List<Character> lettres;				//Liste de toutes les lettres de l'alphabet
 	
 	//CONSTRUCTEUR
-	public BoutonsMap(Ecouteur btnListener) {
+	public BoutonsMap(Ecouteur btnListener, PanelKeyboard panelkeyboard) {
 		super();
 		boutons = new HashMap<Character, JButton>();
-		
+		this.panelkeyboard = panelkeyboard;
 		boutons = remplissageBoutons();
+		
+		lettres = new ArrayList<Character>();	//instanciation de la liste des lettres
+		
+		//remplissage de la liste des lettres avec toutes les lettres de l'alphabet
+		for(char alphabet = 'A'; alphabet <= 'Z';alphabet++) {
+		    lettres.add(alphabet);
+		}
+		
+		lettres.add('a');
+		lettres.add('b');
+		lettres.add('c');
+		lettres.add('h');
+		
+		for(int i = 0; i < boutons.size(); i++){
+			panelkeyboard.add(boutons.get(lettres.get(i)));
+			boutons.get(lettres.get(i)).addActionListener(btnListener);
+			boutons.get(lettres.get(i)).setActionCommand("" + lettres.get(i));
+		}
+		
 	}
 	
 	//METHODES
@@ -102,8 +128,8 @@ public class BoutonsMap {
 		return boutons.get(btnValue.charAt(0));
 	}
 
-	public void griserBouton(JButton jBouton) {
-		jBouton.setEnabled(false);
+	public void griserBouton(String btnValue) {		
+		this.getJBouton(btnValue).setEnabled(false);
 	}
 
 	//GETTERS & SETTERS

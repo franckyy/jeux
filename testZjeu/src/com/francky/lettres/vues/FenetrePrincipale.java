@@ -61,4 +61,8 @@ public class FenetrePrincipale extends JFrame {
 		panelkeyboard.modifieBackgroundColor();
 		panelscore.modifieBackgroundColor();
 	}
+
+	public void griserBouton(String btnValue) {
+		panelkeyboard.griserBouton(btnValue);
+	}
 }

@@ -20,7 +20,7 @@ public class Controleur {
 	Vector<Mot> mots = null;		//contenant de tous les objets Mot
 	public boolean debug;			//variable pour le débuggage
 	private int randomNum;			//variable contenant le numéro trouvé par le random
-	private BoutonsMap btnMap;		//Instance de BoutonsMap qui va m'aider à récupérer les btn pour les griser / dégriser
+//	private BoutonsMap btnMap;		//Instance de BoutonsMap qui va m'aider à récupérer les btn pour les griser / dégriser
 	
 	/*
 	 * Gestion du score et des statistiques
@@ -141,7 +141,7 @@ public class Controleur {
 		listeLettres = new ArrayList<Character>();
 		lettreTrouvee = ' ';
 		ecouteur = new Ecouteur(this);
-		btnMap = new BoutonsMap(ecouteur);
+//		btnMap = new BoutonsMap(ecouteur);
 		listeLettresTrouvees = new ArrayList<Character>();
 		mots = motdao.chargerMots();
 	}
@@ -167,7 +167,7 @@ public class Controleur {
 	
 	//griseur de boutons
 	public void btnGriseur(String btnValue) {
-		btnMap.griserBouton(btnMap.getJBouton(btnValue));
+		fenetreprincipale.griserBouton(btnValue);
 	}
 	
 	//repaint
