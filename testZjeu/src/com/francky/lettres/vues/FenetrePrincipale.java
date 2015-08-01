@@ -62,8 +62,8 @@ public class FenetrePrincipale extends JFrame {
 		panelscore.modifieBackgroundColor();
 	}
 
-	public void griserBouton(String btnValue) {
-		panelkeyboard.griserBouton(btnValue);
+	public void griserBouton(String btnValue, boolean boolGriser) {
+		panelkeyboard.griserBouton(btnValue, boolGriser);
 	}
 
 	public void motTrouveBool(boolean b) {
@@ -72,5 +72,9 @@ public class FenetrePrincipale extends JFrame {
 	
 	public void PanelAffichFelicit() {
 		panelaffichage.panelAffichFelicit();
+	}
+
+	public void repaintPanelAffich() {
+		panelaffichage.repaintPanelAffich();
 	}
 }

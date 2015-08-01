@@ -89,7 +89,7 @@ public class PanelKeyboard extends JPanel {
 		setBackground(ctrl.COL_FOND);
 	}
 
-	public void griserBouton(String btnValue) {
-		bm.griserBouton(btnValue);		
+	public void griserBouton(String btnValue, boolean boolGriser) {
+		bm.griserBouton(btnValue, boolGriser);		
 	}
 }

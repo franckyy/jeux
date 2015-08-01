@@ -119,14 +119,6 @@ public class PanelAffichage extends JPanel {
 				break;
 			}
 			
-			//on fait clignoter le mot 5 fois
-//			for(int nbreClignot = 0; nbreClignot <= 5; nbreClignot++){
-//					int decal = 0;			
-//					for(int caractere = 0; caractere < ctrl.getListeLettres().size(); caractere++){
-//						g.drawString("" + ctrl.getListeLettres().get(caractere), MOT_X + decal, MOT_Y);
-//						decal += (g.getFontMetrics().stringWidth("" + ctrl.getListeLettres().get(caractere)) + 15);
-//					}
-//			}
 			//je ne sais pas pourqupi il a fallu diviser le g.getFontMetrics().getHeight() par 3 ... je m'attendais plutôt à diviser par 2 mais ca passe mieux avec 3
 			g.drawString(ctrl.FELICIT_MOT_TROUVE, TEXT_ZONE_WIDTH / 2 + 10 - g.getFontMetrics().stringWidth(ctrl.FELICIT_MOT_TROUVE) / 2, TEXT_ZONE_HEIGHT / 2 + 25 + g.getFontMetrics().getHeight() / 3);
 			count++;
@@ -159,8 +151,6 @@ public class PanelAffichage extends JPanel {
 		super.addNotify();
 		animator = new Timer(300, animatorTask);
 		animator.start();
-		
-		
 	}
 
 	//***********************************************************GETTERS & SETTERS

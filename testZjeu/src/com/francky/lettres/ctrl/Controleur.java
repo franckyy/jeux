@@ -121,7 +121,6 @@ public class Controleur {
 				if(!listeLettres.contains('_')){
 					//si mot trouvé
 					
-
 					//affichage BRAVO !!!
 					fenetreprincipale.motTrouveBool(true);
 					listeLettres.clear(); 	//on vide la liste des lettres avant de remplir
@@ -130,14 +129,23 @@ public class Controleur {
 					for(int i = 0; i < FELICIT_MOT_TROUVE.length(); i++){
 						listeLettres.add(FELICIT_MOT_TROUVE.charAt(i));
 					}
-					//on demande l'affichage du mot de félicitation (avec clignotment codé dans panelAffichage)
+					//on demande l'affichage du mot de félicitation (avec clignotment codé dans panelAffichage) pendant xxx millisecondes
 					fenetreprincipale.PanelAffichFelicit();
 					
 					//le gain du mot trouvé est ajouté au score
 					gain = scoreMotTrouve();
 					setScore(gain);
 					
+					//On repasse le booléen motTrouvé à false pour que le panelAffichage affiche le mot normalement
+					fenetreprincipale.motTrouveBool(false);
+					//on remet à zéro la liste des lettres du mot à afficher
+					listeLettres.clear();
+					//on dégrise les touches
+					btnGriseur("all", true);
+					
 					//nouveau mot
+					choixNouveauMot();
+					repaintPanelAffich();
 				}
 				fenetreprincipale.repaint();
 			} else {
@@ -146,6 +154,10 @@ public class Controleur {
 	}
 	
 	
+	private void repaintPanelAffich() {
+		fenetreprincipale.repaintPanelAffich();
+	}
+
 	//Choix d'un nouveau mot parmi la liste, on retire le mot choisi de la liste,
 	//on génère le tableau de lettres du mot choisi, on génère le mot caché 
 	private void choixNouveauMot() {
@@ -221,8 +233,8 @@ public class Controleur {
 	}
 	
 	//griseur de boutons
-	public void btnGriseur(String btnValue) {
-		fenetreprincipale.griserBouton(btnValue);
+	public void btnGriseur(String btnValue, boolean boolGriser) {
+		fenetreprincipale.griserBouton(btnValue, boolGriser);
 	}
 	
 	//repaint

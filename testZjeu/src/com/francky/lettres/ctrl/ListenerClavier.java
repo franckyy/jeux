@@ -43,7 +43,7 @@ public class ListenerClavier implements KeyListener {
 		case 'Y':
 		case 'Z':
 			System.out.println(e.getKeyChar() + " key pressed");
-			ctrl.btnGriseur("" + e.getKeyChar());
+			ctrl.btnGriseur("" + e.getKeyChar(), true);
 			ctrl.searchLetter("" + e.getKeyChar());
 			break;
 			

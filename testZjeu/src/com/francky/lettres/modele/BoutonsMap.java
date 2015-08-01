@@ -128,8 +128,14 @@ public class BoutonsMap {
 		return boutons.get(btnValue.charAt(0));
 	}
 
-	public void griserBouton(String btnValue) {		
-		this.getJBouton(btnValue).setEnabled(false);
+	public void griserBouton(String btnValue, boolean boolGriser) {		
+		if(btnValue.equals("all")){
+			for(JButton btn : boutons.values()){
+				btn.setEnabled(boolGriser);
+			}
+		} else {
+			this.getJBouton(btnValue).setEnabled(boolGriser);
+		}
 	}
 
 	//GETTERS & SETTERS
