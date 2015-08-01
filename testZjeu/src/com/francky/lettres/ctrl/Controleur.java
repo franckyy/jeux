@@ -140,6 +140,8 @@ public class Controleur {
 					fenetreprincipale.motTrouveBool(false);
 					//on remet à zéro la liste des lettres du mot à afficher
 					listeLettres.clear();
+					//on remet à zéro le nombre d'essais
+					nbreEssais = 0;
 					//on dégrise les touches
 					btnGriseur("all", true);
 					
