@@ -110,10 +110,10 @@ public class PanelScore extends JPanel {
 		g.drawString("" + ctrl.getMotsTrouves(), LARGE_INSET, offset += TEXT_STRIDE);
 		g.setColor(ctrl.COL_TEXTE_1);
 		g.setFont(LARGE_FONT);
-		g.drawString("Nombre de lettres", LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Lettres utilisées", LARGE_INSET, offset += TEXT_STRIDE);
 		g.setColor(ctrl.COL_TEXTE_2);
 		g.setFont(SMALL_FONT);
-		g.drawString("" + ctrl.getNbreLettres(), LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("" + ctrl.getNbreLettresUtilisees(), LARGE_INSET, offset += TEXT_STRIDE);
 		
 		/*
 		 * Draw the "Score" category.

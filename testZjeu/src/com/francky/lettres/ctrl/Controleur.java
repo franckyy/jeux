@@ -28,6 +28,7 @@ public class Controleur {
 	private int score;				//le score ...
 	private int motsTrouves;		//le nombre de mots qui ont été trouvés
 	private int nbreLettres;		//le nbre de lettres qui ont été trouvées
+	private int nbreLettresUtilisees;	//le nbre de lettres qui ont été utilisées
 	private int nbreEssais;			//nombres de fois que l'on clique sur une lettre
 	private int niveau;				//le niveau de difficulté du jeu
 	
@@ -100,6 +101,10 @@ public class Controleur {
 	
 	//recherche d'une lettre cliquée dans le mot
 	public void searchLetter(String lettreClic) {
+
+		//incrémenter le nombre de lettres utilisées ou cliquées
+		setNbreLettresUtilisees(++nbreLettresUtilisees);
+		
 			if(mot.contains(lettreClic)){
 				message = "lettre trouvée !";
 				
@@ -111,7 +116,6 @@ public class Controleur {
 				int gain = scoreLettreTrouvee(lettreClic.charAt(0));	//calcul du gain suite au clic sur une lettre présente dans le mot
 				setScore(gain);
 				
-				System.out.println("le gain : " + gain);
 				
 				//générer et ré afficher le mot caché
 				listeLettres = setlisteLettres(listeLettres);
@@ -120,6 +124,10 @@ public class Controleur {
 				//si listeLettre ne contient pas  '_' alors le mot a été trouvé.
 				if(!listeLettres.contains('_')){
 					//si mot trouvé
+					
+					//incrémenter nbre de mots trouvés
+					setMotsTrouves(++motsTrouves);
+					//remise à zéro du nombre de lettres cliquées
 					
 					//affichage BRAVO !!!
 					fenetreprincipale.motTrouveBool(true);
@@ -144,15 +152,18 @@ public class Controleur {
 					nbreEssais = 0;
 					//on dégrise les touches
 					btnGriseur("all", true);
-					
+					//on remet les compteur du nombre de lettres trouvées à zéro
+					setNbreLettresUtilisees(0);
 					//nouveau mot
 					choixNouveauMot();
 					repaintPanelAffich();
 				}
-				fenetreprincipale.repaint();
 			} else {
 				message = "lettre non trouvée !";
-				setNbreEssais(++nbreEssais);}		//incrémentation du nombre de fois que l'on a cliqué une lettre
+				setNbreEssais(++nbreEssais);	//incrémentation du nombre de fois que l'on a cliqué une lettre
+			}		
+
+			fenetreprincipale.repaint();
 	}
 	
 	
@@ -165,21 +176,18 @@ public class Controleur {
 	private void choixNouveauMot() {
 		
 		randomNum = randomNum();
-		
-		if(randomNum > 0){
 
-			mot = mots.get(randomNum).getChaine();
-			
-			//on enleve de la liste le mot qui a été tiré au hazard pour qu'il ne soit pas choisi au hasard plusieurs fois
-			mots.remove(randomNum);
-		} else {
-			stopGame();
-		}
+		mot = mots.get(randomNum).getChaine();
+		
+		//on enleve de la liste le mot qui a été tiré au hazard pour qu'il ne soit pas choisi au hasard plusieurs fois
+		mots.remove(randomNum);
 		
 		//lorsque le nouveau mot a été choisi, il faut remplir un tableau de Character avec des underscores
 		for(int rank = 0; rank < mot.length(); rank++){
 			listeLettres.add('_');
 		}
+		
+		
 	}
 	
 	private void stopGame() {
@@ -217,6 +225,7 @@ public class Controleur {
 		setMotsTrouves(0);
 		setNbreLettres(0);
 		setNbreEssais(0);
+		setNbreLettresUtilisees(0);
 		setNiveau(1);
 		listeLettres = new ArrayList<Character>();
 		lettreTrouvee = ' ';
@@ -227,13 +236,20 @@ public class Controleur {
 	}
 	
 	//génération d'un entier au hasard compris entre 0 et les nombre de mots contenus dans la liste des mots en .xml
-	private int randomNum(){
+	private int randomNum() {
 		Random rand = new Random();
-		if(mots.size() == 0){
-			return rand.nextInt((mots.size()));
-		} else {
-			return 0;
+		int numRank = 0;
+		
+		try {
+			numRank =  rand.nextInt((mots.size()));
+		}  
+		catch (IllegalArgumentException argEx){System.out.println("Illegal Argument Exception captée");}
+		catch (ArrayIndexOutOfBoundsException bounds) {System.out.println("Array Index Out Of Bounds Exception captée");}
+		finally {
+			//recharger liste des mots
 		}
+		
+		return numRank;
 	}
 	
 	//création du mot qui sera affiché (on montre les lettres qui ont déjà été trouvées) prend en paramètre la liste
@@ -459,4 +475,7 @@ public class Controleur {
 
 	public int getNbreEssais() {return nbreEssais;}
 	public void setNbreEssais(int nbreEssais) {this.nbreEssais = nbreEssais;}
+
+	public int getNbreLettresUtilisees() {return nbreLettresUtilisees;}
+	public void setNbreLettresUtilisees(int nbreLettresUtilisees) {this.nbreLettresUtilisees = nbreLettresUtilisees;}
 }
