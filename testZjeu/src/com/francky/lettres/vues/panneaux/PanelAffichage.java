@@ -133,8 +133,13 @@ public class PanelAffichage extends JPanel {
  
 			int decal = 0;			
 			for(int caractere = 0; caractere < ctrl.getListeLettres().size(); caractere++){
-				g.drawString("" + ctrl.getListeLettres().get(caractere), MOT_X + decal, MOT_Y);
-				decal += (g.getFontMetrics().stringWidth("" + ctrl.getListeLettres().get(caractere)) + 15);
+				if(!ctrl.getListeLettres().get(caractere).equals(' ')){
+					g.drawString("" + ctrl.getListeLettres().get(caractere), MOT_X + decal, MOT_Y);
+					decal += (g.getFontMetrics().stringWidth("" + ctrl.getListeLettres().get(caractere)) + 15);
+				} else {
+					g.drawString("" + ctrl.getListeLettres().get(caractere), MOT_X + decal, MOT_Y);
+					decal += (g.getFontMetrics().stringWidth("" + ctrl.getListeLettres().get(caractere)) + 10);
+				}
 			}
 		}
 	}

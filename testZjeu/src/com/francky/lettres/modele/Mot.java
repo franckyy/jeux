@@ -15,6 +15,12 @@ public class Mot {
 		setComposed(composed);
 	}
 
+	//METHODES
+	public Character getChar(int index) {
+		String mot = getChaine();
+		char caractere = mot.charAt(index);
+		return caractere;
+	}
 	//GETTERS & SETTERS
 	public boolean isGenre() {return genre;}
 	public void setGenre(boolean genre) {this.genre = genre;}

@@ -183,15 +183,21 @@ public class Controleur {
 
 		mot = mots.get(randomNum).getChaine();
 		
-		//on enleve de la liste le mot qui a été tiré au hazard pour qu'il ne soit pas choisi au hasard plusieurs fois
-		mots.remove(randomNum);
-		
 		//lorsque le nouveau mot a été choisi, il faut remplir un tableau de Character avec des underscores
 		for(int rank = 0; rank < mot.length(); rank++){
-			listeLettres.add('_');
+			boolean nonLettre = false;		//pour repérer les caractères qui ne sont pas des lettres
+			if(mots.get(randomNum).getChar(rank).equals(' ') || mots.get(randomNum).getChar(rank).equals('-')){
+				nonLettre = true;
+				listeLettres.add(mots.get(randomNum).getChar(rank));
+			}
+			if (!nonLettre){
+				listeLettres.add('_');
+			}
 		}
 		
-		
+		//on enleve de la liste le mot qui a été tiré au hazard pour qu'il ne soit pas choisi au hasard plusieurs fois
+		mots.remove(randomNum);
+				
 	}
 	
 	private void stopGame() {
@@ -264,7 +270,7 @@ public class Controleur {
 	//création du mot qui sera affiché (on montre les lettres qui ont déjà été trouvées) prend en paramètre la liste
 	private ArrayList<Character> setlisteLettres(ArrayList<Character> listeLettres){	
 		for (int rank = 0; rank < listeLettres.size(); rank++){
-			if(listeLettres.get(rank).equals('_')){
+			if(listeLettres.get(rank).equals('_') && !listeLettres.get(rank).equals(' ')){
 				if(lettreTrouvee.equals(mot.charAt(rank))){
 					listeLettres.set(rank, lettreTrouvee);
 				}
