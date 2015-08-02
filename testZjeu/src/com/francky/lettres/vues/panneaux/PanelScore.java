@@ -126,4 +126,9 @@ public class PanelScore extends JPanel {
 		g.setFont(SMALL_FONT);
 		g.drawString("" + ctrl.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
 	}
+
+
+	public void repaintPanelScore() {
+		this.repaint();
+	}
 }

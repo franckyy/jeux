@@ -10,6 +10,7 @@ import com.francky.lettres.modele.CouleurThemes;
 import com.francky.lettres.modele.Mot;
 import com.francky.lettres.modele.MotDAO;
 import com.francky.lettres.vues.FenetrePrincipale;
+import com.francky.lettres.vues.panneaux.PanelScore;
 
 public class Controleur {
 
@@ -141,7 +142,11 @@ public class Controleur {
 		
 		//affichage BRAVO !!!
 		fenetreprincipale.motTrouveBool(true);
-		
+		//ràz du nombre de lettres trouvées et utilisées
+		nbreLettres = 0;
+		nbreLettresUtilisees = 0;
+		//rafraichissement du panel score
+		fenetreprincipale.repaintPanelScore();
 		listeLettres.clear(); 	//on vide la liste des lettres avant de remplir
 		//on remplit la liste des lettres avec le mot de félicitation
 		for(int i = 0; i < FELICIT_MOT_TROUVE.length(); i++){
