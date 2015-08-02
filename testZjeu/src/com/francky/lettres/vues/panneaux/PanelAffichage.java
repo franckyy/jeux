@@ -31,6 +31,7 @@ public class PanelAffichage extends JPanel {
 	 * indication du mot trouvé pour le panel affichage
 	 */
 	private boolean motTrouve = false;		//lorsque le mot est trouvé, l'affichage de congratulation par paintComponent
+	private volatile boolean showText;
 	
 	/*
 	 * Taille du panneau affichage
@@ -85,7 +86,7 @@ public class PanelAffichage extends JPanel {
 		g.drawRect(TEXT_ZONE_X, TEXT_ZONE_Y, TEXT_ZONE_WIDTH, TEXT_ZONE_HEIGHT);
 		
 		
-		if(motTrouve){
+		if(motTrouve && showText){
 			//affichage de BRAVO
 			g.setFont(MOT_FONT);
 			switch(count){
@@ -149,7 +150,7 @@ public class PanelAffichage extends JPanel {
 
 	public void addNotify() {
 		super.addNotify();
-		animator = new Timer(300, animatorTask);
+		animator = new Timer(200, animatorTask);
 		animator.start();
 	}
 

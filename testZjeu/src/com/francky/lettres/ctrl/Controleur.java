@@ -139,23 +139,23 @@ public class Controleur {
 					//on demande l'affichage du mot de félicitation (avec clignotment codé dans panelAffichage) pendant xxx millisecondes
 					fenetreprincipale.PanelAffichFelicit();
 					
-					//le gain du mot trouvé est ajouté au score
-					gain = scoreMotTrouve();
-					setScore(gain);
-					
-					//On repasse le booléen motTrouvé à false pour que le panelAffichage affiche le mot normalement
-					fenetreprincipale.motTrouveBool(false);
-					//on remet à zéro la liste des lettres du mot à afficher
-					listeLettres.clear();
-					//on remet à zéro le nombre d'essais
-					nbreEssais = 0;
-					//on dégrise les touches
-					btnGriseur("all", true);
-					//on remet les compteur du nombre de lettres trouvées à zéro
-					setNbreLettresUtilisees(0);
-					//nouveau mot
-					choixNouveauMot();
-					repaintPanelAffich();
+//					//le gain du mot trouvé est ajouté au score
+//					gain = scoreMotTrouve();
+//					setScore(gain);
+//					
+//					//On repasse le booléen motTrouvé à false pour que le panelAffichage affiche le mot normalement
+//					fenetreprincipale.motTrouveBool(false);
+//					//on remet à zéro la liste des lettres du mot à afficher
+//					listeLettres.clear();
+//					//on remet à zéro le nombre d'essais
+//					nbreEssais = 0;
+//					//on dégrise les touches
+//					btnGriseur("all", true);
+//					//on remet les compteur du nombre de lettres trouvées à zéro
+//					setNbreLettresUtilisees(0);
+//					//nouveau mot
+//					choixNouveauMot();
+//					repaintPanelAffich();
 				}
 			} else {
 				message = "lettre non trouvée !";
