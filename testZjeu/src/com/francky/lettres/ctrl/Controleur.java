@@ -126,7 +126,7 @@ public class Controleur {
 					//incrémenter nbre de mots trouvés
 					setMotsTrouves(++motsTrouves);
 					
-					fenetreprincipale.panelAffichDerniereLettre(800);
+					fenetreprincipale.panelAffichDerniereLettre(900);
 				}
 			} else {
 				message = "lettre non trouvée !";
