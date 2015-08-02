@@ -122,21 +122,11 @@ public class Controleur {
 				//si listeLettre ne contient pas  '_' alors le mot a été trouvé.
 				if(!listeLettres.contains('_')){
 					//si mot trouvé
-					
+
 					//incrémenter nbre de mots trouvés
 					setMotsTrouves(++motsTrouves);
-					//remise à zéro du nombre de lettres cliquées
 					
-					//affichage BRAVO !!!
-					fenetreprincipale.motTrouveBool(true);
-					listeLettres.clear(); 	//on vide la liste des lettres avant de remplir
-					
-					//on remplit la liste des lettres avec le mot de félicitation
-					for(int i = 0; i < FELICIT_MOT_TROUVE.length(); i++){
-						listeLettres.add(FELICIT_MOT_TROUVE.charAt(i));
-					}
-					//on demande l'affichage du mot de félicitation (avec clignotment codé dans panelAffichage) pendant xxx millisecondes
-					fenetreprincipale.PanelAffichFelicit(3000);
+					fenetreprincipale.panelAffichDerniereLettre(800);
 				}
 			} else {
 				message = "lettre non trouvée !";
@@ -144,6 +134,21 @@ public class Controleur {
 			}		
 
 			fenetreprincipale.repaint();
+	}
+	
+	public void apresPanelAffichDernierelettre() {
+		//remise à zéro du nombre de lettres cliquées
+		
+		//affichage BRAVO !!!
+		fenetreprincipale.motTrouveBool(true);
+		
+		listeLettres.clear(); 	//on vide la liste des lettres avant de remplir
+		//on remplit la liste des lettres avec le mot de félicitation
+		for(int i = 0; i < FELICIT_MOT_TROUVE.length(); i++){
+			listeLettres.add(FELICIT_MOT_TROUVE.charAt(i));
+		}
+		//on demande l'affichage du mot de félicitation (avec clignotment codé dans panelAffichage) pendant xxx millisecondes
+		fenetreprincipale.PanelAffichFelicit(3000);
 	}
 	
 	public void apresMotTrouve() {

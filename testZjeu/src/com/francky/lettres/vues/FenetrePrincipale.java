@@ -69,6 +69,10 @@ public class FenetrePrincipale extends JFrame {
 	public void motTrouveBool(boolean b) {
 		panelaffichage.setMotTrouve(b);
 	}
+
+	public void panelAffichDerniereLettre(int time) {
+		panelaffichage.panelAffichDerniereLettre(time);		
+	}
 	
 	public void PanelAffichFelicit(int time) {
 		panelaffichage.panelAffichFelicit(time);

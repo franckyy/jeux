@@ -147,6 +147,15 @@ public class PanelAffichage extends JPanel {
 		addNotify();
 		timer.start();
 	}
+
+	public void panelAffichDerniereLettre(int time) {
+		final int showTextTimer = ++showTextCall; // ça c'est juste pour si on rappelle showText alors qu'il y a un texte déjà affiché
+		final Timer timer = new Timer(time, e-> { if ( showTextTimer==showTextCall) ctrl.apresPanelAffichDernierelettre(); });
+		timer.setRepeats(false);
+		showText=true;
+		repaint();
+		timer.start();
+	}
  
 	public synchronized void hideText() {
 		if ( showText ) {
