@@ -89,4 +89,8 @@ public class FenetrePrincipale extends JFrame {
 	public void repaintPanelKeyboard() {
 		panelkeyboard.repaintPanelKeyboard();
 	}
+
+	public void colorerTousBoutons() {
+		panelkeyboard.colorerTousBoutons();
+	}
 }

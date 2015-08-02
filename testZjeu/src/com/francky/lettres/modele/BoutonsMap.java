@@ -145,6 +145,16 @@ public class BoutonsMap {
 		}
 	}
 
+	public void colorerTousBoutons() {
+		for(JButton btn : boutons.values()){
+			if(btn.isEnabled()){
+				btn.setBackground(ctrl.COL_FOND_BOUTONS_NON_CLIC);
+			} else {
+				btn.setBackground(ctrl.COL_FOND_BOUTONS_CLIC);
+			}
+		}
+	}
+	
 	//GETTERS & SETTERS
 	public JButton getBtnA() {return btnA;}
 	public JButton getBtnB() {return btnB;}

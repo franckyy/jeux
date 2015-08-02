@@ -219,8 +219,8 @@ public class Controleur {
 		CouleurThemes coul = new CouleurThemes(theme);
 		
 		COL_FOND = coul.getColComplementaire_5();
-		COL_FOND_BOUTONS_CLIC = coul.getColComplementaire_3();
-		COL_FOND_BOUTONS_NON_CLIC = coul.getColPrimaire_4();
+		COL_FOND_BOUTONS_CLIC = coul.getColComplementaire_4();
+		COL_FOND_BOUTONS_NON_CLIC = coul.getColPrimaire_3();
 		COL_TEXTE_1 = coul.getColPrimaire_3();
 		COL_TEXTE_2 = coul.getColPrimaire_2();
 		COL_MOT = coul.getColPrimaire_3();
@@ -297,7 +297,6 @@ public class Controleur {
 	//repaint
 	public void rafraichiJeu() {
 		fenetreprincipale.modifieBackgrounds();
-		
 	}
 	
 	//modifieScore
@@ -503,5 +502,9 @@ public class Controleur {
 
 	public void repaintPanelKeyboard() {
 		fenetreprincipale.repaintPanelKeyboard();
+	}
+
+	public void colorerTousBoutons() {
+		fenetreprincipale.colorerTousBoutons();
 	}
 }

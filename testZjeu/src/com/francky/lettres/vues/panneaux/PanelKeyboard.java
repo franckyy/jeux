@@ -99,4 +99,8 @@ public class PanelKeyboard extends JPanel {
 	public void repaintPanelKeyboard() {
 		this.repaint();
 	}
+
+	public void colorerTousBoutons() {
+		bm.colorerTousBoutons();
+	}
 }
