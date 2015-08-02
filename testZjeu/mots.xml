@@ -3,5 +3,10 @@
 	<listemots lang="fr">
 		<mot genre="true" composed="false" pluriel="chapeaux" lang="fr">CHAPEAU</mot>
 		<mot genre="false" composed="false" pluriel="chaises" lang="fr">CHAISE</mot>
+		<mot genre="true" composed="false" pluriel="papas" lang="fr">PAPA</mot>
+		<mot genre="false" composed="false" pluriel="mamans" lang="fr">MAMAN</mot>
+		<mot genre="false" composed="false" pluriel="fleurs" lang="fr">FLEUR</mot>
+		<mot genre="true" composed="false" pluriel="chevaux" lang="fr">CHEVAL</mot>
+		<mot genre="true" composed="false" pluriel="zèbres" lang="fr">ZEBRE</mot>
 	</listemots>
 </mots>
