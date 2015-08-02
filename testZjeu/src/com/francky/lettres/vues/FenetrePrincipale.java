@@ -70,8 +70,8 @@ public class FenetrePrincipale extends JFrame {
 		panelaffichage.setMotTrouve(b);
 	}
 	
-	public void PanelAffichFelicit() {
-		panelaffichage.panelAffichFelicit();
+	public void PanelAffichFelicit(int time) {
+		panelaffichage.panelAffichFelicit(time);
 	}
 
 	public void repaintPanelAffich() {

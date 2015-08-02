@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.Vector;
 
-import com.francky.lettres.modele.BoutonsMap;
 import com.francky.lettres.modele.CouleurThemes;
 import com.francky.lettres.modele.Mot;
 import com.francky.lettres.modele.MotDAO;
@@ -137,25 +136,7 @@ public class Controleur {
 						listeLettres.add(FELICIT_MOT_TROUVE.charAt(i));
 					}
 					//on demande l'affichage du mot de félicitation (avec clignotment codé dans panelAffichage) pendant xxx millisecondes
-					fenetreprincipale.PanelAffichFelicit();
-					
-//					//le gain du mot trouvé est ajouté au score
-//					gain = scoreMotTrouve();
-//					setScore(gain);
-//					
-//					//On repasse le booléen motTrouvé à false pour que le panelAffichage affiche le mot normalement
-//					fenetreprincipale.motTrouveBool(false);
-//					//on remet à zéro la liste des lettres du mot à afficher
-//					listeLettres.clear();
-//					//on remet à zéro le nombre d'essais
-//					nbreEssais = 0;
-//					//on dégrise les touches
-//					btnGriseur("all", true);
-//					//on remet les compteur du nombre de lettres trouvées à zéro
-//					setNbreLettresUtilisees(0);
-//					//nouveau mot
-//					choixNouveauMot();
-//					repaintPanelAffich();
+					fenetreprincipale.PanelAffichFelicit(3000);
 				}
 			} else {
 				message = "lettre non trouvée !";
@@ -165,6 +146,25 @@ public class Controleur {
 			fenetreprincipale.repaint();
 	}
 	
+	public void apresMotTrouve() {
+		//le gain du mot trouvé est ajouté au score
+		int gain = scoreMotTrouve();
+		setScore(gain);
+		
+		//On repasse le booléen motTrouvé à false pour que le panelAffichage affiche le mot normalement
+		fenetreprincipale.motTrouveBool(false);
+		//on remet à zéro la liste des lettres du mot à afficher
+		listeLettres.clear();
+		//on remet à zéro le nombre d'essais
+		nbreEssais = 0;
+		//on dégrise les touches
+		btnGriseur("all", true);
+		//on remet les compteur du nombre de lettres trouvées à zéro
+		setNbreLettresUtilisees(0);
+		//nouveau mot
+		choixNouveauMot();
+		repaintPanelAffich();
+	}
 	
 	private void repaintPanelAffich() {
 		fenetreprincipale.repaintPanelAffich();
