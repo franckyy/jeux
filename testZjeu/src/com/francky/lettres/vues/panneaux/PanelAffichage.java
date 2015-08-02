@@ -177,7 +177,7 @@ public class PanelAffichage extends JPanel {
  
 	public void addNotify() {
 		super.addNotify();
-		animator = new Timer(200, animatorTask);
+		animator = new Timer(300, animatorTask);
 		animator.start();
 	}
  

@@ -52,6 +52,8 @@ public class Controleur {
 	 */
 	private String COLOR_THEME = "THEME3";	//THEME1 à THEME5
 	public Color COL_FOND;
+	public Color COL_FOND_BOUTONS_CLIC;
+	public Color COL_FOND_BOUTONS_NON_CLIC;
 	public Color COL_TEXTE_1;
 	public Color COL_TEXTE_2;
 	public Color COL_MOT;
@@ -217,6 +219,8 @@ public class Controleur {
 		CouleurThemes coul = new CouleurThemes(theme);
 		
 		COL_FOND = coul.getColComplementaire_5();
+		COL_FOND_BOUTONS_CLIC = coul.getColComplementaire_3();
+		COL_FOND_BOUTONS_NON_CLIC = coul.getColPrimaire_4();
 		COL_TEXTE_1 = coul.getColPrimaire_3();
 		COL_TEXTE_2 = coul.getColPrimaire_2();
 		COL_MOT = coul.getColPrimaire_3();
@@ -303,9 +307,7 @@ public class Controleur {
 	
 	//******************METHODES POUR LE SCORE
 	private int scoreMotTrouve(){
-		int gain = 0;
-		System.out.println("nbreEssais : " + nbreEssais + " / longueur mot : " + mot.length());
-		
+		int gain = 0;		
 		//vérification des lettres en doubles dans le mot
 		//si lettres doubles, le nombre d'essais pour trouver le mot sans se tromper diminue d'autant plus
 		int nbreLettresDoubles = 0;
@@ -498,4 +500,8 @@ public class Controleur {
 
 	public int getNbreLettresUtilisees() {return nbreLettresUtilisees;}
 	public void setNbreLettresUtilisees(int nbreLettresUtilisees) {this.nbreLettresUtilisees = nbreLettresUtilisees;}
+
+	public void repaintPanelKeyboard() {
+		fenetreprincipale.repaintPanelKeyboard();
+	}
 }

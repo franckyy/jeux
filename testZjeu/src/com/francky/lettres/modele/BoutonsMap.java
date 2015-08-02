@@ -1,11 +1,13 @@
 package com.francky.lettres.modele;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.JButton;
 
+import com.francky.lettres.ctrl.Controleur;
 import com.francky.lettres.ctrl.Ecouteur;
 import com.francky.lettres.vues.panneaux.PanelKeyboard;
 
@@ -13,6 +15,7 @@ public class BoutonsMap {
 
 	//DECLARATIONS
 	PanelKeyboard panelkeyboard;
+	Controleur ctrl;
 	
 	private HashMap<Character, JButton> boutons;
 	
@@ -25,8 +28,9 @@ public class BoutonsMap {
 	List<Character> lettres;				//Liste de toutes les lettres de l'alphabet
 	
 	//CONSTRUCTEUR
-	public BoutonsMap(Ecouteur btnListener, PanelKeyboard panelkeyboard) {
+	public BoutonsMap(Ecouteur btnListener, PanelKeyboard panelkeyboard, Controleur ctrl) {
 		super();
+		this.ctrl = ctrl;
 		boutons = new HashMap<Character, JButton>();
 		this.panelkeyboard = panelkeyboard;
 		boutons = remplissageBoutons();
@@ -45,6 +49,7 @@ public class BoutonsMap {
 		
 		for(int i = 0; i < boutons.size(); i++){
 			panelkeyboard.add(boutons.get(lettres.get(i)));
+			boutons.get(lettres.get(i)).setBackground(ctrl.COL_FOND_BOUTONS_NON_CLIC);
 			boutons.get(lettres.get(i)).addActionListener(btnListener);
 			boutons.get(lettres.get(i)).setActionCommand("" + lettres.get(i));
 		}
@@ -132,9 +137,11 @@ public class BoutonsMap {
 		if(btnValue.equals("all")){
 			for(JButton btn : boutons.values()){
 				btn.setEnabled(boolGriser);
+				btn.setBackground(ctrl.COL_FOND_BOUTONS_NON_CLIC);
 			}
 		} else {
 			this.getJBouton(btnValue).setEnabled(boolGriser);
+			this.getJBouton(btnValue).setBackground(ctrl.COL_FOND_BOUTONS_CLIC);
 		}
 	}
 

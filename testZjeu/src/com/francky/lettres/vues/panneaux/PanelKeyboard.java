@@ -77,7 +77,7 @@ public class PanelKeyboard extends JPanel {
 		setLayout(new GridLayout(ROWS_NUMBER, COLS_NUMBER, KEY_MARGE, KEY_MARGE));
 
 		//Construction des boutons du clavier
-		bm = new BoutonsMap(btnListener, this);					//Instanciation de BoutonsMap
+		bm = new BoutonsMap(btnListener, this, ctrl);					//Instanciation de BoutonsMap
 		
 		//définition d'une marge autour du panneau clavier
 		setBorder(new EmptyBorder(KEY_PANEL_MARGE_TOP, KEY_PANEL_MARGE_LEFT, KEY_PANEL_MARGE_BOTTOM, KEY_PANEL_MARGE_RIGHT));
@@ -89,7 +89,14 @@ public class PanelKeyboard extends JPanel {
 		setBackground(ctrl.COL_FOND);
 	}
 
+	//Griser / dégriser les boutons
 	public void griserBouton(String btnValue, boolean boolGriser) {
+		this.repaintPanelKeyboard();
 		bm.griserBouton(btnValue, boolGriser);		
+	}
+	
+	//repaint du panelKeyboard
+	public void repaintPanelKeyboard() {
+		this.repaint();
 	}
 }

@@ -85,4 +85,8 @@ public class FenetrePrincipale extends JFrame {
 	public void repaintPanelScore() {
 		panelscore.repaintPanelScore();
 	}
+
+	public void repaintPanelKeyboard() {
+		panelkeyboard.repaintPanelKeyboard();
+	}
 }
