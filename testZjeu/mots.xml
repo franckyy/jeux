@@ -2,11 +2,19 @@
 <mots>
 	<listemots lang="fr">
 		<mot genre="true" composed="false" pluriel="airs" lang="fr">AIR</mot>
-		<mot continent="true" genre="true" composed="false" lang="fr">AFRIQUE</mot>
-		<mot pays="true" genre="true" composed="false" lang="fr">AFRIQUE DU SUD</mot>		
+		<mot continent="true" genre="true" composed="false" lang="fr">AFRIQUE</mot>		
 		<mot genre="false" composed="false" pluriel="abeilles" lang="fr">ABEILLE</mot>
 		<mot continent="true" genre="false" composed="false" lang="fr">ASIE</mot>
 		<mot pays="true" genre="true" composed="false" lang="fr">VENEZUELA</mot>
+		<mot genre="true" composed="false" pluriel="vents" lang="fr">VENT</mot>
+		<mot verbe="true" composed="false" lang="fr">PARLER</mot>
+		<mot genre="true" composed="false" pluriel="chiens" lang="fr">CHIEN</mot>
+		<mot genre="true" composed="false" pluriel="chats" lang="fr">CHAT</mot>
+		<mot genre="true" composed="false" pluriel="oiseaux" lang="fr">OISEAU</mot>
+		<mot genre="true" composed="false" pluriel="bateaux" lang="fr">BATEAU</mot>
+		<mot genre="false" composed="false" pluriel="fleurs" lang="fr">FLEUR</mot>
+		<mot genre="true" composed="false" pluriels="horizons" lang="fr">HORIZON</mot>
+		<mot genre="true" composed="false" pluriels="chapitres" lang="fr">CHAPITRE</mot>
 	</listemots>
 </mots>
 <!--voir le site suivant pour connaitre les genres des payes ou continents et autres
