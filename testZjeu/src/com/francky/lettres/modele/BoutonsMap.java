@@ -50,6 +50,7 @@ public class BoutonsMap {
 		for(int i = 0; i < boutons.size(); i++){
 			panelkeyboard.add(boutons.get(lettres.get(i)));
 			boutons.get(lettres.get(i)).setBackground(ctrl.COL_FOND_BOUTONS_NON_CLIC);
+			boutons.get(lettres.get(i)).setForeground(ctrl.COL_TEXT_BOUTONS_NON_CLIC);
 			boutons.get(lettres.get(i)).addActionListener(btnListener);
 			boutons.get(lettres.get(i)).setActionCommand("" + lettres.get(i));
 		}
@@ -136,12 +137,24 @@ public class BoutonsMap {
 	public void griserBouton(String btnValue, boolean boolGriser) {		
 		if(btnValue.equals("all")){
 			for(JButton btn : boutons.values()){
-				btn.setEnabled(boolGriser);
-				btn.setBackground(ctrl.COL_FOND_BOUTONS_NON_CLIC);
+				btn.setEnabled(!boolGriser);
+				if(boolGriser){
+					btn.setBackground(ctrl.COL_FOND_BOUTONS_CLIC);
+					btn.setForeground(ctrl.COL_TEXT_BOUTONS_CLIC);
+				} else {
+					btn.setBackground(ctrl.COL_FOND_BOUTONS_NON_CLIC);
+					btn.setForeground(ctrl.COL_TEXT_BOUTONS_NON_CLIC);
+				}
 			}
 		} else {
 			this.getJBouton(btnValue).setEnabled(boolGriser);
-			this.getJBouton(btnValue).setBackground(ctrl.COL_FOND_BOUTONS_CLIC);
+			if(boolGriser){
+				this.getJBouton(btnValue).setBackground(ctrl.COL_FOND_BOUTONS_CLIC);
+				this.getJBouton(btnValue).setForeground(ctrl.COL_TEXT_BOUTONS_CLIC);
+			} else {
+				this.getJBouton(btnValue).setBackground(ctrl.COL_FOND_BOUTONS_NON_CLIC);
+				this.getJBouton(btnValue).setForeground(ctrl.COL_TEXT_BOUTONS_NON_CLIC);
+			}
 		}
 	}
 
@@ -149,8 +162,10 @@ public class BoutonsMap {
 		for(JButton btn : boutons.values()){
 			if(btn.isEnabled()){
 				btn.setBackground(ctrl.COL_FOND_BOUTONS_NON_CLIC);
+				btn.setForeground(ctrl.COL_TEXT_BOUTONS_NON_CLIC);
 			} else {
 				btn.setBackground(ctrl.COL_FOND_BOUTONS_CLIC);
+				btn.setForeground(ctrl.COL_TEXT_BOUTONS_CLIC);
 			}
 		}
 	}

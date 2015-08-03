@@ -53,7 +53,9 @@ public class Controleur {
 	private String COLOR_THEME = "THEME3";	//THEME1 à THEME5
 	public Color COL_FOND;
 	public Color COL_FOND_BOUTONS_CLIC;
+	public Color COL_TEXT_BOUTONS_CLIC;
 	public Color COL_FOND_BOUTONS_NON_CLIC;
+	public Color COL_TEXT_BOUTONS_NON_CLIC;
 	public Color COL_TEXTE_1;
 	public Color COL_TEXTE_2;
 	public Color COL_MOT;
@@ -170,7 +172,7 @@ public class Controleur {
 		//on remet à zéro le nombre d'essais
 		nbreEssais = 0;
 		//on dégrise les touches
-		btnGriseur("all", true);
+		btnGriseur("all", false);
 		//on remet les compteur du nombre de lettres trouvées à zéro
 		setNbreLettresUtilisees(0);
 		//nouveau mot
@@ -219,8 +221,10 @@ public class Controleur {
 		CouleurThemes coul = new CouleurThemes(theme);
 		
 		COL_FOND = coul.getColComplementaire_5();
-		COL_FOND_BOUTONS_CLIC = coul.getColComplementaire_4();
-		COL_FOND_BOUTONS_NON_CLIC = coul.getColPrimaire_3();
+		COL_FOND_BOUTONS_CLIC = coul.getColComplementaire_3();
+		COL_TEXT_BOUTONS_CLIC = coul.getColPrimaire_3();
+		COL_FOND_BOUTONS_NON_CLIC = coul.getColPrimaire_5();
+		COL_TEXT_BOUTONS_NON_CLIC = coul.getColComplementaire_4();
 		COL_TEXTE_1 = coul.getColPrimaire_3();
 		COL_TEXTE_2 = coul.getColPrimaire_2();
 		COL_MOT = coul.getColPrimaire_3();
