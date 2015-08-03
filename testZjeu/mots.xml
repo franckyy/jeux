@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mots>
 	<listemots lang="fr">
-		<mot genre="true" composed="false" pluriel="airs" lang="fr">AIR</mot>
+		
 		<mot continent="true" genre="true" composed="false" lang="fr">AFRIQUE</mot>		
 		<mot genre="false" composed="false" pluriel="abeilles" animal="true" lang="fr">ABEILLE</mot>
 		<mot continent="true" genre="false" composed="false" lang="fr">ASIE</mot>
@@ -52,3 +52,4 @@
 </mots>
 <!--voir le site suivant pour connaitre les genres des payes ou continents et autres
  http://www.bertrandboutin.ca/Folder_151_Grammaire/E_c_noms_geo.htm#_PAYS,_ANCIENS_PAYS, -->
+ 

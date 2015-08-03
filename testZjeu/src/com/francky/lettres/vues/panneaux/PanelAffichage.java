@@ -128,6 +128,7 @@ public class PanelAffichage extends JPanel {
  
 		else {			
 			//affichage du mot caché
+
 			g.setColor(ctrl.COL_MOT);
 			g.setFont(MOT_FONT);
  

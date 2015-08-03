@@ -13,8 +13,12 @@ import com.francky.lettres.vues.FenetrePrincipale;
 import com.francky.lettres.vues.panneaux.PanelScore;
 
 public class Controleur {
-
+	
+	//*********************************************************************************************************************
 	//***********************************************************DECLARATIONS
+	//*********************************************************************************************************************
+	
+	
 	FenetrePrincipale fenetreprincipale;
 	MotDAO motdao = new MotDAO("mots.xml", this);
 	Vector<Mot> mots = null;		//contenant de tous les objets Mot
@@ -81,10 +85,13 @@ public class Controleur {
 	public String FELICIT_MOT_TROUVE = "BRAVO !";
 	
 	Ecouteur ecouteur;
-	
+
+	//*********************************************************************************************************************
 	//***********************************************************CONSTRUCTEUR
+	//*********************************************************************************************************************
 	
 	public Controleur() {
+		
 		//************************************Initialisations
 		resetGame();
 		resetColors(COLOR_THEME);		
@@ -100,9 +107,68 @@ public class Controleur {
 		fenetreprincipale.setVisible(true);
 		fenetreprincipale.requestFocus();
 	}
+
+	//*********************************************************************************************************************
 	//***********************************************************METHODES
+	//*********************************************************************************************************************
 	
-	//recherche d'une lettre cliquée dans le mot
+	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    
+	//**********************************************METHODES POUR REINITIALISER LE JEU
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤  
+	
+	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    réinitialisation des couleurs
+	public void resetColors(String theme) {
+		//initialisation des couleurs - a l'avenir il faudra aller chercher le theme dans un .xml
+		CouleurThemes coul = new CouleurThemes(theme);
+		
+		COL_FOND = coul.getColComplementaire_5();
+		COL_FOND_BOUTONS_CLIC = coul.getColComplementaire_3();
+		COL_TEXT_BOUTONS_CLIC = coul.getColPrimaire_3();
+		COL_FOND_BOUTONS_NON_CLIC = coul.getColPrimaire_5();
+		COL_TEXT_BOUTONS_NON_CLIC = coul.getColComplementaire_4();
+		COL_TEXTE_1 = coul.getColPrimaire_3();
+		COL_TEXTE_2 = coul.getColPrimaire_2();
+		COL_MOT = coul.getColPrimaire_3();
+		COL_MOT_TROUVE1 = coul.getColComplementaire_1();
+		COL_MOT_TROUVE2 = coul.getColComplementaire_2();
+		COL_MOT_TROUVE3 = coul.getColComplementaire_3();
+		COL_MOT_TROUVE4 = coul.getColComplementaire_4();
+		COL_MOT_TROUVE5 = coul.getColPrimaire_1();
+		COL_MOT_TROUVE6 = coul.getColPrimaire_2();
+		COL_MOT_TROUVE7 = coul.getColPrimaire_3();
+		COL_MOT_TROUVE8 = coul.getColPrimaire_4();
+		COL_MOT_TROUVE9 = coul.getColPrimaire_5();
+		COL_GRAPH = coul.getColPrimaire_1();
+		
+	}
+	
+	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    remise à zéro des paramètres d'initialisation
+	private void resetGame() {
+		debug = true;
+		setScore(0);
+		setMotsTrouves(0);
+		setNbreLettres(0);
+		setNbreEssais(0);
+		setNbreLettresUtilisees(0);
+		setNiveau(1);
+		chargementMots();
+		listeLettres = new ArrayList<Character>();
+		lettreTrouvee = ' ';
+		ecouteur = new Ecouteur(this);
+//		btnMap = new BoutonsMap(ecouteur);
+		listeLettresTrouvees = new ArrayList<Character>();
+	}
+	
+
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    
+	//**********************************************METHODES DE GESTION DES LETTRES ET DES MOTS
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤  
+	
+	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    recherche d'une lettre cliquée dans le mot
 	public void searchLetter(String lettreClic) {
 
 		//incrémenter le nombre de lettres utilisées ou cliquées
@@ -141,49 +207,8 @@ public class Controleur {
 			fenetreprincipale.repaint();
 	}
 	
-	public void apresPanelAffichDernierelettre() {
-		//remise à zéro du nombre de lettres cliquées
-		
-		//affichage BRAVO !!!
-		fenetreprincipale.motTrouveBool(true);
-		//ràz du nombre de lettres trouvées et utilisées
-		nbreLettres = 0;
-		nbreLettresUtilisees = 0;
-		//rafraichissement du panel score
-		fenetreprincipale.repaintPanelScore();
-		listeLettres.clear(); 	//on vide la liste des lettres avant de remplir
-		//on remplit la liste des lettres avec le mot de félicitation
-		for(int i = 0; i < FELICIT_MOT_TROUVE.length(); i++){
-			listeLettres.add(FELICIT_MOT_TROUVE.charAt(i));
-		}
-		//on demande l'affichage du mot de félicitation (avec clignotment codé dans panelAffichage) pendant xxx millisecondes
-		fenetreprincipale.PanelAffichFelicit(3000);
-	}
-	
-	public void apresMotTrouve() {
-		//le gain du mot trouvé est ajouté au score
-		int gain = scoreMotTrouve();
-		setScore(gain);
-		
-		//On repasse le booléen motTrouvé à false pour que le panelAffichage affiche le mot normalement
-		fenetreprincipale.motTrouveBool(false);
-		//on remet à zéro la liste des lettres du mot à afficher
-		listeLettres.clear();
-		//on remet à zéro le nombre d'essais
-		nbreEssais = 0;
-		//on dégrise les touches
-		btnGriseur("all", false);
-		//on remet les compteur du nombre de lettres trouvées à zéro
-		setNbreLettresUtilisees(0);
-		//nouveau mot
-		choixNouveauMot();
-		repaintPanelAffich();
-	}
-	
-	private void repaintPanelAffich() {
-		fenetreprincipale.repaintPanelAffich();
-	}
 
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    
 	//Choix d'un nouveau mot parmi la liste, on retire le mot choisi de la liste,
 	//on génère le tableau de lettres du mot choisi, on génère le mot caché 
 	private void choixNouveauMot() {
@@ -209,65 +234,9 @@ public class Controleur {
 				
 	}
 	
-	public void stopGame() {
-		//enregistrer score si high score
-		//afficher mot de fin
-		//demander à taper sur une touche pour recommencer
-		
-		//ou fermer le jeu
-
-		System.exit(0);
-	}
-
-	//réinitialisation des couleurs
-	public void resetColors(String theme) {
-		//initialisation des couleurs - a l'avenir il faudra aller chercher le theme dans un .xml
-		CouleurThemes coul = new CouleurThemes(theme);
-		
-		COL_FOND = coul.getColComplementaire_5();
-		COL_FOND_BOUTONS_CLIC = coul.getColComplementaire_3();
-		COL_TEXT_BOUTONS_CLIC = coul.getColPrimaire_3();
-		COL_FOND_BOUTONS_NON_CLIC = coul.getColPrimaire_5();
-		COL_TEXT_BOUTONS_NON_CLIC = coul.getColComplementaire_4();
-		COL_TEXTE_1 = coul.getColPrimaire_3();
-		COL_TEXTE_2 = coul.getColPrimaire_2();
-		COL_MOT = coul.getColPrimaire_3();
-		COL_MOT_TROUVE1 = coul.getColComplementaire_1();
-		COL_MOT_TROUVE2 = coul.getColComplementaire_2();
-		COL_MOT_TROUVE3 = coul.getColComplementaire_3();
-		COL_MOT_TROUVE4 = coul.getColComplementaire_4();
-		COL_MOT_TROUVE5 = coul.getColPrimaire_1();
-		COL_MOT_TROUVE6 = coul.getColPrimaire_2();
-		COL_MOT_TROUVE7 = coul.getColPrimaire_3();
-		COL_MOT_TROUVE8 = coul.getColPrimaire_4();
-		COL_MOT_TROUVE9 = coul.getColPrimaire_5();
-		COL_GRAPH = coul.getColPrimaire_1();
-		
-	}
 	
-	//remise à zéro des paramètres d'initialisation
-	private void resetGame() {
-		debug = true;
-		setScore(0);
-		setMotsTrouves(0);
-		setNbreLettres(0);
-		setNbreEssais(0);
-		setNbreLettresUtilisees(0);
-		setNiveau(1);
-		chargementMots();
-		listeLettres = new ArrayList<Character>();
-		lettreTrouvee = ' ';
-		ecouteur = new Ecouteur(this);
-//		btnMap = new BoutonsMap(ecouteur);
-		listeLettresTrouvees = new ArrayList<Character>();
-	}
-	
-	//chargement des mots
-	private void chargementMots() {
-		mots = motdao.chargerMots();
-	}
-	
-	//génération d'un entier au hasard compris entre 0 et les nombre de mots contenus dans la liste des mots en .xml
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    génération d'un entier au hasard compris entre 0 et les nombre de mots 
+	//contenus dans la liste des mots en .xml
 	private int randomNum() {
 		Random rand = new Random();
 		int numRank = 0;
@@ -286,7 +255,9 @@ public class Controleur {
 		return numRank;
 	}
 	
-	//création du mot qui sera affiché (on montre les lettres qui ont déjà été trouvées) prend en paramètre la liste
+	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    création du mot qui sera affiché (on montre les lettres qui ont déjà été trouvées)
+	//prend en paramètre la liste
 	private ArrayList<Character> setlisteLettres(ArrayList<Character> listeLettres){	
 		for (int rank = 0; rank < listeLettres.size(); rank++){
 			if(listeLettres.get(rank).equals('_') && !listeLettres.get(rank).equals(' ')){
@@ -298,23 +269,104 @@ public class Controleur {
 		
 		return listeLettres;
 	}
+
 	
-	//griseur de boutons
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    chargement des mots
+	private void chargementMots() {
+		mots = motdao.chargerMots();
+	}
+	
+	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    
+	//**********************************************METHODES D'AFFICHAGES
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤  
+	
+	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    méthode qui est appelée depuis le panelaffichage lorsque l'affichage de la dernière lettre est fini
+	public void apresPanelAffichDernierelettre() {
+		//remise à zéro du nombre de lettres cliquées
+		
+		//affichage BRAVO !!!
+		fenetreprincipale.motTrouveBool(true);
+		//ràz du nombre de lettres trouvées et utilisées
+		nbreLettres = 0;
+		nbreLettresUtilisees = 0;
+		//rafraichissement du panel score
+		fenetreprincipale.repaintPanelScore();
+		listeLettres.clear(); 	//on vide la liste des lettres avant de remplir
+		//on remplit la liste des lettres avec le mot de félicitation
+		for(int i = 0; i < FELICIT_MOT_TROUVE.length(); i++){
+			listeLettres.add(FELICIT_MOT_TROUVE.charAt(i));
+		}
+		//on demande l'affichage du mot de félicitation (avec clignotment codé dans panelAffichage) pendant xxx millisecondes
+		fenetreprincipale.PanelAffichFelicit(3000);
+	}
+	
+	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    méthode appelée depuis Ecouteur pour réafficher le panelaffichage
+	private void repaintPanelAffich() {
+		fenetreprincipale.repaintPanelAffich();
+	}
+	
+	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    méthode appelée depuis la méthode hideText() de panelaffichage lorsque la félicitation a fini de clignoter
+	public void apresMotTrouve() {
+		//le gain du mot trouvé est ajouté au score
+		int gain = scoreMotTrouve();
+		setScore(gain);
+		
+		//On repasse le booléen motTrouvé à false pour que le panelAffichage affiche le mot normalement
+		fenetreprincipale.motTrouveBool(false);
+		//on remet à zéro la liste des lettres du mot à afficher
+		listeLettres.clear();
+		//on remet à zéro le nombre d'essais
+		nbreEssais = 0;
+		//on dégrise les touches
+		btnGriseur("all", false);
+		//on remet les compteur du nombre de lettres trouvées à zéro
+		setNbreLettresUtilisees(0);
+		//nouveau mot
+		choixNouveauMot();
+		repaintPanelAffich();
+	}
+
+	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    méthode en chantier quiservira à terminer le jeu ou à le redémarrer
+	//il faut demander au joueur s'il veut recommencer.	
+	public void stopGame() {
+		//enregistrer score si high score
+		//afficher mot de fin
+		//demander à taper sur une touche pour recommencer
+		
+		//ou fermer le jeu
+
+		System.exit(0);
+	}
+	
+	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    griseur de boutons
 	public void btnGriseur(String btnValue, boolean boolGriser) {
 		fenetreprincipale.griserBouton(btnValue, boolGriser);
 	}
 	
-	//repaint
+	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    repaint général qui modifie les couleurs de fond
 	public void rafraichiJeu() {
 		fenetreprincipale.modifieBackgrounds();
 	}
 	
-	//modifieScore
+	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    
+	//**********************************************METHODES POUR LE SCORE
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    
+	
+	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    modifieScore
 	public void modifieScore(int ajout) {
 		setScore(getScore() + ajout);
 	}
 	
-	//******************METHODES POUR LE SCORE
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    calcule le score suite à un mot trouvé
 	private int scoreMotTrouve(){
 		int gain = 0;		
 		//vérification des lettres en doubles dans le mot
@@ -366,6 +418,8 @@ public class Controleur {
 		return gain;
 	}
 	
+	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    calcule le score suite à une lettre trouvée
 	private int scoreLettreTrouvee(Character lettre){
 		int gain = 0;
 		//On accorde un nombre de points par lettre trouvée
@@ -485,8 +539,12 @@ public class Controleur {
 		return gain * coeff;
 	}
 	
-	
+
+	//*********************************************************************************************************************
 	//***********************************************************GETTERS & SETTERS
+	//*********************************************************************************************************************
+	
+	
 	public int getScore() {return score;}
 	public void setScore(int gain) {this.score += gain;}
 
@@ -510,11 +568,6 @@ public class Controleur {
 	public int getNbreLettresUtilisees() {return nbreLettresUtilisees;}
 	public void setNbreLettresUtilisees(int nbreLettresUtilisees) {this.nbreLettresUtilisees = nbreLettresUtilisees;}
 
-	public void repaintPanelKeyboard() {
-		fenetreprincipale.repaintPanelKeyboard();
-	}
-
-	public void colorerTousBoutons() {
-		fenetreprincipale.colorerTousBoutons();
-	}
+	public void repaintPanelKeyboard() {fenetreprincipale.repaintPanelKeyboard();}
+	public void colorerTousBoutons() {fenetreprincipale.colorerTousBoutons();}
 }
