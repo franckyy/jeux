@@ -36,7 +36,8 @@
 		<mot genre="false" composed="false" pluriels="couleurs" lang="fr">COULEUR</mot>
 		<mot genre="false" composed="false" pluriels="racines" lang="fr">RACINE</mot>
 		<mot genre="true" composed="false" pluriels="arbres" lang="fr">ARBRE</mot>
-		<mot genre="false" composed="false" pluriels="feuilles" lang="fr">FEUILES</mot>
+		<mot genre="false" composed="false" pluriels="feuilles" lang="fr">FEUILLE</mot>
+		<mot genre="true" composed="false" pluriels="branches" lang="fr">BRANCHE</mot>
 	</listemots>
 </mots>
 <!--voir le site suivant pour connaitre les genres des payes ou continents et autres
