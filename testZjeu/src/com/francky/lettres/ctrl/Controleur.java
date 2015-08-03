@@ -294,7 +294,7 @@ public class Controleur {
 					listeLettres.set(rank, lettreTrouvee);
 				}
 			}
-		}		
+		}
 		
 		return listeLettres;
 	}

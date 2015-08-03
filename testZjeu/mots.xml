@@ -15,6 +15,28 @@
 		<mot genre="false" composed="false" pluriel="fleurs" lang="fr">FLEUR</mot>
 		<mot genre="true" composed="false" pluriels="horizons" lang="fr">HORIZON</mot>
 		<mot genre="true" composed="false" pluriels="chapitres" lang="fr">CHAPITRE</mot>
+		<mot genre="false" composed="false" pluriels="voitures" lang="fr">VOITURE</mot>
+		<mot genre="false" composed="false" pluriels="princesses" lang="fr">PRINCESSE</mot>
+		<mot genre="true" composed="false" pluriels="stylos" lang="fr">STYLO</mot>
+		<mot genre="true" composed="false" pluriels="papiers" lang="fr">PAPIER</mot>
+		<mot genre="true" composed="false" pluriels="livres" lang="fr">LIVRE</mot>
+		<mot genre="true" composed="false" pluriels="bouquins" lang="fr">BOUQUIN</mot>
+		<mot genre="false" composed="false" pluriels="bibliothèques" lang="fr">BIBLIOTHEQUE</mot>
+		<mot genre="false" composed="false" pluriels="terres" lang="fr">TERRE</mot>
+		<mot genre="true" composed="false" pluriels="soleils" lang="fr">SOLEIL</mot>
+		<mot genre="false" composed="false" pluriels="lunes" lang="fr">LUNE</mot>
+		<mot genre="false" composed="false" pluriels="souris" lang="fr">SOURIS</mot>
+		<mot genre="true" composed="false" pluriels="rats" lang="fr">RAT</mot>
+		<mot genre="true" composed="false" pluriels="pigeons" lang="fr">PIGEON</mot>
+		<mot genre="true" composed="false" pluriels="vélos" lang="fr">VELO</mot>
+		<mot genre="false" composed="false" pluriels="bicyclettes" lang="fr">BICYCLETTE</mot>
+		<mot genre="true" composed="false" pluriels="rouges" couleur="true" lang="fr">ROUGE</mot>
+		<mot genre="true" composed="false" pluriels="verts" couleur="true" lang="fr">VERT</mot>
+		<mot genre="false" composed="false" pluriels="épines" lang="fr">EPINE</mot>
+		<mot genre="false" composed="false" pluriels="couleurs" lang="fr">COULEUR</mot>
+		<mot genre="false" composed="false" pluriels="racines" lang="fr">RACINE</mot>
+		<mot genre="true" composed="false" pluriels="arbres" lang="fr">ARBRE</mot>
+		<mot genre="false" composed="false" pluriels="feuilles" lang="fr">FEUILES</mot>
 	</listemots>
 </mots>
 <!--voir le site suivant pour connaitre les genres des payes ou continents et autres
