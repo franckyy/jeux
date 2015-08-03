@@ -147,7 +147,7 @@ public class BoutonsMap {
 				}
 			}
 		} else {
-			this.getJBouton(btnValue).setEnabled(boolGriser);
+			this.getJBouton(btnValue).setEnabled(!boolGriser);
 			if(boolGriser){
 				this.getJBouton(btnValue).setBackground(ctrl.COL_FOND_BOUTONS_CLIC);
 				this.getJBouton(btnValue).setForeground(ctrl.COL_TEXT_BOUTONS_CLIC);
