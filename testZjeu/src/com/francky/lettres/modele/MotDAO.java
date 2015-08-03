@@ -13,13 +13,19 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import com.francky.lettres.ctrl.Controleur;
+
 public class MotDAO {
 
 	//DECLARATIONS
 	File motsXML;
-	public MotDAO(String filename) {
+	Controleur ctrl;
+	
+	//CONSTRUCTEUR
+	public MotDAO(String filename, Controleur ctrl) {
 		super();
 		motsXML = new File(filename);
+		this.ctrl = ctrl;
 	}
 	
 	public Vector<Mot> chargerMots(){
@@ -36,7 +42,11 @@ public class MotDAO {
 				mots.add(new Mot(el.getTextContent(), Boolean.parseBoolean(el.getAttribute("genre")), Boolean.parseBoolean(el.getAttribute("composed"))));
 			}
 			
-		} catch (SAXException | IOException | ParserConfigurationException e) {e.printStackTrace();}
+		}
+		catch (SAXException | IOException | ParserConfigurationException e) {
+			ctrl.stopGame();
+			e.printStackTrace();
+		}
 		
 		return mots;
 	}

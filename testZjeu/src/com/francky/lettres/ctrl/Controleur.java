@@ -16,7 +16,7 @@ public class Controleur {
 
 	//***********************************************************DECLARATIONS
 	FenetrePrincipale fenetreprincipale;
-	MotDAO motdao = new MotDAO("mots.xml");
+	MotDAO motdao = new MotDAO("mots.xml", this);
 	Vector<Mot> mots = null;		//contenant de tous les objets Mot
 	public boolean debug;			//variable pour le débuggage
 	private int randomNum;			//variable contenant le numéro trouvé par le random
@@ -189,7 +189,7 @@ public class Controleur {
 	private void choixNouveauMot() {
 		
 		randomNum = randomNum();
-
+		
 		mot = mots.get(randomNum).getChaine();
 		
 		//lorsque le nouveau mot a été choisi, il faut remplir un tableau de Character avec des underscores
@@ -209,10 +209,14 @@ public class Controleur {
 				
 	}
 	
-	private void stopGame() {
+	public void stopGame() {
 		//enregistrer score si high score
 		//afficher mot de fin
 		//demander à taper sur une touche pour recommencer
+		
+		//ou fermer le jeu
+
+		System.exit(0);
 	}
 
 	//réinitialisation des couleurs
@@ -271,7 +275,9 @@ public class Controleur {
 		try {
 			numRank =  rand.nextInt((mots.size()));
 		}  
-		catch (IllegalArgumentException argEx){System.out.println("Illegal Argument Exception captée");}
+		catch (IllegalArgumentException argEx){System.out.println("Illegal Argument Exception captée");
+		stopGame();
+		}
 		catch (ArrayIndexOutOfBoundsException bounds) {System.out.println("Array Index Out Of Bounds Exception captée");}
 		finally {
 			//reset game
