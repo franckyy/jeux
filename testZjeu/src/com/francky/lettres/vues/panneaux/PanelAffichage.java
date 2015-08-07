@@ -166,6 +166,8 @@ public class PanelAffichage extends JPanel {
 	public synchronized void hideText() {
 		if ( showText ) {
 			showText=false;
+			ctrl.setNbreLettresUtilisees(0);
+			ctrl.setNbreLettres(0);
 			ctrl.apresMotTrouve();
 		}
 	}

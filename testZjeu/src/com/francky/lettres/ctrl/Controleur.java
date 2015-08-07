@@ -24,7 +24,6 @@ public class Controleur {
 	Vector<Mot> mots = null;		//contenant de tous les objets Mot
 	public boolean debug;			//variable pour le débuggage
 	private int randomNum;			//variable contenant le numéro trouvé par le random
-//	private BoutonsMap btnMap;		//Instance de BoutonsMap qui va m'aider à récupérer les btn pour les griser / dégriser
 	
 	/*
 	 * Gestion du score et des statistiques
@@ -197,6 +196,7 @@ public class Controleur {
 					//incrémenter nbre de mots trouvés
 					setMotsTrouves(++motsTrouves);
 					
+					//affichage de la dernière lettre pendant 900 millisecondes
 					fenetreprincipale.panelAffichDerniereLettre(900);
 				}
 			} else {
@@ -288,9 +288,6 @@ public class Controleur {
 		
 		//affichage BRAVO !!!
 		fenetreprincipale.motTrouveBool(true);
-		//ràz du nombre de lettres trouvées et utilisées
-		nbreLettres = 0;
-		nbreLettresUtilisees = 0;
 		//rafraichissement du panel score
 		fenetreprincipale.repaintPanelScore();
 		listeLettres.clear(); 	//on vide la liste des lettres avant de remplir
@@ -300,6 +297,9 @@ public class Controleur {
 		}
 		//on demande l'affichage du mot de félicitation (avec clignotment codé dans panelAffichage) pendant xxx millisecondes
 		fenetreprincipale.PanelAffichFelicit(3000);
+		//ràz du nombre de lettres trouvées et utilisées
+//		nbreLettres = 0;
+//		nbreLettresUtilisees = 0;
 	}
 	
 	
@@ -308,6 +308,10 @@ public class Controleur {
 		fenetreprincipale.repaintPanelAffich();
 	}
 	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    méthode appelée depuis Ecouteur pour réafficher le panelaffichage
+	private void repaintPanelScore() {
+		fenetreprincipale.repaintPanelScore();
+	}
 	
 	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    méthode appelée depuis la méthode hideText() de panelaffichage lorsque la félicitation a fini de clignoter
 	public void apresMotTrouve() {
@@ -327,6 +331,7 @@ public class Controleur {
 		setNbreLettresUtilisees(0);
 		//nouveau mot
 		choixNouveauMot();
+		repaintPanelScore();
 		repaintPanelAffich();
 	}
 
