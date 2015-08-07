@@ -1,5 +1,9 @@
 package com.francky.lettres.modele;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Vector;
+
 public class Mot {
 
 	//***************************************DECLARATIONS
@@ -7,7 +11,9 @@ public class Mot {
 	private boolean genre;		//true = masculin ou false = féminin
 	private int niveau;			//le niveau de difficulté du mot
 	private String famille;		//continent, pays, ville, animal, vegetal, objet
-		
+	private Vector<HashMap> motLangue;	//contient toutes les collections de mots étrangers avec leurs attributs
+	private Map<String, String> motsEtrangers;		//mots étrangers avec leur attributs pour une seule langue
+	
 	//CONSTRUCTEURS
 	public Mot() {super();}
 	public Mot(String chaine){
@@ -51,5 +57,11 @@ public class Mot {
 	
 	public String getFamille() {return famille;}
 	public void setFamille(String famille) {this.famille = famille;}
+	
+	public Map<String, String> getMotsEtrangers() {return motsEtrangers;}
+	public void setMotsEtrangers(Map<String, String> motsEtrangers) {this.motsEtrangers = motsEtrangers;}
+	
+	public Vector<HashMap> getMotLangue() {return motLangue;}
+	public void setMotLangue(HashMap<String, String> motsEtrangers) {this.motLangue.add(motsEtrangers);}
 
 }

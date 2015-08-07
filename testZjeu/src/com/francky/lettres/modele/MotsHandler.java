@@ -1,5 +1,8 @@
 package com.francky.lettres.modele;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.Locator;
@@ -62,8 +65,34 @@ public class MotsHandler implements ContentHandler {
 
 	@Override
 	public void startElement(String uri, String localName, String qName, Attributes atts) throws SAXException {
-		System.out.println(localName);
+		
+		//création d'un Mot à chaque fois que je rencontre la balise <mots>
+		if(localName.equals("mots")){
+			Mot mot = new Mot();
+			
+			//initialisation des attributs de Mot
+			for(int i = 0; i < atts.getLength(); i++){
+				if (atts.getQName(i).equals("famille")){
+					mot.setFamille(atts.getValue(i));
+				}
+			}
+			
+			//initialisation de la Collection de mots étrangers en initialisant leur attributs
+			if(localName.equals("mot")){
+				//j'instancie la HashMap qui contiendra tous les mots et attrributs pour une langue
+				Map<String, String> collMotsEtrangers = new HashMap<String, String>();
+				for(int j = 0; j < atts.getLength(); j++){
+					collMotsEtrangers.put(atts.getQName(j), atts.getValue(j));
+				}
+				
+				mot.setMotsEtrangers(collMotsEtrangers);
+			}
+		}
+		
+		System.out.println("start element local Name : " + localName);
+		
 		for(int i = 0; i < atts.getLength(); i++){
+			
 			System.out.println("attribut : " + atts.getQName(i) + " = " + atts.getValue(i));
 		}
 	}
