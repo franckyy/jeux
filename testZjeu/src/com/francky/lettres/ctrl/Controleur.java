@@ -297,9 +297,6 @@ public class Controleur {
 		}
 		//on demande l'affichage du mot de félicitation (avec clignotment codé dans panelAffichage) pendant xxx millisecondes
 		fenetreprincipale.PanelAffichFelicit(3000);
-		//ràz du nombre de lettres trouvées et utilisées
-//		nbreLettres = 0;
-//		nbreLettresUtilisees = 0;
 	}
 	
 	

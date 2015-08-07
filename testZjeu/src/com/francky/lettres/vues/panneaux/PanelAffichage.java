@@ -167,6 +167,7 @@ public class PanelAffichage extends JPanel {
 		if ( showText ) {
 			showText=false;
 			ctrl.setNbreLettresUtilisees(0);
+			//ràz du nombre de lettres trouvées et utilisées
 			ctrl.setNbreLettres(0);
 			ctrl.apresMotTrouve();
 		}

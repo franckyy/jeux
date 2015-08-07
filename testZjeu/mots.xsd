@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:all xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema http://www.w3.org/2001/XMLSchema "/>
+<xs:element name="mots">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="listemots" minOccurs="1" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:attribute name="niveau" type="xs:integer"/>
+					<xs:attribute name="lang" type="xs:string"/>
+						<xs:sequence>
+							<xs:element name="mot" minOccurs="1" maxOccurs="unbounded">
+								<xs:complexType>
+									<simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="genre" type="xs:string"/>
+											<xs:attribute name="verbe" type="xs:boolean"/>
+											<xs:attribute name="composed" type="xs:boolean"/>
+											<xs:attribute name="continent" type="xs:boolean"/>
+											<xs:attribute name="pluriel" type="xs:string"/>
+											<xs:attribute name="animal" type="xs:boolean"/>
+											<xs:attribute name="vegetal" type="xs:boolean"/>
+											<xs:attribute name="couleur" type="xs:boolean"/>
+										</xs:extension>
+									</simpleContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>

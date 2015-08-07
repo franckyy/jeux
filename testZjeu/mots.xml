@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <mots>
-	<listemots lang="fr">
+	<listemots niveau="1" lang="fr">
 		
 		<mot continent="true" genre="true" composed="false" lang="fr">AFRIQUE</mot>		
 		<mot genre="false" composed="false" pluriel="abeilles" animal="true" lang="fr">ABEILLE</mot>
@@ -12,7 +12,7 @@
 		<mot genre="true" composed="false" pluriel="chats" animal="true" lang="fr">CHAT</mot>
 		<mot genre="true" composed="false" pluriel="oiseaux" animal="true" lang="fr">OISEAU</mot>
 		<mot genre="true" composed="false" pluriel="bateaux" lang="fr">BATEAU</mot>
-		<mot genre="false" composed="false" pluriel="fleurs" lang="fr">FLEUR</mot>
+		<mot genre="false" composed="false" pluriel="fleurs" vegetal="true" lang="fr">FLEUR</mot>
 		<mot genre="true" composed="false" pluriels="horizons" lang="fr">HORIZON</mot>
 		<mot genre="true" composed="false" pluriels="chapitres" lang="fr">CHAPITRE</mot>
 		<mot genre="false" composed="false" pluriels="voitures" lang="fr">VOITURE</mot>

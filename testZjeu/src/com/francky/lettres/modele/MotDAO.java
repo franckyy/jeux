@@ -39,7 +39,7 @@ public class MotDAO {
 			
 			for(int i = 0; i < nl.getLength(); i++){
 				Element el = (Element)nl.item(i);
-				mots.add(new Mot(el.getTextContent(), Boolean.parseBoolean(el.getAttribute("genre")), Boolean.parseBoolean(el.getAttribute("composed"))));
+				mots.add(new Mot(el.getTextContent(), Integer.parseInt(el.getAttribute("niveau")), Boolean.parseBoolean(el.getAttribute("genre"))));
 			}
 			
 		}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:all xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema http://www.w3.org/2001/XMLSchema "/>
+<xs:element name="listemots" minOccurs="1" maxOccurs="1">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:attribute name="niveau" type="xs:integer" type="obligatoire"/>
+			<xs:element name="mots" minOccurs="1" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:attribute name="famille" type="xs:string"/>
+							<xs:element name="mot" minOccurs="1" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:attribute name="genre" type="xs:boolean" />
+										<xs:attribute name="couleur" type="xs:boolean" />
+										<xs:attribute name="pluriel" type="xs:boolean"/>
+										<xs:attribute name="verbe" type="xs:boolean"/>
+										<xs:attribute name="lang" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<listemots niveau="1">
+	<mots continent="true">
+		<mot genre="false" lang="fr" >afrique</mot>		
+		<mot lang="en">africa</mot>
+	</mots>	
+	<mots vegetal="true">
+		<mot genre="false" lang="fr" pluriel="fleurs">fleur</mot>		
+		<mot lang="en" pluriel="flowers">flower</mot>		
+		<mot lang="vn">hoa</mot>
+	</mots>
+	<mots animal="true">
+		<mot genre="true" lang="fr" pluriel="chats">chat</mot>		
+		<mot lang="en" pluriel="cats">cat</mot>		
+		<mot lang="vn">mèo</mot>
+	</mots>
+	<mots animal="true">
+		<mot genre="true" lang="fr" pluriel="chiens">chien</mot>		
+		<mot lang="en" pluriel="dogs">dog</mot>		
+		<mot lang="vn" pluriel="dogs">chó</mot>
+	</mots>
+	<mots objet="true">
+		<mot genre="true" lang="fr" pluriel="ordinateurs">ordinateur</mot>		
+		<mot lang="en" pluriel="computers">computer</mot>
+	</mots>
+	<mots animal="true">
+		<mot genre="true" lang="fr" pluriel="oiseaux">oiseau</mot>		
+		<mot lang="en" pluriel="birds">bird</mot>	
+		<mot lang="vn">chim</mot>
+	</mots>
+	<mots animal="true">
+		<mot genre="true" lang="fr" pluriel="poissons">poisson</mot>		
+		<mot lang="en" pluriel="fishes">fish</mot>	
+		<mot lang="vn">cá</mot>
+	</mots>
+</listemots>
+
+<!--voir le site suivant pour connaitre les genres des payes ou continents et autres
+ http://www.bertrandboutin.ca/Folder_151_Grammaire/E_c_noms_geo.htm#_PAYS,_ANCIENS_PAYS, -->
+ 
