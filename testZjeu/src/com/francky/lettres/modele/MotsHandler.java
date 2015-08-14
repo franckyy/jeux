@@ -16,6 +16,11 @@ public class MotsHandler implements ContentHandler {
 	@Override
 	public void characters(char[] contenu, int start, int length) throws SAXException {
 		System.out.println("texte :" + new String(contenu, start, length));
+		
+		String chaineTemp = new String(contenu, start, length);
+		if(!chaineTemp.contains("\n")){
+			mot.setChaine(chaineTemp);
+		}
 	}
 
 	@Override
@@ -96,16 +101,18 @@ public class MotsHandler implements ContentHandler {
 		System.out.println("start element local Name : " + localName);
 		
 		for(int i = 0; i < atts.getLength(); i++){
-			
 			System.out.println("attribut : " + atts.getQName(i) + " = " + atts.getValue(i));
+			System.out.println("Start element: local name: " + localName + " qname: " 
+                    + qName + " uri: " + uri);
+//			if(atts.getQName(i).equals("niveau")){
+//				mot.setNiveau(Integer.parseInt(atts.getValue(i)));
+//			}
 		}
 	}
 
 	@Override
 	public void startPrefixMapping(String arg0, String arg1)
-			throws SAXException {
-		// TODO Auto-generated method stub
-		
+			throws SAXException {		
 	}
 
 	public Vector<Mot> getMots() {
