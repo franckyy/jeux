@@ -2,6 +2,7 @@ package com.francky.lettres.modele;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
@@ -9,7 +10,9 @@ import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
 
 public class MotsHandler implements ContentHandler {
-
+	Vector<Mot> mots = new Vector<Mot>();
+	Mot mot;
+	
 	@Override
 	public void characters(char[] contenu, int start, int length) throws SAXException {
 		System.out.println("texte :" + new String(contenu, start, length));
@@ -68,25 +71,26 @@ public class MotsHandler implements ContentHandler {
 		
 		//création d'un Mot à chaque fois que je rencontre la balise <mots>
 		if(localName.equals("mots")){
-			Mot mot = new Mot();
-			
+			mot = new Mot();
+			mots.add(mot);
 			//initialisation des attributs de Mot
 			for(int i = 0; i < atts.getLength(); i++){
 				if (atts.getQName(i).equals("famille")){
 					mot.setFamille(atts.getValue(i));
 				}
 			}
-			
-			//initialisation de la Collection de mots étrangers en initialisant leur attributs
-			if(localName.equals("mot")){
-				//j'instancie la HashMap qui contiendra tous les mots et attrributs pour une langue
-				Map<String, String> collMotsEtrangers = new HashMap<String, String>();
-				for(int j = 0; j < atts.getLength(); j++){
-					collMotsEtrangers.put(atts.getQName(j), atts.getValue(j));
-				}
-				
-				mot.setMotsEtrangers(collMotsEtrangers);
+		}
+		
+		//initialisation de la Collection de mots étrangers en initialisant leur attributs
+		if(localName.equals("mot")){
+			//j'instancie la HashMap qui contiendra tous les mots et attrributs pour une langue
+			HashMap<String, String> collMotsEtrangers = new HashMap<String, String>();
+			for(int j = 0; j < atts.getLength(); j++){
+				collMotsEtrangers.put(atts.getQName(j), atts.getValue(j));
 			}
+			System.out.println("collMotEtranger.size : " + collMotsEtrangers.size());
+			mot.setMotLangue(collMotsEtrangers);
+			System.out.println(mot.toString());
 		}
 		
 		System.out.println("start element local Name : " + localName);
@@ -102,6 +106,10 @@ public class MotsHandler implements ContentHandler {
 			throws SAXException {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public Vector<Mot> getMots() {
+		return mots;
 	}
 
 }

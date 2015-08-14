@@ -39,28 +39,13 @@ public class MotDAO {
 			XMLReader reader;
 			try {
 				reader = XMLReaderFactory.createXMLReader();
+				MotsHandler mh = new MotsHandler();
 				
-				reader.setContentHandler(new MotsHandler());
+				reader.setContentHandler(mh);
 				
 				reader.parse(new InputSource(new FileInputStream("mots_2.xml")));
-				
+				mots = mh.getMots();
 			} catch (SAXException | IOException e) {e.printStackTrace();}
-			
-//					
-//			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-//			DocumentBuilder db = dbf.newDocumentBuilder();
-//			Document doc = db.parse(motsXML);
-//			NodeList nl = doc.getElementsByTagName("mot");
-//			
-//			for(int i = 0; i < nl.getLength(); i++){
-//				Element el = (Element)nl.item(i);
-//				mots.add(new Mot(el.getTextContent(), Integer.parseInt(el.getAttribute("niveau")), Boolean.parseBoolean(el.getAttribute("genre"))));
-//			}
-//			
-//		catch (SAXException | IOException | ParserConfigurationException e) {
-//			ctrl.stopGame();
-//			e.printStackTrace();
-//		}
 		
 		return mots;
 	}

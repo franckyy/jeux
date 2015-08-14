@@ -12,10 +12,13 @@ public class Mot {
 	private int niveau;			//le niveau de difficulté du mot
 	private String famille;		//continent, pays, ville, animal, vegetal, objet
 	private Vector<HashMap> motLangue;	//contient toutes les collections de mots étrangers avec leurs attributs
-	private Map<String, String> motsEtrangers;		//mots étrangers avec leur attributs pour une seule langue
+//	private Map<String, String> motsEtrangers;		//mots étrangers avec leur attributs pour une seule langue
 	
 	//CONSTRUCTEURS
-	public Mot() {super();}
+	public Mot() {
+		super();
+		this.motLangue = new Vector<HashMap>();
+	}
 	public Mot(String chaine){
 		setChaine(chaine);
 	}
@@ -45,6 +48,13 @@ public class Mot {
 		return caractere;
 	}
 	
+	@Override
+	public String toString() {
+		return "Mot [chaine=" + chaine + ", genre=" + genre + ", niveau="
+				+ niveau + ", famille=" + famille + ", motLangue=" + motLangue
+				+ "]";
+	}
+	
 	//GETTERS & SETTERS
 	public boolean isGenre() {return genre;}
 	public void setGenre(boolean genre) {this.genre = genre;}
@@ -58,10 +68,11 @@ public class Mot {
 	public String getFamille() {return famille;}
 	public void setFamille(String famille) {this.famille = famille;}
 	
-	public Map<String, String> getMotsEtrangers() {return motsEtrangers;}
-	public void setMotsEtrangers(Map<String, String> motsEtrangers) {this.motsEtrangers = motsEtrangers;}
+//	public Map<String, String> getMotsEtrangers() {return motsEtrangers;}
+//	public void setMotsEtrangers(Map<String, String> motsEtrangers) {this.motsEtrangers = motsEtrangers;}
 	
 	public Vector<HashMap> getMotLangue() {return motLangue;}
 	public void setMotLangue(HashMap<String, String> motsEtrangers) {this.motLangue.add(motsEtrangers);}
+	
 
 }

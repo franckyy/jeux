@@ -242,6 +242,7 @@ public class Controleur {
 		int numRank = 0;
 		
 		try {
+			System.out.println("numrank  : " + numRank + " /  mots.size() : " + mots.size());
 			numRank =  rand.nextInt((mots.size()));
 		}  
 		catch (IllegalArgumentException argEx){System.out.println("Illegal Argument Exception captée");
