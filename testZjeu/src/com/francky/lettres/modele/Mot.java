@@ -8,16 +8,15 @@ public class Mot {
 
 	//***************************************DECLARATIONS
 	private String chaine;		//la chaîne de caractères du mot
+	private String lang;		//la langue du mot
 	private boolean genre;		//true = masculin ou false = féminin
+	private String pluriel;		//le pluriel de la chaine
 	private int niveau;			//le niveau de difficulté du mot
 	private String famille;		//continent, pays, ville, animal, vegetal, objet
-	private Vector<HashMap> motLangue;	//contient toutes les collections de mots étrangers avec leurs attributs
-//	private Map<String, String> motsEtrangers;		//mots étrangers avec leur attributs pour une seule langue
 	
 	//CONSTRUCTEURS
 	public Mot() {
 		super();
-		this.motLangue = new Vector<HashMap>();
 	}
 	public Mot(String chaine){
 		setChaine(chaine);
@@ -50,9 +49,8 @@ public class Mot {
 	
 	@Override
 	public String toString() {
-		return "Mot [chaine=" + chaine + ", genre=" + genre + ", niveau="
-				+ niveau + ", famille=" + famille + ", motLangue=" + motLangue
-				+ "]";
+		return "Mot [chaine=" + getChaine() + ", pluriel=" + getPluriel() + ", genre(false : female; true : male)=" + isGenre() + ", niveau="
+				+ getNiveau() + ", famille=" + getFamille() + ", langue=" + getLang() + "]";
 	}
 	
 	//GETTERS & SETTERS
@@ -68,11 +66,9 @@ public class Mot {
 	public String getFamille() {return famille;}
 	public void setFamille(String famille) {this.famille = famille;}
 	
-//	public Map<String, String> getMotsEtrangers() {return motsEtrangers;}
-//	public void setMotsEtrangers(Map<String, String> motsEtrangers) {this.motsEtrangers = motsEtrangers;}
+	public String getLang() {return lang;}
+	public void setLang(String lang) {this.lang = lang;}
 	
-	public Vector<HashMap> getMotLangue() {return motLangue;}
-	public void setMotLangue(HashMap<String, String> motsEtrangers) {this.motLangue.add(motsEtrangers);}
-	
-
+	public String getPluriel() {return pluriel;}
+	public void setPluriel(String pluriel) {this.pluriel = pluriel;}
 }

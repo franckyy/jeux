@@ -18,7 +18,7 @@
 	<mots famille="animal">
 		<mot lang="fr" genre="true" pluriel="chiens">chien</mot>		
 		<mot lang="en" pluriel="dogs">dog</mot>		
-		<mot lang="vn" pluriel="dogs">chó</mot>
+		<mot lang="vn">chó</mot>
 	</mots>
 	<mots famille="objet">
 		<mot lang="fr" genre="true" pluriel="ordinateurs">ordinateur</mot>		
@@ -33,6 +33,11 @@
 		<mot lang="fr" genre="true" pluriel="poissons">poisson</mot>		
 		<mot lang="en" pluriel="fishes">fish</mot>	
 		<mot lang="vn">cá</mot>
+	</mots>
+	<mots famille="verbe">
+		<mot lang="fr">parler</mot>		
+		<mot lang="en">talking</mot>	
+		<mot lang="vn">nói</mot>
 	</mots>
 </listemots>
 
