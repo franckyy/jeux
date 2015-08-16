@@ -157,7 +157,6 @@ public class Controleur {
 		setNbreLettresUtilisees(0);
 		setNiveau(1);
 		chargementMots();
-		motsLang = new Vector<Mot>();
 		chargementMotsLang();
 		listeLettres = new ArrayList<Character>();
 		lettreTrouvee = ' ';
@@ -284,7 +283,8 @@ public class Controleur {
 	
 	
 	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤	Chargement de la liste de mots appartenants au language choisi
-	private void chargementMotsLang(){
+	public void chargementMotsLang(){
+		motsLang = new Vector<Mot>();		//réinitialisation de la liste a chaque chargement
 		for(int rangMot = 0; rangMot < mots.size(); rangMot++){		//on regarde tous les mots un par un
 			if(mots.get(rangMot).getLang().toUpperCase().equals(getLanguage())){		//si la langue du mot pointé est égale au language choisi 
 				//on intègre ce lot dans la liste des mots relatifs au language choisi

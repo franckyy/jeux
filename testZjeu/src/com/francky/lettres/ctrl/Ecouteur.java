@@ -59,12 +59,15 @@ public class Ecouteur implements ActionListener {
 			break;
 		case "LANG_FR":
 			ctrl.setLanguage("FR");
+			ctrl.chargementMotsLang();
 			break;
 		case "LANG_EN":
 			ctrl.setLanguage("EN");
+			ctrl.chargementMotsLang();
 			break;
 		case "LANG_VN":
 			ctrl.setLanguage("VN");
+			ctrl.chargementMotsLang();
 			break;
 		}
 	}
