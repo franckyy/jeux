@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <listemots niveau="1">
+	<mots famille="objet">
+		<mot lang="fr" genre="false">vélo</mot>		
+		<mot lang="en">bike</mot>		
+		<mot lang="vn">xe đập</mot>
+	</mots>	
 	<mots famille="continent">
 		<mot lang="fr" genre="false">afrique</mot>		
 		<mot lang="en">africa</mot>

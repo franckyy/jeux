@@ -50,7 +50,7 @@ public class Controleur {
 	private ArrayList<Character> listeLettres;					//le tableau contenant toute les lettres du mot choisi au hasard
 	private List<Character> listeLettresTrouvees;				//Liste des lettres qui ont été trouvées
 	private Character lettreTrouvee;							//dernière lettre trouvée
-
+	private String strMotTemp;									//le mot en majuscule pour ne pas avoir les accents, cela permet de comparer avec les lettres écrites sur les JButton
 	private ListenerClavier keyListener;
 	
 	/*
@@ -176,8 +176,31 @@ public class Controleur {
 
 		//incrémenter le nombre de lettres utilisées ou cliquées
 		setNbreLettresUtilisees(++nbreLettresUtilisees);
+			
+		strMotTemp = "";
 		
-			if(strMot.toUpperCase().contains(lettreClic)){
+		StringBuilder strBdMotTemp = new StringBuilder();
+		
+			for(int rank = 0; rank < strMot.length(); rank++){
+				// il faut adapter les lettres du mot avec les lettres sans accents
+				if(("" + strMot.charAt(rank)).equals("é") || ("" + strMot.charAt(rank)).equals("è") || ("" + strMot.charAt(rank)).equals("ê")){
+					strBdMotTemp.append("e");
+				} else if(("" + strMot.charAt(rank)).equals("à") || ("" + strMot.charAt(rank)).equals("â")){
+					strBdMotTemp.append("a");
+				} else if(("" + strMot.charAt(rank)).equals("ô")){
+					strBdMotTemp.append("o");
+				} else if(("" + strMot.charAt(rank)).equals("ç")){
+					strBdMotTemp.append("c");
+				} else if(("" + strMot.charAt(rank)).equals("î") || ("" + strMot.charAt(rank)).equals("ï")){
+					strBdMotTemp.append("i");
+				} else {
+					strBdMotTemp.append(strMot.charAt(rank));
+				}
+			}
+			
+			strMotTemp = strBdMotTemp.toString();
+			
+			if(strMotTemp.toUpperCase().contains(lettreClic)){
 				message = "lettre trouvée !";
 				
 				setNbreLettres(++nbreLettres);		//incrémentation du nombre de lettres trouvées
@@ -266,8 +289,8 @@ public class Controleur {
 	private ArrayList<Character> setlisteLettres(ArrayList<Character> listeLettres){	
 		for (int rank = 0; rank < listeLettres.size(); rank++){
 			if(listeLettres.get(rank).equals('_') && !listeLettres.get(rank).equals(' ')){
-				if(lettreTrouvee.equals(strMot.toUpperCase().charAt(rank))){
-					listeLettres.set(rank, lettreTrouvee);
+				if(lettreTrouvee.toString().toLowerCase().equals(("" + strMotTemp.charAt(rank)))){
+					listeLettres.set(rank, strMot.charAt(rank));
 				}
 			}
 		}
