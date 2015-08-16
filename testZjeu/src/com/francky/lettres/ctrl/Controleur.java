@@ -161,7 +161,6 @@ public class Controleur {
 		listeLettres = new ArrayList<Character>();
 		lettreTrouvee = ' ';
 		ecouteur = new Ecouteur(this);
-//		btnMap = new BoutonsMap(ecouteur);
 		listeLettresTrouvees = new ArrayList<Character>();
 	}
 	
@@ -297,13 +296,10 @@ public class Controleur {
 			}
 		}
 		catch (IllegalArgumentException argEx){System.out.println("Illegal Argument Exception captée");
-		stopGame();
-		}
-		catch (ArrayIndexOutOfBoundsException bounds) {System.out.println("Array Index Out Of Bounds Exception captée");}
-		finally {
-			chargementMots();
-			chargementMotsLang();
-			numRank =  rand.nextInt((motsLang.size()));
+//		stopGame();
+		System.out.println("Array Index Out Of Bounds Exception captée");
+		resetGame();
+		numRank =  rand.nextInt((motsLang.size()));
 		}
 		
 		return numRank;
