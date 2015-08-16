@@ -43,7 +43,8 @@ public class Controleur {
 	/*
 	 * Gestion du mot à rechercher et à cacher
 	 */
-	private String mot;											//le mot qui a été choisi au hasard
+	private String strMot;										//le mot qui a été choisi au hasard
+	private Vector<String> strMots;								// liste de mots type String
 	private ArrayList<Character> listeLettres;					//le tableau contenant toute les lettres du mot choisi au hasard
 	private List<Character> listeLettresTrouvees;				//Liste des lettres qui ont été trouvées
 	private Character lettreTrouvee;							//dernière lettre trouvée
@@ -173,7 +174,7 @@ public class Controleur {
 		//incrémenter le nombre de lettres utilisées ou cliquées
 		setNbreLettresUtilisees(++nbreLettresUtilisees);
 		
-			if(mot.contains(lettreClic)){
+			if(strMot.toUpperCase().contains(lettreClic)){
 				message = "lettre trouvée !";
 				
 				setNbreLettres(++nbreLettres);		//incrémentation du nombre de lettres trouvées
@@ -215,14 +216,15 @@ public class Controleur {
 		
 		randomNum = randomNum();
 		
-		mot = mots.get(randomNum).getChaine();
-		
+		strMot = mots.get(randomNum).getChaine();	//on récupère la chaine du mot choisi
+		char[] charMot = strMot.toCharArray();
 		//lorsque le nouveau mot a été choisi, il faut remplir un tableau de Character avec des underscores
-		for(int rank = 0; rank < mot.length(); rank++){
+		for(int rank = 0; rank < strMot.length(); rank++){
 			boolean nonLettre = false;		//pour repérer les caractères qui ne sont pas des lettres
-			if(mots.get(randomNum).getChar(rank).equals(' ') || mots.get(randomNum).getChar(rank).equals('-')){
+			
+			if(("" + charMot[rank]).equals(' ') || ("" + charMot[rank]).equals('-')){
 				nonLettre = true;
-				listeLettres.add(mots.get(randomNum).getChar(rank));
+				listeLettres.add((charMot[rank]));
 			}
 			if (!nonLettre){
 				listeLettres.add('_');
@@ -261,7 +263,7 @@ public class Controleur {
 	private ArrayList<Character> setlisteLettres(ArrayList<Character> listeLettres){	
 		for (int rank = 0; rank < listeLettres.size(); rank++){
 			if(listeLettres.get(rank).equals('_') && !listeLettres.get(rank).equals(' ')){
-				if(lettreTrouvee.equals(mot.charAt(rank))){
+				if(lettreTrouvee.equals(strMot.toUpperCase().charAt(rank))){
 					listeLettres.set(rank, lettreTrouvee);
 				}
 			}
@@ -374,9 +376,9 @@ public class Controleur {
 		//vérification des lettres en doubles dans le mot
 		//si lettres doubles, le nombre d'essais pour trouver le mot sans se tromper diminue d'autant plus
 		int nbreLettresDoubles = 0;
-		for(int i = 0; i < mot.length(); i++){
-			for(int j = i + 1; j < mot.length(); j++) {
-				if(Character.toString(mot.charAt(i)).equals(Character.toString(mot.charAt(j)))){
+		for(int i = 0; i < strMot.length(); i++){
+			for(int j = i + 1; j < strMot.length(); j++) {
+				if(Character.toString(strMot.charAt(i)).equals(Character.toString(strMot.charAt(j)))){
 					nbreLettresDoubles++;
 					break;
 				}
@@ -384,11 +386,11 @@ public class Controleur {
 		}
 		
 		//si on trouve toutes les lettres sans se tromper -> ultra bonus 100pts
-		if (nbreEssais == mot.length() - nbreLettresDoubles){
+		if (nbreEssais == strMot.length() - nbreLettresDoubles){
 			gain = GAIN_MOT_TROUVE + 20;
 		}
 		
-		int reste = nbreEssais - mot.length();
+		int reste = nbreEssais - strMot.length();
 		
 		switch(reste){
 		case 1:
@@ -559,8 +561,8 @@ public class Controleur {
 	public int getNiveau() {return niveau;}
 	public void setNiveau(int niveau) {this.niveau = niveau;}
 
-	public String getMot() {return mot;}
-	public void setMot(String mot) {this.mot = mot;}
+	public String getStrMot() {return strMot;}
+	public void setStrMot(String strMot) {this.strMot = strMot;}
 
 	public List<Character> getListeLettres() {return listeLettres;}
 
@@ -572,4 +574,7 @@ public class Controleur {
 
 	public void repaintPanelKeyboard() {fenetreprincipale.repaintPanelKeyboard();}
 	public void colorerTousBoutons() {fenetreprincipale.colorerTousBoutons();}
+
+	public Vector<String> getStrMots() {return strMots;}
+	public void setStrMots(Vector<String> strMots) {this.strMots = strMots;}
 }
