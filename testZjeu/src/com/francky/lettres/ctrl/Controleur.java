@@ -23,18 +23,18 @@ public class Controleur {
 	MotDAO motdao = new MotDAO("mots.xml", this);
 	Vector<Mot> mots = null;		//contenant de tous les objets Mot
 	Vector<Mot> motsLang = null;		//contenant de tous les objets Mot relatif au language choisi
-	public boolean debug;			//variable pour le débuggage
-	private int randomNum;			//variable contenant le numéro trouvé par le random
+	public boolean debug;			//variable pour le dÃ©buggage
+	private int randomNum;			//variable contenant le numÃ©ro trouvÃ© par le random
 	
 	/*
 	 * Gestion du score et des statistiques
 	 */
 	private int score;				//le score ...
-	private int motsTrouves;		//le nombre de mots qui ont été trouvés
-	private int nbreLettres;		//le nbre de lettres qui ont été trouvées
-	private int nbreLettresUtilisees;	//le nbre de lettres qui ont été utilisées
+	private int motsTrouves;		//le nombre de mots qui ont Ã©tÃ© trouvÃ©s
+	private int nbreLettres;		//le nbre de lettres qui ont Ã©tÃ© trouvÃ©es
+	private int nbreLettresUtilisees;	//le nbre de lettres qui ont Ã©tÃ© utilisÃ©es
 	private int nbreEssais;			//nombres de fois que l'on clique sur une lettre
-	private int niveau;				//le niveau de difficulté du jeu
+	private int niveau;				//le niveau de difficultÃ© du jeu
 	private String language = "FR";		//langue des mots du jeu
 	
 	/*
@@ -43,20 +43,20 @@ public class Controleur {
 	public String message;
 	
 	/*
-	 * Gestion du mot à rechercher et à cacher
+	 * Gestion du mot Ã  rechercher et Ã  cacher
 	 */
-	private String strMot;										//le mot qui a été choisi au hasard
+	private String strMot;										//le mot qui a Ã©tÃ© choisi au hasard
 	private Vector<String> strMots;								// liste de mots type String
 	private ArrayList<Character> listeLettres;					//le tableau contenant toute les lettres du mot choisi au hasard
-	private List<Character> listeLettresTrouvees;				//Liste des lettres qui ont été trouvées
-	private Character lettreTrouvee;							//dernière lettre trouvée
-	private String strMotTemp;									//le mot en majuscule pour ne pas avoir les accents, cela permet de comparer avec les lettres écrites sur les JButton
+	private List<Character> listeLettresTrouvees;				//Liste des lettres qui ont Ã©tÃ© trouvÃ©es
+	private Character lettreTrouvee;							//derniÃ¨re lettre trouvÃ©e
+	private String strMotTemp;									//le mot en majuscule pour ne pas avoir les accents, cela permet de comparer avec les lettres Ã©crites sur les JButton
 	private ListenerClavier keyListener;
 	
 	/*
-	 * Définition de la palette des couleurs pour le jeu 
+	 * DÃ©finition de la palette des couleurs pour le jeu 
 	 */
-	private String COLOR_THEME = "THEME3";	//THEME1 à THEME5
+	private String COLOR_THEME = "THEME3";	//THEME1 Ã  THEME5
 	public Color COL_FOND;
 	public Color COL_FOND_BOUTONS_CLIC;
 	public Color COL_TEXT_BOUTONS_CLIC;
@@ -77,7 +77,7 @@ public class Controleur {
 	public Color COL_GRAPH;
 	
 	/*
-	 * Définition des scores
+	 * DÃ©finition des scores
 	 */
 	private int GAIN_MOT_TROUVE = 100;
 	
@@ -102,7 +102,7 @@ public class Controleur {
 		
 		choixNouveauMot();
 		
-		//************************************création de la fenêtre
+		//************************************crÃ©ation de la fenÃªtre
 		fenetreprincipale = new FenetrePrincipale(this);
 
 		fenetreprincipale.addKeyListener(keyListener);
@@ -115,12 +115,12 @@ public class Controleur {
 	//*********************************************************************************************************************
 	
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    
 	//**********************************************METHODES POUR REINITIALISER LE JEU
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤  
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤  
 	
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    réinitialisation des couleurs
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    rÃ©initialisation des couleurs
 	public void resetColors(String theme) {
 		//initialisation des couleurs - a l'avenir il faudra aller chercher le theme dans un .xml
 		CouleurThemes coul = new CouleurThemes(theme);
@@ -147,7 +147,7 @@ public class Controleur {
 	}
 	
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    remise à zéro des paramètres d'initialisation
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    remise Ã  zÃ©ro des paramÃ¨tres d'initialisation
 	private void resetGame() {
 		debug = true;
 		setScore(0);
@@ -166,15 +166,15 @@ public class Controleur {
 	}
 	
 
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    
 	//**********************************************METHODES DE GESTION DES LETTRES ET DES MOTS
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤  
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤  
 	
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    recherche d'une lettre cliquée dans le mot
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    recherche d'une lettre cliquÃ©e dans le mot
 	public void searchLetter(String lettreClic) {
 
-		//incrémenter le nombre de lettres utilisées ou cliquées
+		//incrÃ©menter le nombre de lettres utilisÃ©es ou cliquÃ©es
 		setNbreLettresUtilisees(++nbreLettresUtilisees);
 			
 		strMotTemp = "";
@@ -182,71 +182,91 @@ public class Controleur {
 		StringBuilder strBdMotTemp = new StringBuilder();
 		
 			for(int rank = 0; rank < strMot.length(); rank++){
-				// il faut adapter les lettres du mot avec les lettres sans accents
-				if(("" + strMot.charAt(rank)).equals("é") || ("" + strMot.charAt(rank)).equals("è") || ("" + strMot.charAt(rank)).equals("ê")){
+				// il faut adapter les lettres du mot avec les lettres sans accents, que ce soit les accents franÃ§ais ou vietnamiens
+				if(("" + strMot.charAt(rank)).equals("Ã©") || ("" + strMot.charAt(rank)).equals("Ã¨") || ("" + strMot.charAt(rank)).equals("Ãª") || ("" + strMot.charAt(rank)).equals("áº¹")
+						 || ("" + strMot.charAt(rank)).equals("áº»") || ("" + strMot.charAt(rank)).equals("áº½") || ("" + strMot.charAt(rank)).equals("áº¿") || ("" + strMot.charAt(rank)).equals("á»")
+						 || ("" + strMot.charAt(rank)).equals("á»ƒ") || ("" + strMot.charAt(rank)).equals("á»…") || ("" + strMot.charAt(rank)).equals("á»‡")){
 					strBdMotTemp.append("e");
-				} else if(("" + strMot.charAt(rank)).equals("à") || ("" + strMot.charAt(rank)).equals("â")){
+				} else if(("" + strMot.charAt(rank)).equals("Ã ") || ("" + strMot.charAt(rank)).equals("Ã¡") || ("" + strMot.charAt(rank)).equals("Ã¢") || ("" + strMot.charAt(rank)).equals("Ã£")
+						 || ("" + strMot.charAt(rank)).equals("áº¡") || ("" + strMot.charAt(rank)).equals("áº£") || ("" + strMot.charAt(rank)).equals("áº¥") || ("" + strMot.charAt(rank)).equals("áº§")
+						 || ("" + strMot.charAt(rank)).equals("áº©") || ("" + strMot.charAt(rank)).equals("áº«") || ("" + strMot.charAt(rank)).equals("áº­") || ("" + strMot.charAt(rank)).equals("áº¯")
+						 || ("" + strMot.charAt(rank)).equals("áº±") || ("" + strMot.charAt(rank)).equals("áº³") || ("" + strMot.charAt(rank)).equals("áºµ") || ("" + strMot.charAt(rank)).equals("áº·")){
 					strBdMotTemp.append("a");
-				} else if(("" + strMot.charAt(rank)).equals("ô")){
+				} else if(("" + strMot.charAt(rank)).equals("á»±") || ("" + strMot.charAt(rank)).equals("á»¯") || ("" + strMot.charAt(rank)).equals("á»¯") || ("" + strMot.charAt(rank)).equals("á»­")
+						 || ("" + strMot.charAt(rank)).equals("á»«") || ("" + strMot.charAt(rank)).equals("á»©") || ("" + strMot.charAt(rank)).equals("á»§") || ("" + strMot.charAt(rank)).equals("á»¥")){
+					strBdMotTemp.append("u");
+				} else if(("" + strMot.charAt(rank)).equals("Ä‘")){
+					strBdMotTemp.append("d");
+				} else if(("" + strMot.charAt(rank)).equals("Ã´") || ("" + strMot.charAt(rank)).equals("á»") || ("" + strMot.charAt(rank)).equals("á»") 
+									|| ("" + strMot.charAt(rank)).equals("á»‘") || ("" + strMot.charAt(rank)).equals("á»“") || ("" + strMot.charAt(rank)).equals("á»•")
+									|| ("" + strMot.charAt(rank)).equals("á»—") || ("" + strMot.charAt(rank)).equals("á»™") || ("" + strMot.charAt(rank)).equals("á»›")
+									|| ("" + strMot.charAt(rank)).equals("á»") || ("" + strMot.charAt(rank)).equals("á»Ÿ") || ("" + strMot.charAt(rank)).equals("á»¡") 
+									|| ("" + strMot.charAt(rank)).equals("á»£") || ("" + strMot.charAt(rank)).equals("Ã²") || ("" + strMot.charAt(rank)).equals("Ã³")
+									|| ("" + strMot.charAt(rank)).equals("Ãµ")){
 					strBdMotTemp.append("o");
-				} else if(("" + strMot.charAt(rank)).equals("ç")){
+				} else if(("" + strMot.charAt(rank)).equals("Ã§")){
 					strBdMotTemp.append("c");
-				} else if(("" + strMot.charAt(rank)).equals("î") || ("" + strMot.charAt(rank)).equals("ï")){
+				} else if(("" + strMot.charAt(rank)).equals("Ã®") || ("" + strMot.charAt(rank)).equals("Ã¯") || ("" + strMot.charAt(rank)).equals("Ã­") || ("" + strMot.charAt(rank)).equals("Ã¬")
+						 || ("" + strMot.charAt(rank)).equals("á»‰") || ("" + strMot.charAt(rank)).equals("á»‹")){
 					strBdMotTemp.append("i");
+				} else if(("" + strMot.charAt(rank)).equals("á»¹") || ("" + strMot.charAt(rank)).equals("á»·") || ("" + strMot.charAt(rank)).equals("á»µ") || ("" + strMot.charAt(rank)).equals("á»³")){
+					strBdMotTemp.append("y");
 				} else {
 					strBdMotTemp.append(strMot.charAt(rank));
 				}
+
+
 			}
 			
 			strMotTemp = strBdMotTemp.toString();
 			
 			if(strMotTemp.toUpperCase().contains(lettreClic)){
-				message = "lettre trouvée !";
+				message = "lettre trouvÃ©e !";
 				
-				setNbreLettres(++nbreLettres);		//incrémentation du nombre de lettres trouvées
-				setNbreEssais(++nbreEssais);		//incrémentation du nombre de fois que l'on a cliqué une lettre
-				listeLettresTrouvees.add(lettreClic.charAt(0));		//ajout de la lettre dans la liste des lettres trouvées
-				lettreTrouvee = lettreClic.charAt(0);		//sauvegarde de la lettre trouvée
+				setNbreLettres(++nbreLettres);		//incrÃ©mentation du nombre de lettres trouvÃ©es
+				setNbreEssais(++nbreEssais);		//incrÃ©mentation du nombre de fois que l'on a cliquÃ© une lettre
+				listeLettresTrouvees.add(lettreClic.charAt(0));		//ajout de la lettre dans la liste des lettres trouvÃ©es
+				lettreTrouvee = lettreClic.charAt(0);		//sauvegarde de la lettre trouvÃ©e
 				
-				int gain = scoreLettreTrouvee(lettreClic.charAt(0));	//calcul du gain suite au clic sur une lettre présente dans le mot
+				int gain = scoreLettreTrouvee(lettreClic.charAt(0));	//calcul du gain suite au clic sur une lettre prÃ©sente dans le mot
 				setScore(gain);
 				
 				
-				//générer et ré afficher le mot caché
+				//gÃ©nÃ©rer et rÃ© afficher le mot cachÃ©
 				listeLettres = setlisteLettres(listeLettres);
 				
-				//vérification pour savoir si le mot à été trouvé. 
-				//si listeLettre ne contient pas  '_' alors le mot a été trouvé.
+				//vÃ©rification pour savoir si le mot Ã  Ã©tÃ© trouvÃ©. 
+				//si listeLettre ne contient pas  '_' alors le mot a Ã©tÃ© trouvÃ©.
 				if(!listeLettres.contains('_')){
-					//si mot trouvé
+					//si mot trouvÃ©
 
-					//incrémenter nbre de mots trouvés
+					//incrÃ©menter nbre de mots trouvÃ©s
 					setMotsTrouves(++motsTrouves);
 					
-					//affichage de la dernière lettre pendant 900 millisecondes
+					//affichage de la derniÃ¨re lettre pendant 900 millisecondes
 					fenetreprincipale.panelAffichDerniereLettre(900);
 				}
 			} else {
-				message = "lettre non trouvée !";
-				setNbreEssais(++nbreEssais);	//incrémentation du nombre de fois que l'on a cliqué une lettre
+				message = "lettre non trouvÃ©e !";
+				setNbreEssais(++nbreEssais);	//incrÃ©mentation du nombre de fois que l'on a cliquÃ© une lettre
 			}		
 
 			fenetreprincipale.repaint();
 	}
 	
 
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    
 	//Choix d'un nouveau mot parmi la liste, on retire le mot choisi de la liste,
-	//on génère le tableau de lettres du mot choisi, on génère le mot caché 
+	//on gÃ©nÃ¨re le tableau de lettres du mot choisi, on gÃ©nÃ¨re le mot cachÃ© 
 	private void choixNouveauMot() {
 		
 		randomNum = randomNum();
 		
-		strMot = motsLang.get(randomNum).getChaine();	//on récupère la chaine du mot choisi
+		strMot = motsLang.get(randomNum).getChaine();	//on rÃ©cupÃ¨re la chaine du mot choisi
 		char[] charMot = strMot.toCharArray();
-		//lorsque le nouveau mot a été choisi, il faut remplir un tableau de Character avec des underscores
+		//lorsque le nouveau mot a Ã©tÃ© choisi, il faut remplir un tableau de Character avec des underscores
 		for(int rank = 0; rank < strMot.length(); rank++){
-			boolean nonLettre = false;		//pour repérer les caractères qui ne sont pas des lettres
+			boolean nonLettre = false;		//pour repÃ©rer les caractÃ¨res qui ne sont pas des lettres
 			
 			if(("" + charMot[rank]).equals(' ') || ("" + charMot[rank]).equals('-')){
 				nonLettre = true;
@@ -257,13 +277,13 @@ public class Controleur {
 			}
 		}
 		
-		//on enleve de la liste le mot qui a été tiré au hazard pour qu'il ne soit pas choisi au hasard plusieurs fois
+		//on enleve de la liste le mot qui a Ã©tÃ© tirÃ© au hazard pour qu'il ne soit pas choisi au hasard plusieurs fois
 		motsLang.remove(randomNum);
 				
 	}
 	
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    génération d'un entier au hasard compris entre 0 et les nombre de mots 
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    gÃ©nÃ©ration d'un entier au hasard compris entre 0 et les nombre de mots 
 	//contenus dans la liste des mots en .xml
 	private int randomNum() {
 		Random rand = new Random();
@@ -272,10 +292,10 @@ public class Controleur {
 		try {
 			numRank =  rand.nextInt((motsLang.size()));
 		}
-		catch (IllegalArgumentException argEx){System.out.println("Illegal Argument Exception captée");
+		catch (IllegalArgumentException argEx){System.out.println("Illegal Argument Exception captÃ©e");
 		stopGame();
 		}
-		catch (ArrayIndexOutOfBoundsException bounds) {System.out.println("Array Index Out Of Bounds Exception captée");}
+		catch (ArrayIndexOutOfBoundsException bounds) {System.out.println("Array Index Out Of Bounds Exception captÃ©e");}
 		finally {
 			//reset game
 		}
@@ -284,8 +304,8 @@ public class Controleur {
 	}	
 	
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    création du mot qui sera affiché (on montre les lettres qui ont déjà été trouvées)
-	//prend en paramètre la liste
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    crÃ©ation du mot qui sera affichÃ© (on montre les lettres qui ont dÃ©jÃ  Ã©tÃ© trouvÃ©es)
+	//prend en paramÃ¨tre la liste
 	private ArrayList<Character> setlisteLettres(ArrayList<Character> listeLettres){	
 		for (int rank = 0; rank < listeLettres.size(); rank++){
 			if(listeLettres.get(rank).equals('_') && !listeLettres.get(rank).equals(' ')){
@@ -299,72 +319,72 @@ public class Controleur {
 	}
 
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    chargement des mots
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    chargement des mots
 	private void chargementMots() {
 		mots = motdao.chargerMots();
 	}
 	
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤	Chargement de la liste de mots appartenants au language choisi
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤	Chargement de la liste de mots appartenants au language choisi
 	public void chargementMotsLang(){
-		motsLang = new Vector<Mot>();		//réinitialisation de la liste a chaque chargement
+		motsLang = new Vector<Mot>();		//rÃ©initialisation de la liste a chaque chargement
 		for(int rangMot = 0; rangMot < mots.size(); rangMot++){		//on regarde tous les mots un par un
-			if(mots.get(rangMot).getLang().toUpperCase().equals(getLanguage())){		//si la langue du mot pointé est égale au language choisi 
-				//on intègre ce lot dans la liste des mots relatifs au language choisi
+			if(mots.get(rangMot).getLang().toUpperCase().equals(getLanguage())){		//si la langue du mot pointÃ© est Ã©gale au language choisi 
+				//on intÃ¨gre ce lot dans la liste des mots relatifs au language choisi
 				motsLang.add(mots.get(rangMot));
 			}
 		}
 	}
 	
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    
 	//**********************************************METHODES D'AFFICHAGES
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤  
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤  
 	
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    méthode qui est appelée depuis le panelaffichage lorsque l'affichage de la dernière lettre est fini
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    mÃ©thode qui est appelÃ©e depuis le panelaffichage lorsque l'affichage de la derniÃ¨re lettre est fini
 	public void apresPanelAffichDernierelettre() {
-		//remise à zéro du nombre de lettres cliquées
+		//remise Ã  zÃ©ro du nombre de lettres cliquÃ©es
 		
 		//affichage BRAVO !!!
 		fenetreprincipale.motTrouveBool(true);
 		//rafraichissement du panel score
 		fenetreprincipale.repaintPanelScore();
 		listeLettres.clear(); 	//on vide la liste des lettres avant de remplir
-		//on remplit la liste des lettres avec le mot de félicitation
+		//on remplit la liste des lettres avec le mot de fÃ©licitation
 		for(int i = 0; i < FELICIT_MOT_TROUVE.length(); i++){
 			listeLettres.add(FELICIT_MOT_TROUVE.charAt(i));
 		}
-		//on demande l'affichage du mot de félicitation (avec clignotment codé dans panelAffichage) pendant xxx millisecondes
+		//on demande l'affichage du mot de fÃ©licitation (avec clignotment codÃ© dans panelAffichage) pendant xxx millisecondes
 		fenetreprincipale.PanelAffichFelicit(3000);
 	}
 	
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    méthode appelée depuis Ecouteur pour réafficher le panelaffichage
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    mÃ©thode appelÃ©e depuis Ecouteur pour rÃ©afficher le panelaffichage
 	private void repaintPanelAffich() {
 		fenetreprincipale.repaintPanelAffich();
 	}
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    méthode appelée depuis Ecouteur pour réafficher le panelaffichage
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    mÃ©thode appelÃ©e depuis Ecouteur pour rÃ©afficher le panelaffichage
 	private void repaintPanelScore() {
 		fenetreprincipale.repaintPanelScore();
 	}
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    méthode appelée depuis la méthode hideText() de panelaffichage lorsque la félicitation a fini de clignoter
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    mÃ©thode appelÃ©e depuis la mÃ©thode hideText() de panelaffichage lorsque la fÃ©licitation a fini de clignoter
 	public void apresMotTrouve() {
-		//le gain du mot trouvé est ajouté au score
+		//le gain du mot trouvÃ© est ajoutÃ© au score
 		int gain = scoreMotTrouve();
 		setScore(gain);
 		
-		//On repasse le booléen motTrouvé à false pour que le panelAffichage affiche le mot normalement
+		//On repasse le boolÃ©en motTrouvÃ© Ã  false pour que le panelAffichage affiche le mot normalement
 		fenetreprincipale.motTrouveBool(false);
-		//on remet à zéro la liste des lettres du mot à afficher
+		//on remet Ã  zÃ©ro la liste des lettres du mot Ã  afficher
 		listeLettres.clear();
-		//on remet à zéro le nombre d'essais
+		//on remet Ã  zÃ©ro le nombre d'essais
 		nbreEssais = 0;
-		//on dégrise les touches
+		//on dÃ©grise les touches
 		btnGriseur("all", false);
-		//on remet les compteur du nombre de lettres trouvées à zéro
+		//on remet les compteur du nombre de lettres trouvÃ©es Ã  zÃ©ro
 		setNbreLettresUtilisees(0);
 		//nouveau mot
 		choixNouveauMot();
@@ -373,12 +393,12 @@ public class Controleur {
 	}
 
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    méthode en chantier quiservira à terminer le jeu ou à le redémarrer
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    mÃ©thode en chantier quiservira Ã  terminer le jeu ou Ã  le redÃ©marrer
 	//il faut demander au joueur s'il veut recommencer.	
 	public void stopGame() {
 		//enregistrer score si high score
 		//afficher mot de fin
-		//demander à taper sur une touche pour recommencer
+		//demander Ã  taper sur une touche pour recommencer
 		
 		//ou fermer le jeu
 
@@ -386,32 +406,32 @@ public class Controleur {
 	}
 	
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    griseur de boutons
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    griseur de boutons
 	public void btnGriseur(String btnValue, boolean boolGriser) {
 		fenetreprincipale.griserBouton(btnValue, boolGriser);
 	}
 	
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    repaint général qui modifie les couleurs de fond
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    repaint gÃ©nÃ©ral qui modifie les couleurs de fond
 	public void rafraichiJeu() {
 		fenetreprincipale.modifieBackgrounds();
 	}
 	
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    
 	//**********************************************METHODES POUR LE SCORE
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    
 	
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    modifieScore
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    modifieScore
 	public void modifieScore(int ajout) {
 		setScore(getScore() + ajout);
 	}
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    calcule le score suite à un mot trouvé
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    calcule le score suite Ã  un mot trouvÃ©
 	private int scoreMotTrouve(){
 		int gain = 0;		
-		//vérification des lettres en doubles dans le mot
+		//vÃ©rification des lettres en doubles dans le mot
 		//si lettres doubles, le nombre d'essais pour trouver le mot sans se tromper diminue d'autant plus
 		int nbreLettresDoubles = 0;
 		for(int i = 0; i < strMot.length(); i++){
@@ -461,10 +481,10 @@ public class Controleur {
 	}
 	
 	
-	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    calcule le score suite à une lettre trouvée
+	//Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤    calcule le score suite Ã  une lettre trouvÃ©e
 	private int scoreLettreTrouvee(Character lettre){
 		int gain = 0;
-		//On accorde un nombre de points par lettre trouvée
+		//On accorde un nombre de points par lettre trouvÃ©e
 		//ce nbre de points est similaire aux points du scrabble
 		switch(lettre){
 		case 'Z':
