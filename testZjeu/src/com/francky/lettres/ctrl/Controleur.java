@@ -22,6 +22,7 @@ public class Controleur {
 	FenetrePrincipale fenetreprincipale;
 	MotDAO motdao = new MotDAO("mots.xml", this);
 	Vector<Mot> mots = null;		//contenant de tous les objets Mot
+	Vector<Mot> motsLang = null;		//contenant de tous les objets Mot relatif au language choisi
 	public boolean debug;			//variable pour le débuggage
 	private int randomNum;			//variable contenant le numéro trouvé par le random
 	
@@ -34,6 +35,7 @@ public class Controleur {
 	private int nbreLettresUtilisees;	//le nbre de lettres qui ont été utilisées
 	private int nbreEssais;			//nombres de fois que l'on clique sur une lettre
 	private int niveau;				//le niveau de difficulté du jeu
+	private String language = "FR";		//langue des mots du jeu
 	
 	/*
 	 * Message d'information
@@ -155,6 +157,8 @@ public class Controleur {
 		setNbreLettresUtilisees(0);
 		setNiveau(1);
 		chargementMots();
+		motsLang = new Vector<Mot>();
+		chargementMotsLang();
 		listeLettres = new ArrayList<Character>();
 		lettreTrouvee = ' ';
 		ecouteur = new Ecouteur(this);
@@ -216,7 +220,7 @@ public class Controleur {
 		
 		randomNum = randomNum();
 		
-		strMot = mots.get(randomNum).getChaine();	//on récupère la chaine du mot choisi
+		strMot = motsLang.get(randomNum).getChaine();	//on récupère la chaine du mot choisi
 		char[] charMot = strMot.toCharArray();
 		//lorsque le nouveau mot a été choisi, il faut remplir un tableau de Character avec des underscores
 		for(int rank = 0; rank < strMot.length(); rank++){
@@ -232,7 +236,7 @@ public class Controleur {
 		}
 		
 		//on enleve de la liste le mot qui a été tiré au hazard pour qu'il ne soit pas choisi au hasard plusieurs fois
-		mots.remove(randomNum);
+		motsLang.remove(randomNum);
 				
 	}
 	
@@ -244,8 +248,8 @@ public class Controleur {
 		int numRank = 0;
 		
 		try {
-			numRank =  rand.nextInt((mots.size()));
-		}  
+			numRank =  rand.nextInt((motsLang.size()));
+		}
 		catch (IllegalArgumentException argEx){System.out.println("Illegal Argument Exception captée");
 		stopGame();
 		}
@@ -255,7 +259,7 @@ public class Controleur {
 		}
 		
 		return numRank;
-	}
+	}	
 	
 	
 	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    création du mot qui sera affiché (on montre les lettres qui ont déjà été trouvées)
@@ -276,6 +280,17 @@ public class Controleur {
 	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    chargement des mots
 	private void chargementMots() {
 		mots = motdao.chargerMots();
+	}
+	
+	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤	Chargement de la liste de mots appartenants au language choisi
+	private void chargementMotsLang(){
+		for(int rangMot = 0; rangMot < mots.size(); rangMot++){		//on regarde tous les mots un par un
+			if(mots.get(rangMot).getLang().toUpperCase().equals(getLanguage())){		//si la langue du mot pointé est égale au language choisi 
+				//on intègre ce lot dans la liste des mots relatifs au language choisi
+				motsLang.add(mots.get(rangMot));
+			}
+		}
 	}
 	
 	
@@ -577,4 +592,7 @@ public class Controleur {
 
 	public Vector<String> getStrMots() {return strMots;}
 	public void setStrMots(Vector<String> strMots) {this.strMots = strMots;}
+
+	public String getLanguage() {return language;}
+	public void setLanguage(String language) {this.language = language.toUpperCase();}
 }

@@ -57,6 +57,15 @@ public class Ecouteur implements ActionListener {
 			ctrl.colorerTousBoutons();
 			ctrl.rafraichiJeu();
 			break;
+		case "LANG_FR":
+			ctrl.setLanguage("FR");
+			break;
+		case "LANG_EN":
+			ctrl.setLanguage("EN");
+			break;
+		case "LANG_VN":
+			ctrl.setLanguage("VN");
+			break;
 		}
 	}
 

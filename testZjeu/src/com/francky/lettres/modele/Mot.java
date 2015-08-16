@@ -66,8 +66,8 @@ public class Mot {
 	public String getFamille() {return famille;}
 	public void setFamille(String famille) {this.famille = famille;}
 	
-	public String getLang() {return lang;}
-	public void setLang(String lang) {this.lang = lang;}
+	public String getLang() {return lang.toUpperCase();}
+	public void setLang(String lang) {this.lang = lang.toUpperCase();}
 	
 	public String getPluriel() {return pluriel;}
 	public void setPluriel(String pluriel) {this.pluriel = pluriel;}

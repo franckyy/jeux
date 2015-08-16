@@ -16,6 +16,10 @@ public class Menu extends JMenuBar{
 	
 	JMenu menuAffichage, ssmenuThemCoul;
 	JMenuItem itemTheme1, itemTheme2, itemTheme3, itemTheme4, itemTheme5;
+	
+	JMenu menuJeu, ssmenuLanguage;
+	JMenuItem itemLangFR, itemLangEN, itemLangVN;
+	
 	Ecouteur menuListener;
 	
 	public Menu(FenetrePrincipale fenetreprincipale, Controleur ctrl) {
@@ -27,11 +31,11 @@ public class Menu extends JMenuBar{
 		ssmenuThemCoul = new JMenu("Themes couleurs");
 		menuAffichage.add(ssmenuThemCoul);
 		
-		itemTheme1 = new JMenuItem("thËme1");
-		itemTheme2 = new JMenuItem("thËme2");
-		itemTheme3 = new JMenuItem("thËme3");
-		itemTheme4 = new JMenuItem("thËme4");
-		itemTheme5 = new JMenuItem("thËme5");
+		itemTheme1 = new JMenuItem("th√®me1");
+		itemTheme2 = new JMenuItem("th√®me2");
+		itemTheme3 = new JMenuItem("th√®me3");
+		itemTheme4 = new JMenuItem("th√®me4");
+		itemTheme5 = new JMenuItem("th√®me5");
 		
 		ssmenuThemCoul.add(itemTheme1);
 		ssmenuThemCoul.add(itemTheme2);
@@ -49,6 +53,27 @@ public class Menu extends JMenuBar{
 		itemTheme4.setActionCommand("THEME4");
 		itemTheme5.addActionListener(menuListener);
 		itemTheme5.setActionCommand("THEME5");
+		
+		menuJeu = new JMenu("Jeu");
+		this.add(menuJeu);
+		
+		ssmenuLanguage = new JMenu("langues");
+		menuJeu.add(ssmenuLanguage);
+		
+		itemLangFR = new JMenuItem("Fran√ßais");
+		itemLangEN = new JMenuItem("English");
+		itemLangVN = new JMenuItem("Ti·∫øng Vi·ªát");
+		
+		ssmenuLanguage.add(itemLangFR);
+		ssmenuLanguage.add(itemLangEN);
+		ssmenuLanguage.add(itemLangVN);
+		
+		itemLangFR.addActionListener(menuListener);
+		itemLangFR.setActionCommand("LANG_FR");
+		itemLangEN.addActionListener(menuListener);
+		itemLangEN.setActionCommand("LANG_EN");
+		itemLangVN.addActionListener(menuListener);
+		itemLangVN.setActionCommand("LANG_VN");
 		
 		fenetreprincipale.setJMenuBar(this);
 	}
