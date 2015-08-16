@@ -9,8 +9,8 @@ import java.util.Vector;
 import com.francky.lettres.modele.CouleurThemes;
 import com.francky.lettres.modele.Mot;
 import com.francky.lettres.modele.MotDAO;
+import com.francky.lettres.principal.Game;
 import com.francky.lettres.vues.FenetrePrincipale;
-import com.francky.lettres.vues.panneaux.PanelScore;
 
 public class Controleur {
 	
@@ -214,8 +214,6 @@ public class Controleur {
 				} else {
 					strBdMotTemp.append(strMot.charAt(rank));
 				}
-
-
 			}
 			
 			strMotTemp = strBdMotTemp.toString();
@@ -290,14 +288,22 @@ public class Controleur {
 		int numRank = 0;
 		
 		try {
-			numRank =  rand.nextInt((motsLang.size()));
+			if(motsLang.size() != 0){	//s'il reste des mots dans la liste
+				numRank =  rand.nextInt((motsLang.size()));
+			} else {	//s'il n'y a plus de mots dans la liste, on recharge une nouvelle liste
+				chargementMots();
+				chargementMotsLang();
+				numRank =  rand.nextInt((motsLang.size()));
+			}
 		}
 		catch (IllegalArgumentException argEx){System.out.println("Illegal Argument Exception captée");
 		stopGame();
 		}
 		catch (ArrayIndexOutOfBoundsException bounds) {System.out.println("Array Index Out Of Bounds Exception captée");}
 		finally {
-			//reset game
+			chargementMots();
+			chargementMotsLang();
+			numRank =  rand.nextInt((motsLang.size()));
 		}
 		
 		return numRank;
