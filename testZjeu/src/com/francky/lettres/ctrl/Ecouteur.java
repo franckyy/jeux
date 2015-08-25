@@ -70,7 +70,7 @@ public class Ecouteur implements ActionListener {
 			ctrl.chargementMotsLang();
 			break;
 		case "START":
-			
+			ctrl.start();
 			break;
 		case "QUIT":
 			System.exit(0);

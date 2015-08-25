@@ -114,6 +114,14 @@ public class Controleur {
 	//***********************************************************METHODES
 	//*********************************************************************************************************************
 	
+	public void start(){
+		resetGame();
+		resetColors(COLOR_THEME);		
+		
+		keyListener = new ListenerClavier(this);
+		
+		choixNouveauMot();
+	}
 	
 	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    
 	//**********************************************METHODES POUR REINITIALISER LE JEU
