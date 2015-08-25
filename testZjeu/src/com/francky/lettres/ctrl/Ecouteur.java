@@ -69,6 +69,12 @@ public class Ecouteur implements ActionListener {
 			ctrl.setLanguage("VN");
 			ctrl.chargementMotsLang();
 			break;
+		case "START":
+			
+			break;
+		case "QUIT":
+			System.exit(0);
+			break;
 		}
 	}
 
