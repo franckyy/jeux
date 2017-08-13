@@ -114,6 +114,14 @@ public class Controleur {
 	//***********************************************************METHODES
 	//*********************************************************************************************************************
 	
+	public void start(){
+		resetGame();
+		resetColors(COLOR_THEME);		
+		
+		keyListener = new ListenerClavier(this);
+		
+		choixNouveauMot();
+	}
 	
 	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    
 	//**********************************************METHODES POUR REINITIALISER LE JEU
@@ -264,8 +272,8 @@ public class Controleur {
 		//lorsque le nouveau mot a été choisi, il faut remplir un tableau de Character avec des underscores
 		for(int rank = 0; rank < strMot.length(); rank++){
 			boolean nonLettre = false;		//pour repérer les caractères qui ne sont pas des lettres
-			
-			if(("" + charMot[rank]).equals(' ') || ("" + charMot[rank]).equals('-')){
+			String charMotRank = "" + charMot[rank];	//il faut d'abord transformer le caractère en string pour que la méthode equals puisse fonctionner
+			if(charMotRank.equals(" ") || (charMotRank.equals("-"))){
 				nonLettre = true;
 				listeLettres.add((charMot[rank]));
 			}

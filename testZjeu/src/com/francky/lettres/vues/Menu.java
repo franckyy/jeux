@@ -19,6 +19,7 @@ public class Menu extends JMenuBar{
 	
 	JMenu menuJeu, ssmenuLanguage;
 	JMenuItem itemLangFR, itemLangEN, itemLangVN;
+	JMenuItem itemStart, itemQuit;
 	
 	Ecouteur menuListener;
 	
@@ -54,6 +55,8 @@ public class Menu extends JMenuBar{
 		itemTheme5.addActionListener(menuListener);
 		itemTheme5.setActionCommand("THEME5");
 		
+		//**********   JEU   *********************
+		
 		menuJeu = new JMenu("Jeu");
 		this.add(menuJeu);
 		
@@ -68,12 +71,22 @@ public class Menu extends JMenuBar{
 		ssmenuLanguage.add(itemLangEN);
 		ssmenuLanguage.add(itemLangVN);
 		
+
+		itemStart = new JMenuItem("Start / restart");
+		itemQuit = new JMenuItem("Quit");
+		menuJeu.add(itemStart);
+		menuJeu.add(itemQuit);
+		
 		itemLangFR.addActionListener(menuListener);
 		itemLangFR.setActionCommand("LANG_FR");
 		itemLangEN.addActionListener(menuListener);
 		itemLangEN.setActionCommand("LANG_EN");
 		itemLangVN.addActionListener(menuListener);
 		itemLangVN.setActionCommand("LANG_VN");
+		itemStart.addActionListener(menuListener);
+		itemStart.setActionCommand("START");
+		itemQuit.addActionListener(menuListener);
+		itemQuit.setActionCommand("QUIT");
 		
 		fenetreprincipale.setJMenuBar(this);
 	}
