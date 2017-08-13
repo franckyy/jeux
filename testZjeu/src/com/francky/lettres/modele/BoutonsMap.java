@@ -23,7 +23,7 @@ public class BoutonsMap {
 				, btnM, btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW
 				, btnX, btnY, btnZ, btnHelp;
 	
-	private JButton btnEsp, btnVide1, btnVide2;
+	private JButton btnEsp, btnTiret, btnVide2;
 
 	List<Character> lettres;				//Liste de toutes les lettres de l'alphabet
 	
@@ -43,7 +43,7 @@ public class BoutonsMap {
 		}
 		
 		lettres.add(' ');
-		lettres.add('b');
+		lettres.add('-');
 		lettres.add('c');
 		lettres.add('h');
 		
@@ -88,7 +88,7 @@ public class BoutonsMap {
 		btnHelp = new JButton("AIDE");
 		
 		btnEsp = new JButton("Esp.");
-		btnVide1 = new JButton("");
+		btnTiret = new JButton("-");
 		btnVide2 = new JButton("");
 		
 		
@@ -120,7 +120,7 @@ public class BoutonsMap {
 		boutons.put('Z', btnZ);
 		boutons.put('h', btnHelp);
 		boutons.put(' ', btnEsp);
-		boutons.put('b', btnVide1);
+		boutons.put('-', btnTiret);
 		boutons.put('c', btnVide2);
 		
 		return boutons;
@@ -199,6 +199,6 @@ public class BoutonsMap {
 	public JButton getBtnZ() {return btnZ;}
 	public JButton getBtnHelp() {return btnHelp;}
 	public JButton getBtnVide() {return btnEsp;}
-	public JButton getBtnVide1() {return btnVide1;}
+	public JButton getBtnVide1() {return btnTiret;}
 	public JButton getBtnVide2() {return btnVide2;}
 }

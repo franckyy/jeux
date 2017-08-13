@@ -3,12 +3,13 @@ package com.francky.lettres.vues.panneaux;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
- 
+
 import javax.swing.JPanel;
 import javax.swing.Timer;
- 
+
 import com.francky.lettres.ctrl.Controleur;
  
 public class PanelAffichage extends JPanel {
@@ -24,15 +25,15 @@ public class PanelAffichage extends JPanel {
 	private volatile boolean showText;
 	private volatile int showTextCall;
 	/*
-	 * Déclarations concernant le clignotement
+	 * Dï¿½clarations concernant le clignotement
 	 */
 	private int count;
 	private Timer animator;
  
 	/*
-	 * indication du mot trouvé pour le panel affichage
+	 * indication du mot trouvï¿½ pour le panel affichage
 	 */
-	private boolean motTrouve = false;		//lorsque le mot est trouvé, l'affichage de congratulation par paintComponent
+	private boolean motTrouve = false;		//lorsque le mot est trouvï¿½, l'affichage de congratulation par paintComponent
  
 	/*
 	 * Taille du panneau affichage
@@ -49,7 +50,7 @@ public class PanelAffichage extends JPanel {
 	private static final int TEXT_ZONE_Y = 25;
  
 	/*
-	 * Taille et position du mot à chercher
+	 * Taille et position du mot ï¿½ chercher
 	 */
 	private static final int MOT_TAILLE = 50;
 	private static final Font MOT_FONT = new Font("Tahoma", Font.BOLD, MOT_TAILLE);
@@ -71,7 +72,7 @@ public class PanelAffichage extends JPanel {
 		setBackground(ctrl.COL_FOND);
 	}
  
-	//régénération du graphisme
+	//rï¿½gï¿½nï¿½ration du graphisme
 	public void repaintPanelAffich() {
 		this.repaint();
 	}
@@ -121,17 +122,17 @@ public class PanelAffichage extends JPanel {
 				break;
 			}
  
-			//je ne sais pas pourqupi il a fallu diviser le g.getFontMetrics().getHeight() par 3 ... je m'attendais plutôt à diviser par 2 mais ca passe mieux avec 3
+			//je ne sais pas pourqupi il a fallu diviser le g.getFontMetrics().getHeight() par 3 ... je m'attendais plutï¿½t ï¿½ diviser par 2 mais ca passe mieux avec 3
 			g.drawString(ctrl.FELICIT_MOT_TROUVE, TEXT_ZONE_WIDTH / 2 + 10 - g.getFontMetrics().stringWidth(ctrl.FELICIT_MOT_TROUVE) / 2, TEXT_ZONE_HEIGHT / 2 + 25 + g.getFontMetrics().getHeight() / 3);
 			count++;
 		} 
  
 		else {			
-			//affichage du mot caché
+			//affichage du mot cachï¿½
 
 			g.setColor(ctrl.COL_MOT);
 			g.setFont(MOT_FONT);
- 
+			
 			int decal = 0;			
 			for(int caractere = 0; caractere < ctrl.getListeLettres().size(); caractere++){
 				if(!ctrl.getListeLettres().get(caractere).equals(' ')){
@@ -146,7 +147,7 @@ public class PanelAffichage extends JPanel {
 	}
  
 	public synchronized void panelAffichFelicit(int time) {
-		final int showTextTimer = ++showTextCall; // ça c'est juste pour si on rappelle showText alors qu'il y a un texte déjà affiché
+		final int showTextTimer = ++showTextCall; // ï¿½a c'est juste pour si on rappelle showText alors qu'il y a un texte dï¿½jï¿½ affichï¿½
 		final Timer timer = new Timer(time, e-> { if ( showTextTimer==showTextCall) hideText(); });
 		timer.setRepeats(false);
 		showText=true;
@@ -155,7 +156,7 @@ public class PanelAffichage extends JPanel {
 	}
 
 	public void panelAffichDerniereLettre(int time) {
-		final int showTextTimer = ++showTextCall; // ça c'est juste pour si on rappelle showText alors qu'il y a un texte déjà affiché
+		final int showTextTimer = ++showTextCall; // ï¿½a c'est juste pour si on rappelle showText alors qu'il y a un texte dï¿½jï¿½ affichï¿½
 		final Timer timer = new Timer(time, e-> { if ( showTextTimer==showTextCall) ctrl.apresPanelAffichDernierelettre(); });
 		timer.setRepeats(false);
 		showText=true;
@@ -167,7 +168,7 @@ public class PanelAffichage extends JPanel {
 		if ( showText ) {
 			showText=false;
 			ctrl.setNbreLettresUtilisees(0);
-			//ràz du nombre de lettres trouvées et utilisées
+			//rï¿½z du nombre de lettres trouvï¿½es et utilisï¿½es
 			ctrl.setNbreLettres(0);
 			ctrl.apresMotTrouve();
 		}

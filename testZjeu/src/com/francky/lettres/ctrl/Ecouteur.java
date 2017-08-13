@@ -44,6 +44,7 @@ public class Ecouteur implements ActionListener {
 		case "Y":
 		case "Z":
 		case " ":
+		case "-":
 			ctrl.btnGriseur(e.getActionCommand(), true);
 			ctrl.searchLetter(e.getActionCommand());
 			break;

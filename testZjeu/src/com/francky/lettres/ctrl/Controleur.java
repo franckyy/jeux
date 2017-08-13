@@ -9,7 +9,6 @@ import java.util.Vector;
 import com.francky.lettres.modele.CouleurThemes;
 import com.francky.lettres.modele.Mot;
 import com.francky.lettres.modele.MotDAO;
-import com.francky.lettres.principal.Game;
 import com.francky.lettres.vues.FenetrePrincipale;
 
 public class Controleur {
@@ -273,10 +272,12 @@ public class Controleur {
 		for(int rank = 0; rank < strMot.length(); rank++){
 			boolean nonLettre = false;		//pour repérer les caractères qui ne sont pas des lettres
 			String charMotRank = "" + charMot[rank];	//il faut d'abord transformer le caractère en string pour que la méthode equals puisse fonctionner
-			if(charMotRank.equals(" ") || (charMotRank.equals("-"))){
-				nonLettre = true;
-				listeLettres.add((charMot[rank]));
-			}
+			
+			//la condition ci-dessous a été enlevée pour que les espaces et tirets soient à rechercher par le joueur au lieu d'être écris dans l'affichage
+//			if(charMotRank.equals(" ") || (charMotRank.equals("-"))){
+//				nonLettre = true;
+//				listeLettres.add((charMot[rank]));
+//			}
 			if (!nonLettre){
 				listeLettres.add('_');
 			}
@@ -304,10 +305,10 @@ public class Controleur {
 			}
 		}
 		catch (IllegalArgumentException argEx){System.out.println("Illegal Argument Exception captée");
-//		stopGame();
-		System.out.println("Array Index Out Of Bounds Exception captée");
-		resetGame();
-		numRank =  rand.nextInt((motsLang.size()));
+	//		stopGame();
+			System.out.println("Array Index Out Of Bounds Exception captée");
+			resetGame();
+			numRank =  rand.nextInt((motsLang.size()));
 		}
 		
 		return numRank;
@@ -507,6 +508,10 @@ public class Controleur {
 		case 'Q':
 		case 'J':
 			gain = 8;
+			break;
+		case' ':
+		case '-':
+			gain = 6;
 			break;
 		case 'V':
 		case 'H':
