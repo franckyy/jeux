@@ -120,6 +120,8 @@ public class Controleur {
 		keyListener = new ListenerClavier(this);
 		
 		choixNouveauMot();
+		
+		fenetreprincipale.griserBouton("all", false);
 	}
 	
 	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    

@@ -21,10 +21,10 @@ public class FenetrePrincipale extends JFrame {
 	Menu menu;
 	PanelAffichage panelaffichage;
 	PanelScore panelscore;
-	PanelKeyboard panelkeyboard;
+	public PanelKeyboard panelkeyboard;
 	
 	public FenetrePrincipale(Controleur ctrl) {
-		//construction de la fenêtre
+		//construction de la fenï¿½tre
 		super("Lettres");
 		setLayout(new BorderLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -38,16 +38,16 @@ public class FenetrePrincipale extends JFrame {
 		/*
 		 * Initialisation des panneaux
 		 */
-		//création du clavier
+		//crï¿½ation du clavier
 		panelkeyboard = new PanelKeyboard(ctrl);
-		//ajout du clavier à la fenêtre
+		//ajout du clavier ï¿½ la fenï¿½tre
 		add(panelkeyboard, BorderLayout.CENTER);
 		
-		//Création du panneau de score
+		//Crï¿½ation du panneau de score
 		panelscore = new PanelScore(ctrl);
 		add(panelscore, BorderLayout.EAST);
 		
-		//création du panneau d'affichage des mots
+		//crï¿½ation du panneau d'affichage des mots
 		panelaffichage = new PanelAffichage(ctrl);
 		add(panelaffichage, BorderLayout.NORTH);
 		
