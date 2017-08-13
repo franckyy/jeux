@@ -2,9 +2,28 @@
 
 <listemots niveau="1">
 	<mots famille="objet">
+		<mot lang="fr">tire-bouchon</mot>		
+		<mot lang="en">corkscrew</mot>		
+		<mot lang="vn">mở nút chai</mot>
+	</mots>	
+	<mots famille="animal">
+		<mot lang="fr">chèvre</mot>		
+		<mot lang="en">goat</mot>		
+		<mot lang="vn">dê cái</mot>
+	</mots>	
+	<mots famille="animal">
+		<mot lang="fr">cheval</mot>		
+		<mot lang="en">horse</mot>		
+		<mot lang="vn">ngựa</mot>
+	</mots>	
+	<mots famille="objet">
 		<mot lang="fr" genre="false">vélo</mot>		
 		<mot lang="en">bike</mot>		
 		<mot lang="vn">xe đập</mot>
+	</mots>	
+	<mots famille="continent">
+		<mot lang="fr">europe</mot>		
+		<mot lang="en">europa</mot>
 	</mots>	
 	<mots famille="continent">
 		<mot lang="fr" genre="false">afrique</mot>		
@@ -43,6 +62,21 @@
 		<mot lang="fr">parler</mot>		
 		<mot lang="en">talking</mot>	
 		<mot lang="vn">nói</mot>
+	</mots>
+	<mots famille="instrument">
+		<mot lang="fr">piano</mot>		
+		<mot lang="en">piano</mot>	
+		<mot lang="vn">pianô</mot>
+	</mots>
+	<mots famille="instrument">
+		<mot lang="fr">guitare</mot>		
+		<mot lang="en">guitar</mot>	
+		<mot lang="vn">đàn ghita</mot>
+	</mots>
+	<mots famille="instrument">
+		<mot lang="fr">batterie</mot>		
+		<mot lang="en">drums</mot>	
+		<mot lang="vn">nhịp trống</mot>
 	</mots>
 </listemots>
 
