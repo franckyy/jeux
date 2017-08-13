@@ -15,7 +15,7 @@ public class Menu extends JMenuBar{
 	private static final long serialVersionUID = -4451367752330474585L;
 	
 	JMenu menuAffichage, ssmenuThemCoul;
-	JMenuItem itemTheme1, itemTheme2, itemTheme3, itemTheme4, itemTheme5;
+	JMenuItem itemTheme1, itemTheme2, itemTheme3, itemTheme4, itemTheme5, itemTheme6;
 	
 	JMenu menuJeu, ssmenuLanguage;
 	JMenuItem itemLangFR, itemLangEN, itemLangVN;
@@ -37,12 +37,14 @@ public class Menu extends JMenuBar{
 		itemTheme3 = new JMenuItem("thème3");
 		itemTheme4 = new JMenuItem("thème4");
 		itemTheme5 = new JMenuItem("thème5");
+		itemTheme6 = new JMenuItem("thème6");
 		
 		ssmenuThemCoul.add(itemTheme1);
 		ssmenuThemCoul.add(itemTheme2);
 		ssmenuThemCoul.add(itemTheme3);
 		ssmenuThemCoul.add(itemTheme4);
 		ssmenuThemCoul.add(itemTheme5);
+		ssmenuThemCoul.add(itemTheme6);
 
 		itemTheme1.addActionListener(menuListener);
 		itemTheme1.setActionCommand("THEME1");
@@ -54,6 +56,8 @@ public class Menu extends JMenuBar{
 		itemTheme4.setActionCommand("THEME4");
 		itemTheme5.addActionListener(menuListener);
 		itemTheme5.setActionCommand("THEME5");
+		itemTheme6.addActionListener(menuListener);
+		itemTheme6.setActionCommand("THEME6");
 		
 		//**********   JEU   *********************
 		

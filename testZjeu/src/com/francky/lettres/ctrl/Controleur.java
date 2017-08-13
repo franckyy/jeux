@@ -55,7 +55,7 @@ public class Controleur {
 	/*
 	 * Définition de la palette des couleurs pour le jeu 
 	 */
-	private String COLOR_THEME = "THEME3";	//THEME1 à THEME5
+	private String COLOR_THEME = "THEME3";	//THEME1 à THEME6
 	public Color COL_FOND;
 	public Color COL_FOND_BOUTONS_CLIC;
 	public Color COL_TEXT_BOUTONS_CLIC;
