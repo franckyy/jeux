@@ -253,6 +253,8 @@ public class Controleur {
 			} else {
 				message = "lettre non trouvée !";
 				setNbreEssais(++nbreEssais);	//incrémentation du nombre de fois que l'on a cliqué une lettre
+				int gain = scoreLettreNonTrouvee(lettreClic.charAt(0));	//calcul du gain suite au clic sur une lettre présente dans le mot
+				setScore(gain);
 			}		
 
 			fenetreprincipale.repaint();
@@ -614,6 +616,44 @@ public class Controleur {
 		}
 		
 		return gain * coeff;
+	}
+	
+	
+	//¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤    calcule la pénalité suite à une lettre non trouvée
+	private int scoreLettreNonTrouvee(Character lettre){
+		int penalite = 0;
+		int essais = getNbreEssais();
+		switch(essais){
+		case 1:
+		case 2:
+			penalite = 1;
+			break;
+		case 3:
+		case 4:
+			penalite = 2;
+			break;
+		case 5:
+		case 6:
+			penalite = 4;
+			break;
+		case 7:
+		case 8:
+			penalite = 8;
+			break;
+		case 9:
+		case 10:
+			penalite = 16;
+			break;
+		case 11:
+		case 12:
+			penalite = 32;
+			break;
+		default:
+			penalite = 64;
+			break;
+		}
+		
+		return -penalite;
 	}
 	
 
